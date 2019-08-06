@@ -1,0 +1,61 @@
+import os
+from parsing_functions import *
+
+
+#-- REMOVE THIS IMPORT!!! --#
+from debug_defs import *
+
+
+class exe_file:
+    def __init__(self, path):
+        self.path = path
+        self.exc = False
+        self.excInfo = ''
+        if os.path.splitext(path)[-1] != '.exe':
+            raise Exception('Wrong format of file. Please give exe format of file')
+
+        self.parsefile()
+
+    def parsefile(self):
+        with open(self.path, 'rb') as f:
+            # DOS Header
+            if f.read(2) != b'MZ':
+                self.not_parsing('Broken file. No "MZ" in begin')
+                return
+
+            f.seek(60)
+            pe_header = int.from_bytes(f.read(4), 'little')  # PE-Header address
+            self.DOSProgram = f.read(pe_header - f.tell())  # Mini-Program for DOS
+            del pe_header
+
+            if f.read(4) != b'PE\0\0':
+                self.not_parsing('Broken File. No "PE\\0\\0" in begin of PEHeader')
+                return
+
+            self.file_header = parse_file_header(f.read(20))
+            self.optional_header = parse_optional_header(f.read(self.file_header['sizeOfOptionalHeader']))
+
+            print_dict(self.file_header)
+            print_dict(self.optional_header)
+
+            # TODO: see more parsing of exe files
+            #   (for example https://habr.com/ru/post/266831/)
+
+            print("OK")
+
+    def not_parsing(self, info):
+        # Чтобы писать вместо двух строк одну с сообщением
+        self.exc = 1
+        self.excInfo = info
+
+    @property
+    def architecture(self):
+        processors = {
+            19457: 'x86',
+            2: 'Intel itanium',
+            25734: 'x64',
+        }
+
+        if self._machine in processors:
+            return processors[self._machine]
+        return 'other architecture'
