@@ -16,8 +16,7 @@ def parse_optional_header(data):
     size_of_special_positions = 8 if data[:2] == b'\x0b\x02' else 4
     optional_header = {
         'magic': data[:2],
-        'majorLinkerVersion': data[2],
-        'minorLinkerVersion': data[3],
+        'linkerVersion': (data[2], data[3]),
         'sizeOfCode': data[4:8],
         'sizeOfInitializedData': data[8:12],
         'sizeOfUninitializedCode': data[12:16],
@@ -70,6 +69,6 @@ def getArchitecture(bytestring):
         b'\x64\x86': 'x64'
     }
     if bytestring in matches:
-        return matches[bytestring]
+        return bytestring, matches[bytestring]
 
-    return 'Unknown'
+    return bytestring, 'Unknown'
