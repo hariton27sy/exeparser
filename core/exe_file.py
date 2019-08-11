@@ -1,5 +1,5 @@
 import os
-from parsing_functions import *
+from core.parsing_functions import *
 
 
 #-- REMOVE THIS IMPORT!!! --#
@@ -33,7 +33,8 @@ class exe_file:
                 return
 
             self.file_header = parse_file_header(f.read(20))
-            self.optional_header = parse_optional_header(f.read(self.file_header['sizeOfOptionalHeader']))
+            optional_header_size = int.from_bytes(self.file_header['sizeOfOptionalHeader'][0], 'little')
+            self.optional_header = parse_optional_header(f.read(optional_header_size))
 
             print_dict(self.file_header)
             print_dict(self.optional_header)
@@ -47,15 +48,3 @@ class exe_file:
         # Чтобы писать вместо двух строк одну с сообщением
         self.exc = 1
         self.excInfo = info
-
-    @property
-    def architecture(self):
-        processors = {
-            19457: 'x86',
-            2: 'Intel itanium',
-            25734: 'x64',
-        }
-
-        if self._machine in processors:
-            return processors[self._machine]
-        return 'other architecture'
