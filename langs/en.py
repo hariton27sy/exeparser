@@ -1,5 +1,11 @@
 language = 'English'
 
+menu = {}
+
+toolbar = {}
+
+main_page = 'In this app you can view information about executable files (.exe).\nTo start open file (Ctrl+O)'
+
 headers_info = ('Headers Info', {
     'file_header': ('File Header',
                     ['Field Name', 'Value', 'Description'],

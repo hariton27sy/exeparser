@@ -1,6 +1,7 @@
-from PyQt5.QtWidgets import QWidget, QTableWidget, QTableWidgetItem, QGridLayout, QBoxLayout, QLabel, QAbstractItemView, QHeaderView
+from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem, QGridLayout, QLabel, QAbstractItemView,
+                             QHeaderView)
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont, QColor
+from PyQt5.QtGui import QFont
 
 
 def count_positions(dic: dict):
@@ -9,6 +10,37 @@ def count_positions(dic: dict):
         if dic[name] is not None:
             count += 1
     return count
+
+
+def fill_table(table, data, descriptions):
+    headers = table.horizontalHeader()
+    headers.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+    headers.setSectionResizeMode(1, QHeaderView.ResizeToContents)
+    headers.setSectionResizeMode(2, QHeaderView.Stretch)
+
+    pos = 0
+    table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+    for name in data:
+        if name not in descriptions or descriptions[name] is None:
+            continue
+
+        if isinstance(descriptions[name], str):
+            item = QTableWidgetItem(descriptions[name])
+        else:
+            item = QTableWidgetItem(descriptions[name][0])
+        item.setToolTip(item.text())
+        table.setItem(pos, 0, item)
+
+        item = QTableWidgetItem(hex(int.from_bytes(data[name][0], 'little')))
+        item.setToolTip(item.text())
+        table.setItem(pos, 1, item)
+
+        if isinstance(data[name][1], str):
+            item = QTableWidgetItem(data[name][1])
+            item.setToolTip(item.text())
+            table.setItem(pos, 2, item)
+
+        pos += 1
 
 
 class HeadersInfo(QWidget):
@@ -34,7 +66,7 @@ class HeadersInfo(QWidget):
         table.verticalHeader().setVisible(False)
         table.setHorizontalHeaderLabels(header_lang[1])
 
-        self.fill_table(table, self.parent.exe_file.file_header, header_lang[2])
+        fill_table(table, self.parent.exe_file.file_header, header_lang[2])
 
         fields = self.parent.exe_file.file_header
 
@@ -45,7 +77,6 @@ class HeadersInfo(QWidget):
         item.setToolTip(item.text())
         table.setItem(date_index, 2, item)
 
-
         return table
 
     def draw_optional_header_table(self):
@@ -54,7 +85,7 @@ class HeadersInfo(QWidget):
         table.verticalHeader().setVisible(False)
         table.setHorizontalHeaderLabels(header_lang[1])
 
-        self.fill_table(table, self.parent.exe_file.optional_header, header_lang[2])
+        fill_table(table, self.parent.exe_file.optional_header, header_lang[2])
 
         return table
 
@@ -68,33 +99,3 @@ class HeadersInfo(QWidget):
         grid.addWidget(name, 0, 0)
         grid.addWidget(table, 1, 0)
         return widget
-
-    def fill_table(self, table, data, descriptions):
-        headers = table.horizontalHeader()
-        headers.setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        headers.setSectionResizeMode(1, QHeaderView.ResizeToContents)
-        headers.setSectionResizeMode(2, QHeaderView.Stretch)
-
-        pos = 0
-        table.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        for name in data:
-            if name not in descriptions or descriptions[name] is None:
-                continue
-
-            if isinstance(descriptions[name], str):
-                item = QTableWidgetItem(descriptions[name])
-            else:
-                item = QTableWidgetItem(descriptions[name][0])
-            item.setToolTip(item.text())
-            table.setItem(pos, 0, item)
-
-            item = QTableWidgetItem(hex(int.from_bytes(data[name][0], 'little')))
-            item.setToolTip(item.text())
-            table.setItem(pos, 1, item)
-
-            if isinstance(data[name][1], str):
-                item = QTableWidgetItem(data[name][1])
-                item.setToolTip(item.text())
-                table.setItem(pos, 2, item)
-
-            pos += 1
