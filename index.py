@@ -7,7 +7,6 @@ def main():
         print('gui')
         import GUI.gui
         GUI.gui.GUI()
-        pass  # TODO: to plug GUI version
     elif sys.argv[1] == '-c':
         print('console')
         pass  # TODO: make console version

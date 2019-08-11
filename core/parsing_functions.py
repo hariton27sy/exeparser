@@ -69,9 +69,9 @@ def getMachine(bytestring):
         b'\x64\x86': 'x64'
     }
     if bytestring in matches:
-        return bytestring, matches[bytestring]
+        return matches[bytestring]
 
-    return bytestring, 'Unknown'
+    return 'Unknown'
 
 
 def getArchitecture(bytestring):

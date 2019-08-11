@@ -36,13 +36,11 @@ class exe_file:
             optional_header_size = int.from_bytes(self.file_header['sizeOfOptionalHeader'][0], 'little')
             self.optional_header = parse_optional_header(f.read(optional_header_size))
 
-            print_dict(self.file_header)
-            print_dict(self.optional_header)
+            # print_dict(self.file_header)
+            # print_dict(self.optional_header)
 
             # TODO: see more parsing of exe files
             #   (for example https://habr.com/ru/post/266831/)
-
-            print("OK")
 
     def not_parsing(self, info):
         # Чтобы писать вместо двух строк одну с сообщением
