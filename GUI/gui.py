@@ -13,13 +13,13 @@ WIDTH, HEIGHT = 900, 400
 
 
 def open_external():
-    webbrowser.open('https://habr.com/ru/post/266831/')
+    webbrowser_open = webbrowser.open('https://habr.com/ru/post/266831/')
 
 
 class GUI(QMainWindow):
     def __init__(self):
         # Connection localisation
-        self.curr_language = 'English'
+        self.curr_language = 'Russian'
         self.lang = langs[self.curr_language]
         self.exe_file = None
 
@@ -30,10 +30,12 @@ class GUI(QMainWindow):
         self.draw_menu()
         self.draw_toolbar()
         self.draw_main_win()
+        self.test_interface()
         self.show()
         sys.exit(self.app.exec_())
 
     def draw_menu(self):
+        """Drawing menu"""
         menu = self.menuBar()
         file = menu.addMenu('File')
 
@@ -54,6 +56,7 @@ class GUI(QMainWindow):
         file.addAction(exit_menu)
 
     def show_open_dialog(self):
+        """Open file and preparing workspace"""
         fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
         print(fname)
 
@@ -61,12 +64,16 @@ class GUI(QMainWindow):
         pass
 
     def draw_main_win(self):
+        """Drawing tab when a file are not opened"""
         widget = QWidget(self)
         label = QLabel(self.lang.main_page, widget)
         label.setFont(QFont('sans Serif', 12))
         self.setCentralWidget(widget)
         label.move(10, 10)
 
+    def test_interface(self):
+        self.exe_file = exe_file('../examples/qoob.exe')
+        self.setCentralWidget(headers_window.HeadersInfo(self))
 
 def main():
     GUI()

@@ -2,6 +2,9 @@ import datetime
 
 
 def parse_file_header(data):
+    """return dictionary of File Header in format
+        tuple(raw_data, description of data[, standard print format]) or
+        tuple(raw_data, list )"""
     return {
         'machine': (data[:2], getMachine(data[:2])),
         'numberOfSections': (data[2:4], str(int.from_bytes(data[2:4], 'little'))),
@@ -14,6 +17,9 @@ def parse_file_header(data):
 
 
 def parse_optional_header(data):
+    """Return Optional Header dictionary in format
+        tuple(raw_data, description of data[, standard print format]) or
+        tuple(raw_data, list )"""
     # Parsing of all variables without data_directory
     size_of_special_positions = 8 if data[:2] == b'\x0b\x02' else 4
     special = ['linkerVersion', 'operatingSystemVersion', 'imageVersion', 'subsystemVersion']
@@ -63,6 +69,7 @@ def dateFromBytes(bytestring):
 
 
 def getMachine(bytestring):
+    """Return Type of a Machine from bytestring in string format"""
     matches = {
         b'\x4c\x01': 'x86',
         b'\x00\x02': 'Intel Itanium',

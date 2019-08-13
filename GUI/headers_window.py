@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem, QGridLayout, QLabel, QAbstractItemView,
-                             QHeaderView)
+                             QHeaderView, QPushButton, QTableView)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 
@@ -77,6 +77,10 @@ class HeadersInfo(QWidget):
         item.setToolTip(item.text())
         table.setItem(date_index, 2, item)
 
+        # char_index = (list(fields.keys()).index('characteristics'))
+        # item = QTableWidgetItem('charact')
+        # table.setItem(char_index, 2, item)
+
         return table
 
     def draw_optional_header_table(self):
@@ -99,3 +103,15 @@ class HeadersInfo(QWidget):
         grid.addWidget(name, 0, 0)
         grid.addWidget(table, 1, 0)
         return widget
+
+    def draw_characteristics(self):
+        widget = QWidget()
+        grid = QGridLayout()
+        widget.setLayout(grid)
+        description = self.parent.lang.headers_info[1]['file_header'][2]['characteristics']
+        data = self.parent.exe_file.file_header['characteristics'][1]
+        for i in range(len(data)):
+            grid.addWidget(QLabel(description[i]), i, 0)
+            grid.addWidget(QLabel('YES' if data[i] else 'NO'), i, 1)
+
+        widget.show()

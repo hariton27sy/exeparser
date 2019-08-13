@@ -1,7 +1,8 @@
-__all__ = ['en']
+__all__ = ['en', 'ru']
 
 from langs import *
 
 langs = {
     'English': en,
+    'Russian': ru
 }
