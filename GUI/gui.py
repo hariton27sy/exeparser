@@ -19,12 +19,13 @@ def open_external():
 class GUI(QMainWindow):
     def __init__(self):
         # Connection localisation
-        self.curr_language = 'Russian'
+        self.curr_language = 'English'
         self.lang = langs[self.curr_language]
         self.exe_file = None
 
         self.app = QApplication([])
         super().__init__()
+        self.setWindowTitle('Exe Parser')
         size = self.app.primaryScreen().size()
         self.setGeometry((size.width() - WIDTH) // 2, (size.height() - HEIGHT) // 2, WIDTH, HEIGHT)
         self.draw_menu()
@@ -50,8 +51,6 @@ class GUI(QMainWindow):
         help = menu.addMenu('Help')
         help.addAction('Article about EXE format', open_external)
 
-
-
         file.addAction(open_file)
         file.addAction(exit_menu)
 
@@ -59,9 +58,11 @@ class GUI(QMainWindow):
         """Open file and preparing workspace"""
         fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
         print(fname)
+        # TODO: Make open file
 
     def draw_toolbar(self):
         pass
+        # TODO: Make toolbar
 
     def draw_main_win(self):
         """Drawing tab when a file are not opened"""
@@ -74,6 +75,7 @@ class GUI(QMainWindow):
     def test_interface(self):
         self.exe_file = exe_file('../examples/qoob.exe')
         self.setCentralWidget(headers_window.HeadersInfo(self))
+
 
 def main():
     GUI()

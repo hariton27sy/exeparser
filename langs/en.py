@@ -58,7 +58,17 @@ headers_info = ('Headers Info', {
                             'sizeOfHeaders': 'Size of Headers',
                             'checkSum': 'Checksum',
                             'subsystem': 'Subsystem',
-                            'dllCharacteristics': ('DLL Characteristics',),
+                            'dllCharacteristics': ('DLL Characteristics', [
+                                'Reserved', 'Reserved', 'Reserved', 'Reserved', None, None,
+                                'The DLL can be relocated at load time',
+                                'Code integrity checks are forced',
+                                'The image is compatible with data execution prevention (DEP)',
+                                'The image is isolation aware, but should not be isolated.',
+                                'The image does not use structured exception handling (SEH). No handlers can be '
+                                'called in this image. ',
+                                'Do not bind the image.',
+                                'Reserved.', 'A WDM Driver', 'Reserved', 'The image is terminal server aware'
+                            ]),
                             'sizeOfStackReserve': 'Size of Stack Reserve',
                             'sizeOfStackCommit': 'Size of Stack Commit',
                             'sizeOfHeapReserve': 'Size of Heap Reserve',

@@ -43,10 +43,34 @@ def fill_table(table, data, descriptions):
         pos += 1
 
 
+def draw_characteristics(description, data):
+    widget = QWidget()
+    grid = QGridLayout()
+    widget.setLayout(grid)
+    for i in range(len(data)):
+        if description[1][i] is None:
+            continue
+        grid.addWidget(QLabel(description[1][i]), i, 0)
+        grid.addWidget(QLabel('YES' if data[i] else 'NO'), i, 1)
+
+    return widget
+
+
 class HeadersInfo(QWidget):
     def __init__(self, parent):
         super().__init__()
         self.parent = parent
+
+        # Separate windows
+        self.characteristics = draw_characteristics(self.parent.
+                                                    lang.headers_info[1]['file_header'][2]['characteristics'],
+                                                    self.parent.exe_file.file_header['characteristics'][1])
+
+        self.dll_characteristics = draw_characteristics(self.parent.lang.
+                                                        headers_info[1]['optional_header']
+                                                        [2]['dllCharacteristics'],
+                                                        self.parent.exe_file.optional_header
+                                                        ['dllCharacteristics'][1])
 
         grid = QGridLayout()
         self.setLayout(grid)
@@ -79,8 +103,7 @@ class HeadersInfo(QWidget):
 
         char_index = (list(fields.keys()).index('characteristics'))
         item = QPushButton('click me')
-        self.char_menu = self.draw_characteristics()
-        item.clicked.connect(self.char_menu.show)
+        item.clicked.connect(self.characteristics.show)
         table.setIndexWidget(table.model().index(char_index, 2), item)
 
         return table
@@ -93,6 +116,11 @@ class HeadersInfo(QWidget):
 
         fill_table(table, self.parent.exe_file.optional_header, header_lang[2])
 
+        char_index = (list(self.parent.exe_file.optional_header.keys()).index('dllCharacteristics'))
+        item = QPushButton('click me')
+        item.clicked.connect(self.dll_characteristics.show)
+        table.setIndexWidget(table.model().index(char_index, 2), item)
+
         return table
 
     def draw_subwidget(self, name: str, table: QWidget):
@@ -104,18 +132,4 @@ class HeadersInfo(QWidget):
         name.setAlignment(Qt.AlignCenter)
         grid.addWidget(name, 0, 0)
         grid.addWidget(table, 1, 0)
-        return widget
-
-    def draw_characteristics(self):
-        widget = QWidget()
-        grid = QGridLayout()
-        widget.setLayout(grid)
-        description = self.parent.lang.headers_info[1]['file_header'][2]['characteristics']
-        data = self.parent.exe_file.file_header['characteristics'][1]
-        for i in range(len(data)):
-            if description[1][i] is None:
-                continue
-            grid.addWidget(QLabel(description[1][i]), i, 0)
-            grid.addWidget(QLabel('YES' if data[i] else 'NO'), i, 1)
-
         return widget
