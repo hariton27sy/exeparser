@@ -2,7 +2,7 @@
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, qApp, QFileDialog, QLabel, QWidget
 from PyQt5.QtGui import QFont
-import sys
+import sys, os
 import webbrowser  # for open external link in browser
 
 from GUI import headers_window
@@ -25,7 +25,7 @@ class GUI(QMainWindow):
 
         self.app = QApplication([])
         super().__init__()
-        self.setWindowTitle('Exe Parser')
+        self.setWindowTitle('EXE Parser')
         size = self.app.primaryScreen().size()
         self.setGeometry((size.width() - WIDTH) // 2, (size.height() - HEIGHT) // 2, WIDTH, HEIGHT)
         self.draw_menu()
@@ -60,6 +60,7 @@ class GUI(QMainWindow):
         fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
         self.exe_file = exe_file(fname)
         self.toolbar.setDisabled(False)
+        self.setWindowTitle('EXE Parser - ' + fname)
         # TODO: Make open file
 
     def draw_toolbar(self):
@@ -85,8 +86,10 @@ class GUI(QMainWindow):
         label.move(10, 10)
 
     def auto_open_file(self, file='../examples/qoob.exe'):
+        file = os.path.abspath(file)
         self.exe_file = exe_file(file)
         self.toolbar.setDisabled(False)
+        self.setWindowTitle('EXE Parser - ' + file)
 
 
 def main():
