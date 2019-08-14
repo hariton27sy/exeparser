@@ -77,3 +77,23 @@ headers_info = ('Headers Info', {
                             'numberOfRvaAndSizes': 'Number of Data Directories'
                         })
 })
+
+
+data_directory_tab = ('Data Directory', ['Field name', 'Virtual Address', 'Size'], (
+    'Export table',
+    'Import table',
+    'Resource table',
+    'Exception table',
+    'Security table',
+    'Base Relocation table',
+    'Debug table',
+    'Copyright table',
+    'Architecture specific data',
+    'RVA of GP',
+    'TLS table',
+    'Load Configuration table',
+    'Bound Import Directory in headers',
+    'Import Address table',
+    'Delay Load Import Descriptors',
+    'COM Runtime descriptor'
+))

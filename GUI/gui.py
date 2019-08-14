@@ -31,7 +31,8 @@ class GUI(QMainWindow):
         self.draw_menu()
         self.draw_toolbar()
         self.draw_main_win()
-        self.test_interface()
+        self.auto_open_file()
+        headers_window.DataDirectoryTab(self)
         self.show()
         sys.exit(self.app.exec_())
 
@@ -57,11 +58,22 @@ class GUI(QMainWindow):
     def show_open_dialog(self):
         """Open file and preparing workspace"""
         fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
-        print(fname)
+        self.exe_file = exe_file(fname)
+        self.toolbar.setDisabled(False)
         # TODO: Make open file
 
     def draw_toolbar(self):
-        pass
+        self.toolbar = self.addToolBar('toolbar')
+        self.toolbar.setDisabled(True)
+
+        action = QAction('H', self)
+        action.triggered.connect(lambda _: self.setCentralWidget(headers_window.HeadersInfo(self)))
+        self.toolbar.addAction(action)
+
+        action = QAction('D', self)
+        action.triggered.connect(lambda _: self.setCentralWidget(headers_window.DataDirectoryTab(self)))
+        self.toolbar.addAction(action)
+
         # TODO: Make toolbar
 
     def draw_main_win(self):
@@ -72,9 +84,9 @@ class GUI(QMainWindow):
         self.setCentralWidget(widget)
         label.move(10, 10)
 
-    def test_interface(self):
-        self.exe_file = exe_file('../examples/qoob.exe')
-        self.setCentralWidget(headers_window.HeadersInfo(self))
+    def auto_open_file(self, file='../examples/qoob.exe'):
+        self.exe_file = exe_file(file)
+        self.toolbar.setDisabled(False)
 
 
 def main():
