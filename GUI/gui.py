@@ -13,7 +13,7 @@ WIDTH, HEIGHT = 900, 400
 
 
 def open_external():
-    webbrowser_open = webbrowser.open('https://habr.com/ru/post/266831/')
+    webbrowser.open('https://habr.com/ru/post/266831/')
 
 
 class GUI(QMainWindow):

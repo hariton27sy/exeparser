@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem, QGridLayout, QLabel, QAbstractItemView,
                              QHeaderView, QPushButton, QTableView)
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QModelIndex
 from PyQt5.QtGui import QFont
 
 
@@ -77,9 +77,11 @@ class HeadersInfo(QWidget):
         item.setToolTip(item.text())
         table.setItem(date_index, 2, item)
 
-        # char_index = (list(fields.keys()).index('characteristics'))
-        # item = QTableWidgetItem('charact')
-        # table.setItem(char_index, 2, item)
+        char_index = (list(fields.keys()).index('characteristics'))
+        item = QPushButton('click me')
+        self.char_menu = self.draw_characteristics()
+        item.clicked.connect(self.char_menu.show)
+        table.setIndexWidget(table.model().index(char_index, 2), item)
 
         return table
 
@@ -111,7 +113,9 @@ class HeadersInfo(QWidget):
         description = self.parent.lang.headers_info[1]['file_header'][2]['characteristics']
         data = self.parent.exe_file.file_header['characteristics'][1]
         for i in range(len(data)):
-            grid.addWidget(QLabel(description[i]), i, 0)
+            if description[1][i] is None:
+                continue
+            grid.addWidget(QLabel(description[1][i]), i, 0)
             grid.addWidget(QLabel('YES' if data[i] else 'NO'), i, 1)
 
-        widget.show()
+        return widget
