@@ -35,9 +35,11 @@ class exe_file:
             optional_header_size = int.from_bytes(self.file_header['sizeOfOptionalHeader'][0], 'little')
             self.optional_header = parse_optional_header(f.read(optional_header_size))
 
-            # print_dict(self.file_header)
-            # print_dict(self.optional_header)
+            self.section_headers = parse_section_headers(f.read(int(self.file_header['numberOfSections'][1]) * 40))
 
+            for name in self.section_headers:
+                print(name)
+                print_dict(self.section_headers[name])
             # TODO: see more parsing of exe files
             #   (for example https://habr.com/ru/post/266831/)
 

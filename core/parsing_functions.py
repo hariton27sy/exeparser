@@ -89,3 +89,22 @@ def parse_characteristics(data):
     binstr = bin(int.from_bytes(data, 'little')).zfill(16)
     return [binstr[-i - 1] == '1' for i in range(16)]
 
+
+def parse_section_headers(data):
+    sections = {}
+    for i in range(len(data) // 40):
+        pos = i * 40
+        name = data[pos:pos+8].strip(b'\x00').decode('utf-8')
+        sections[name] = {
+            'virtualSize': data[pos+8:pos+12],
+            'virtualAddress': data[pos+12:pos+16],
+            'sizeOfRawData': data[pos+16:pos+20],
+            'pointerToRawData': data[pos+20:pos+24],
+            'pointerToRelocations': data[pos+24:pos+28],
+            'pointerToLineNumbers': data[pos+28:pos+32],
+            'numberOfRelocations': data[pos+32:pos+34],
+            'numberOfNumberLines': data[pos+34:pos+36],
+            'characteristics': data[pos+36:pos+40]
+        }
+
+    return sections

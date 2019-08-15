@@ -78,7 +78,6 @@ headers_info = ('Headers Info', {
                         })
 })
 
-
 data_directory_tab = ('Data Directory', ['Field name', 'Virtual Address', 'Size'], (
     'Export table',
     'Import table',
@@ -97,3 +96,8 @@ data_directory_tab = ('Data Directory', ['Field name', 'Virtual Address', 'Size'
     'Delay Load Import Descriptors',
     'COM Runtime descriptor'
 ))
+
+section_headers_tab = ('Section Headers',
+                       ['Name', 'Virtual Size', 'Virtual Address', 'Size of Raw Data', 'Pointer to Raw Data',
+                        'Pointer to Relocations', 'Pointer to Line Numbers', 'Number of Relocations',
+                        'Number of Numberlines', 'Characteristics'])

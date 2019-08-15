@@ -58,10 +58,10 @@ class GUI(QMainWindow):
     def show_open_dialog(self):
         """Open file and preparing workspace"""
         fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
+        # TODO: Check variable if it is empty or is not exe file
         self.exe_file = exe_file(fname)
         self.toolbar.setDisabled(False)
         self.setWindowTitle('EXE Parser - ' + fname)
-        # TODO: Make open file
 
     def draw_toolbar(self):
         self.toolbar = self.addToolBar('toolbar')
@@ -75,6 +75,9 @@ class GUI(QMainWindow):
         action.triggered.connect(lambda _: self.setCentralWidget(headers_window.DataDirectoryTab(self)))
         self.toolbar.addAction(action)
 
+        action = QAction('S', self)
+        action.triggered.connect(lambda _: self.setCentralWidget(headers_window.SectionHeadersTab(self)))
+        self.toolbar.addAction(action)
         # TODO: Make toolbar
 
     def draw_main_win(self):

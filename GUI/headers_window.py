@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem, QGridLayou
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 
+from common_funcs import hex_from_bytes
+
 
 def count_positions(dic: dict):
     """Simple counter of positions that are not None"""
@@ -183,5 +185,44 @@ class DataDirectoryTab(QWidget):
             item = QTableWidgetItem(hex(int.from_bytes(data[i][1], 'little'))[2:])
             item.setToolTip(str(int(item.text(), 16)) + ' bytes')
             table.setItem(i, 2, item)
+
+        return table
+
+
+class SectionHeadersTab(QWidget):
+    def __init__(self, parent):
+        super().__init__()
+        self.parent_ = parent
+        grid = QGridLayout()
+        self.setLayout(grid)
+        grid.addWidget(QLabel(self.parent_.lang.section_headers_tab[0]), 0, 0)
+        grid.addWidget(self.make_table(), 1, 0)
+
+    def make_table(self):
+        # TODO: Rewrite filling section_headers table
+        horizontal = count_positions(self.parent_.lang.section_headers_tab[1])
+        vertical = len(self.parent_.exe_file.section_headers)
+        table = QTableWidget(vertical, horizontal)
+        table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        # Edit headers
+        table.verticalHeader().setVisible(False)
+        table.setHorizontalHeaderLabels(self.parent_.lang.section_headers_tab[1])
+        table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        for i in range(horizontal):
+            table.horizontalHeaderItem(i).setToolTip(table.horizontalHeaderItem(i).text())
+
+        # Filling data
+        v_pos = 0
+        for name in self.parent_.exe_file.section_headers:
+            table.setItem(v_pos, 0, QTableWidgetItem(name))
+            h_pos = 1
+            for item in self.parent_.exe_file.section_headers[name].values():
+                table.setItem(v_pos, h_pos, QTableWidgetItem(hex_from_bytes(item)))
+                table.item(v_pos, h_pos).setToolTip(str(int.from_bytes(item, 'little')))
+                h_pos += 1
+            v_pos += 1
+
+
 
         return table
