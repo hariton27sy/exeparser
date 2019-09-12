@@ -1,23 +1,28 @@
-from core.exe_file import exe_file
+#! ./venvubuntu/bin/python3
+
+from core.exefile import ExeFile
 import sys
 
 
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] == 'gui':
-        print('gui')
-        import GUI.gui
-        GUI.gui.GUI()
-    elif sys.argv[1] == '-c':
-        print('console')
-        pass  # TODO: make console version
-    else:
-        print('help')
-        pass  # TODO: make help
+    try:
+        if len(sys.argv) < 2 or sys.argv[1] == '-g':
+            print('gui')
+            import GUI.gui
+            GUI.gui.GUI()
+        elif sys.argv[1] == '-c':
+            print('console')
+            pass  # TODO: make console version
+        else:
+            print('help')
+            pass  # TODO: make help
+    except Exception:
+        raise  # TODO: make normal output information without strange words
 
 
 def test():
     path = 'examples/qoob.exe'
-    exe_file(path)
+    ExeFile(path)
 
 
 if __name__ == "__main__":

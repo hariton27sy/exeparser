@@ -1,15 +1,17 @@
-import os
+import os, sys
 from core.parsing_functions import *
 
 # -- REMOVE THIS IMPORT!!! --#
 from debug_defs import *
 
 
-class exe_file:
+class ExeFile:
     def __init__(self, path):
         self.path = path
         self.exc = False
         self.excInfo = ''
+        if not os.path.exists(path):
+            raise Exception('File is not found')
         if os.path.splitext(path)[-1] != '.exe':
             raise Exception('Wrong format of file. Please give exe format of file')
 
@@ -37,9 +39,6 @@ class exe_file:
 
             self.section_headers = parse_section_headers(f.read(int(self.file_header['numberOfSections'][1]) * 40))
 
-            for name in self.section_headers:
-                print(name)
-                print_dict(self.section_headers[name])
             # TODO: see more parsing of exe files
             #   (for example https://habr.com/ru/post/266831/)
 

@@ -7,7 +7,7 @@ import webbrowser  # for open external link in browser
 
 from GUI import headers_window
 from langs import langs
-from core.exe_file import exe_file
+from core.exefile import ExeFile
 
 WIDTH, HEIGHT = 900, 400
 
@@ -59,9 +59,12 @@ class GUI(QMainWindow):
         """Open file and preparing workspace"""
         fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
         # TODO: Check variable if it is empty or is not exe file
-        self.exe_file = exe_file(fname)
+        if not fname:
+            return
+        self.exe_file = ExeFile(fname)
         self.toolbar.setDisabled(False)
         self.setWindowTitle('EXE Parser - ' + fname)
+        self.setCentralWidget(headers_window.HeadersInfo(self))
 
     def draw_toolbar(self):
         self.toolbar = self.addToolBar('toolbar')
@@ -88,9 +91,9 @@ class GUI(QMainWindow):
         self.setCentralWidget(widget)
         label.move(10, 10)
 
-    def auto_open_file(self, file='../examples/qoob.exe'):
+    def auto_open_file(self, file='examples/qoob.exe'):
         file = os.path.abspath(file)
-        self.exe_file = exe_file(file)
+        self.exe_file = ExeFile(file)
         self.toolbar.setDisabled(False)
         self.setWindowTitle('EXE Parser - ' + file)
 
