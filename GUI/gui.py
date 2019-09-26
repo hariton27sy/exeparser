@@ -1,23 +1,25 @@
 #!/usr/bin/python3
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, qApp, QFileDialog, QLabel, QWidget
+import os
+import sys
+from webbrowser import open as openweb  # for open external link in browser
+
 from PyQt5.QtGui import QFont
-import sys, os
-import webbrowser  # for open external link in browser
+from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, qApp, QFileDialog, QLabel, QWidget
 
 from GUI import headers_window
-from langs import langs
 from core.exefile import ExeFile
+from langs import langs
 
 WIDTH, HEIGHT = 900, 400
 
 
 def open_external():
-    webbrowser.open('https://habr.com/ru/post/266831/')
+    openweb('https://habr.com/ru/post/266831/')
 
 
 class GUI(QMainWindow):
-    def __init__(self):
+    def __init__(self, argv):
         # Connection localisation
         self.curr_language = 'English'
         self.lang = langs[self.curr_language]
@@ -31,8 +33,8 @@ class GUI(QMainWindow):
         self.draw_menu()
         self.draw_toolbar()
         self.draw_main_win()
-        self.auto_open_file()
-        headers_window.DataDirectoryTab(self)
+        # self.auto_open_file()
+        # headers_window.DataDirectoryTab(self)
         self.show()
         sys.exit(self.app.exec_())
 

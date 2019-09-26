@@ -6,19 +6,14 @@ import sys
 
 def main():
     try:
-        if len(sys.argv) < 2 or sys.argv[1] == '-g':
-            print('gui')
+        if len(sys.argv) > 1 and sys.argv[1] == '-g':
             import GUI.gui
-            GUI.gui.GUI()
-        elif sys.argv[1] == '-c':
-            print('console')
-            pass  # TODO: make console version
+            GUI.gui.GUI(sys.argv[2:])
         else:
-            print('help')
-            pass  # TODO: make help
+            import CLI.cli
+            CLI.cli.CommandLineInterface(sys.argv[1:])
     except Exception:
         raise  # TODO: make normal output information without strange words
-
 
 def test():
     path = 'examples/qoob.exe'

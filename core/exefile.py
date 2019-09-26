@@ -46,3 +46,8 @@ class ExeFile:
         # Чтобы писать вместо двух строк одну с сообщением
         self.exc = 1
         self.excInfo = info
+
+    @property
+    def raw_data(self):
+        with open(self.path, 'r') as f:
+            yield f.read(1)

@@ -134,6 +134,14 @@ class HeadersInfo(QWidget):
         item.clicked.connect(self.dll_characteristics.show)
         table.setIndexWidget(table.model().index(char_index, 2), item)
 
+        subsystem_index = (list(self.parent_.exe_file.optional_header.keys()).index('subsystem'))
+        subsystem = (header_lang[2]['subsystem'][1][int(self.parent_.exe_file.optional_header['subsystem'][1])]
+                     if int(self.parent_.exe_file.optional_header['subsystem'][1]) in header_lang[2]['subsystem'][1]
+                     else header_lang[2]['subsystem'][2])
+        item = QTableWidgetItem(subsystem)
+        item.setToolTip(subsystem)
+        table.setItem(subsystem_index, 2, item)
+
         return table
 
     def draw_subwidget(self, name: str, table: QWidget):

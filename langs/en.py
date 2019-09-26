@@ -4,6 +4,21 @@ menu = {}
 
 toolbar = {}
 
+cli_help = '''This script allow you to check executable windows files.
+
+Warning! You need to install requirements only if you want to use graphic version of program
+
+Using:
+python *filename.py* [parameters]
+  * -g [path_to_file]               Start graphical version of
+                                    program. If you put path_to_file
+                                    program automatically open it.
+                                    Warning! you need installed PyQt5
+  * <empty arguments>, --help, -h   Print this message
+  * -f path_to_file                 Change file to analysis
+  * -a, --all                       Print all information about
+                                    file (without tables)'''
+
 main_page = 'In this app you can view information about executable files (.exe).\nTo start open file (Ctrl+O)'
 
 headers_info = ('Headers Info', {
@@ -57,7 +72,21 @@ headers_info = ('Headers Info', {
                             'sizeOfImage': 'Size of Image',
                             'sizeOfHeaders': 'Size of Headers',
                             'checkSum': 'Checksum',
-                            'subsystem': 'Subsystem',
+                            'subsystem': ('Subsystem',
+                                          {
+                                              1: 'No subsystem required',
+                                              2: 'Windows graphical user interface (GUI) subsystem.',
+                                              3: 'Windows character-mode user interface (CUI) subsystem.',
+                                              5: 'OS/2 CUI subsystem.',
+                                              7: 'POSIX CUI subsystem.',
+                                              9: 'Windows CE system.',
+                                              10: 'Extensible Firmware Interface (EFI) application.',
+                                              11: 'EFI driver with boot services.',
+                                              12: 'EFI driver with run-time services.',
+                                              13: 'EFI ROM image.',
+                                              14: 'Xbox system.',
+                                              16: 'Boot application.'
+                                          }, 'Unknown'),
                             'dllCharacteristics': ('DLL Characteristics', [
                                 'Reserved', 'Reserved', 'Reserved', 'Reserved', None, None,
                                 'The DLL can be relocated at load time',
