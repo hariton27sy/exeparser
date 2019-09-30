@@ -15,6 +15,7 @@ def main():
     except Exception:
         raise  # TODO: make normal output information without strange words
 
+
 def test():
     path = 'examples/qoob.exe'
     ExeFile(path)

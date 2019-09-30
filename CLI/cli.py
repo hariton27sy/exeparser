@@ -27,8 +27,8 @@ class CommandLineInterface:
 
     def parse_args(self, argv):
         self.file_header()
-        self.optional_header()
-        self.data_directories()
+        # self.optional_header()
+        self.section_headers(range(6))
 
     def file_header(self):
         file_header_lang = self.lang.headers_info[1]['file_header']
@@ -57,6 +57,18 @@ class CommandLineInterface:
         return result
 
     def optional_header(self):
+        def data_directories(interface):
+            result = ''
+            localisation = interface.lang.data_directory_tab[2]
+            data_directory = interface.exeFile.optional_header['dataDirectory']
+            for i in range(int(interface.exeFile.optional_header['numberOfRvaAndSizes'][1])):
+                if localisation[i] is not None:
+                    result += '{0:>16} [{1:>10}] RVA [size] of {2}\n'.format(hex_from_bytes(data_directory[i][0]),
+                                                                             hex_from_bytes(data_directory[i][1]),
+                                                                             localisation[i])
+
+            return result
+
         optional_header_lang = self.lang.headers_info[1]['optional_header']
         result = f'{optional_header_lang[0].upper()}:\n'
         optional_header_lang = optional_header_lang[2]
@@ -67,9 +79,9 @@ class CommandLineInterface:
             val = self.exeFile.optional_header[key]
             interpreted_value = val[1]
             if key == 'subsystem':
-                interpreted_value = (optional_header_lang[key][1][int(interpreted_value)]
-                                     if int(interpreted_value) in
-                                     optional_header_lang[key][1] else optional_header_lang[key][2])
+                interpreted_value = '| ' + (optional_header_lang[key][1][int(interpreted_value)]
+                                            if int(interpreted_value) in
+                                               optional_header_lang[key][1] else optional_header_lang[key][2]) + '\n'
                 print(interpreted_value)
                 field_name = optional_header_lang[key][0]
             elif key == 'dllCharacteristics':
@@ -81,22 +93,30 @@ class CommandLineInterface:
                         interpreted_value += '\t\t\t{}\n'.format(names[_id])
                 field_name = optional_header_lang[key][0]
             else:
-                interpreted_value = '| ' + interpreted_value
+                interpreted_value = f'| {interpreted_value}\n'
                 field_name = optional_header_lang[key]
-            result += '{0:>16} | {1:<30} {2}\n'.format(hex_from_bytes(val[0]), field_name, interpreted_value)
+            result += '{0:>16} | {1:<30} {2}'.format(hex_from_bytes(val[0]), field_name, interpreted_value)
 
+        result += data_directories(self)
         print(result)
-        return result + self.data_directories()
 
-    def data_directories(self):
-        result = ''
-        localisation = self.lang.data_directory_tab[2]
-        data_directory = self.exeFile.optional_header['dataDirectory']
-        for i in range(int(self.exeFile.optional_header['numberOfRvaAndSizes'][1])):
-            if localisation[i] is not None:
-                result += '{0:>16} [{1:>10}] RVA [size] of {2}\n'.format(hex_from_bytes(data_directory[i][0]),
-                                                                       hex_from_bytes(data_directory[i][1]),
-                                                                       localisation[i])
+        return result
 
-        print(result)
+    def section_headers(self, args):
+        localisation = self.lang.section_headers_tab[1]
+        sections = self.exeFile.section_headers
+        result = []
+        for section_number in args:
+            temp = ''
+            if section_number >= len(sections):
+                break
+            section_name = list(sections.keys())[section_number]
+            temp += f'SECTION HEADER #{section_number + 1}\n{section_name:>12} {localisation[0]}\n'
+            line_index = 1
+            for line in sections[section_name]:
+                temp += f'{hex_from_bytes(sections[section_name][line]):>12} {localisation[line_index]}\n'
+                line_index += 1
+            result.append(temp)
+        print(result[0])
+
         return result
