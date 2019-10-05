@@ -1,15 +1,16 @@
 from core.exefile import ExeFile
 from langs import langs
-from common_funcs import hex_from_bytes
+from common_funcs import hex_from_bytes, bytes_line_to_symbols
 
 
 class CommandLineInterface:
     def __init__(self, argv):
         self.keys = {
-            '-r': (0, "delegate"),
-            '-f': (1, "delegate"),
-            '-fh': (0, self.file_header),
-            '-oh': (0, self.optional_header)
+            '-r': (0, lambda: print('-r')),
+            '-f': (1, lambda: print('-f')),
+            '-fh': (0, lambda: print(self.file_header())),
+            '-oh': (0, lambda: print(self.optional_header())),
+            '-sh': (0, lambda: print(self.section_headers(range(6))))
         }
 
         self.curr_lang = 'English'
@@ -26,9 +27,12 @@ class CommandLineInterface:
         print(self.lang.cli_help)
 
     def parse_args(self, argv):
-        self.file_header()
+        print(argv[0])
+        if len(argv) > 0 and argv[0] in self.keys:
+            self.keys[argv[0]][1]()
+        # self.file_header()
         # self.optional_header()
-        self.section_headers(range(6))
+        # self.section_headers(range(6))
 
     def file_header(self):
         file_header_lang = self.lang.headers_info[1]['file_header']
@@ -53,7 +57,6 @@ class CommandLineInterface:
                           file_header_lang[2][key])
             result += '{0:>16} | {1:<30} {2}\n'.format(hex_from_bytes(val[0]), field_name, interpreted_value)
 
-        print(result)
         return result
 
     def optional_header(self):
@@ -82,7 +85,6 @@ class CommandLineInterface:
                 interpreted_value = '| ' + (optional_header_lang[key][1][int(interpreted_value)]
                                             if int(interpreted_value) in
                                                optional_header_lang[key][1] else optional_header_lang[key][2]) + '\n'
-                print(interpreted_value)
                 field_name = optional_header_lang[key][0]
             elif key == 'dllCharacteristics':
                 flags = interpreted_value
@@ -98,7 +100,6 @@ class CommandLineInterface:
             result += '{0:>16} | {1:<30} {2}'.format(hex_from_bytes(val[0]), field_name, interpreted_value)
 
         result += data_directories(self)
-        print(result)
 
         return result
 
@@ -117,6 +118,16 @@ class CommandLineInterface:
                 temp += f'{hex_from_bytes(sections[section_name][line]):>12} {localisation[line_index]}\n'
                 line_index += 1
             result.append(temp)
-        print(result[0])
 
-        return result
+        return '\n'.join(result)  # TODO: make to return list of sections in right format
+
+    def raw_section_data(self, section_number):
+        section = self.exeFile.section_headers[self.exeFile.section_name_by_number(section_number)]
+        base_address = int.from_bytes(section['virtualAddress'], 'little')
+        result = f'RAW SECTION #{section_number}\n'
+        line = ''
+        counter = 0
+        for ch in self.exeFile.raw_section_data(section_number):
+            if counter != 0 and counter % 16 == 0:
+                line = f'\n{hex(base_address + counter):>10}:'
+            line += f' {hex(ch).upper()}'

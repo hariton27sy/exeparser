@@ -15,9 +15,9 @@ class ExeFile:
         if os.path.splitext(path)[-1] != '.exe':
             raise Exception('Wrong format of file. Please give exe format of file')
 
-        self.parsefile()
+        self._parsefile()
 
-    def parsefile(self):
+    def _parsefile(self):
         with open(self.path, 'rb') as f:
             # DOS Header
             if f.read(2) != b'MZ':
@@ -49,5 +49,26 @@ class ExeFile:
 
     @property
     def raw_data(self):
-        with open(self.path, 'r') as f:
+        """Return all data of file"""
+        with open(self.path, 'rb') as f:
             yield f.read(1)
+
+    def rva_to_raw(self):
+        pass
+
+    def raw_section_data(self, section_number):
+        """Return RAW data of section with section_number (Numerating from 1)"""
+        with open(self.path, 'rb') as f:
+            if isinstance(section_number, int):
+                section_number = self.section_name_by_number(section_number)
+
+            section = self.section_headers[section_number]
+            pointer = section['pointerToRawData']
+            size = section['virtualSize']
+            f.seek(pointer, 0)  # 0 - begin, 1 - current, 2 - end
+            for _ in range(size):
+                yield f.read(1)
+
+    def section_name_by_number(self, section_number):
+        names = list(self.section_headers.keys())
+        return names[section_number - 1]
