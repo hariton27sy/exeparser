@@ -7,11 +7,16 @@ def parse_file_header(data):
         tuple(raw_data, list )"""
     return {
         'machine': (data[:2], getMachine(data[:2])),
-        'numberOfSections': (data[2:4], str(int.from_bytes(data[2:4], 'little'))),
-        'creatingTime': (data[4:8], dateFromBytes(data[4:8]).strftime, '%d.%m.%Y %H:%M:%S'),
-        'pointerToSymbolTable': (data[8:12], str(int.from_bytes(data[8:12], 'little'))),
-        'numberOfSymbols': (data[12:16], str(int.from_bytes(data[12:16], 'little'))),
-        'sizeOfOptionalHeader': (data[16:18], str(int.from_bytes(data[16:18], 'little'))),
+        'numberOfSections': (data[2:4], str(int.from_bytes(data[2:4],
+                                                           'little'))),
+        'creatingTime': (data[4:8], dateFromBytes(data[4:8]).strftime,
+                         '%d.%m.%Y %H:%M:%S'),
+        'pointerToSymbolTable': (data[8:12], str(int.from_bytes(data[8:12],
+                                                                'little'))),
+        'numberOfSymbols': (data[12:16], str(int.from_bytes(data[12:16],
+                                                            'little'))),
+        'sizeOfOptionalHeader': (data[16:18], str(int.from_bytes(data[16:18],
+                                                                 'little'))),
         'characteristics': (data[18:20], parse_characteristics(data[18:20]))
     }
 
@@ -22,15 +27,24 @@ def parse_optional_header(data):
         tuple(raw_data, list )"""
     # Parsing of all variables without data_directory
     size_of_special_positions = 8 if data[:2] == b'\x0b\x02' else 4
-    special = ['linkerVersion', 'operatingSystemVersion', 'imageVersion', 'subsystemVersion']
-    optional_header = {'magic': 2, 'linkerVersion': 2, 'sizeOfCode': 4, 'sizeOfInitializedData': 4,
-                       'sizeOfUninitializedCode': 4, 'addressOfEntryPoint': 4, 'baseOfCode': 4, 'baseOfData': 4,
-                       'imageBase': size_of_special_positions, 'sectionAlignment': 4, 'fileAlignment': 4,
-                       'operatingSystemVersion': 4, 'imageVersion': 4, 'subsystemVersion': 4,
-                       'win32VersionValue': 4, 'sizeOfImage': 4, 'sizeOfHeaders': 4, 'checkSum': 4, 'subsystem': 2,
-                       'dllCharacteristics': 2, 'sizeOfStackReserve': size_of_special_positions,
-                       'sizeOfStackCommit': size_of_special_positions, 'sizeOfHeapReserve': size_of_special_positions,
-                       'sizeOfHeapCommit': size_of_special_positions, 'loaderFlags': 4, 'numberOfRvaAndSizes': 4}
+    special = ['linkerVersion', 'operatingSystemVersion', 'imageVersion',
+               'subsystemVersion']
+    optional_header = {'magic': 2, 'linkerVersion': 2, 'sizeOfCode': 4,
+                       'sizeOfInitializedData': 4,
+                       'sizeOfUninitializedCode': 4,
+                       'addressOfEntryPoint': 4, 'baseOfCode': 4,
+                       'baseOfData': 4, 'imageBase': size_of_special_positions,
+                       'sectionAlignment': 4, 'fileAlignment': 4,
+                       'operatingSystemVersion': 4, 'imageVersion': 4,
+                       'subsystemVersion': 4,
+                       'win32VersionValue': 4, 'sizeOfImage': 4,
+                       'sizeOfHeaders': 4, 'checkSum': 4, 'subsystem': 2,
+                       'dllCharacteristics': 2,
+                       'sizeOfStackReserve': size_of_special_positions,
+                       'sizeOfStackCommit': size_of_special_positions,
+                       'sizeOfHeapReserve': size_of_special_positions,
+                       'sizeOfHeapCommit': size_of_special_positions,
+                       'loaderFlags': 4, 'numberOfRvaAndSizes': 4}
     pos = 0
     for name in optional_header:
         pos += optional_header[name]
@@ -41,20 +55,25 @@ def parse_optional_header(data):
                                  int.from_bytes(val[len(val) // 2:], 'little'))
             optional_header[name] = (optional_header[name], val)
         elif name == 'magic':
-            optional_header[name] = (optional_header[name], getArchitecture(optional_header[name]))
+            optional_header[name] = (optional_header[name],
+                                     getArchitecture(optional_header[name]))
         elif name == 'win32VersionValue':
             optional_header[name] = (optional_header[name], 'Reserved')
         elif name == 'dllCharacteristics':
-            optional_header[name] = (optional_header[name], parse_characteristics(optional_header[name]))
+            optional_header[name] = (optional_header[name],
+                                     parse_characteristics(
+                                         optional_header[name]))
         elif name == 'loaderFlags':
             optional_header[name] = (optional_header[name], 'Obsolete')
         else:
-            optional_header[name] = (optional_header[name], str(int.from_bytes(optional_header[name], 'little')))
+            optional_header[name] = (optional_header[name], str(int.from_bytes(
+                optional_header[name], 'little')))
 
     # Parsing data directory
     data_directory = [(data[i * 8 + pos: i * 8 + pos + 4],
                        data[i * 8 + pos + 4: i * 8 + pos + 8]
-                       ) for i in range(int(optional_header['numberOfRvaAndSizes'][1]))]
+                       ) for i in range(int(
+                        optional_header['numberOfRvaAndSizes'][1]))]
     optional_header['dataDirectory'] = data_directory
     return optional_header
 
@@ -81,6 +100,27 @@ def getMachine(bytestring):
     return 'Unknown'
 
 
+def parse_section_headers(data):
+    sections = []
+    for i in range(len(data) // 40):
+        pos = i * 40
+        name = data[pos:pos + 8].strip(b'\x00').decode('utf-8')
+        sections.append({
+            'name': name,
+            'virtualSize': data[pos + 8:pos + 12],
+            'virtualAddress': data[pos + 12:pos + 16],
+            'sizeOfRawData': data[pos + 16:pos + 20],
+            'pointerToRawData': data[pos + 20:pos + 24],
+            'pointerToRelocations': data[pos + 24:pos + 28],
+            'pointerToLineNumbers': data[pos + 28:pos + 32],
+            'numberOfRelocations': data[pos + 32:pos + 34],
+            'numberOfNumberLines': data[pos + 34:pos + 36],
+            'characteristics': data[pos + 36:pos + 40]
+        })
+
+    return sections
+
+
 def getArchitecture(bytestring):
     return 'PE64' if bytestring == b'\x0b\x02' else 'PE32'
 
@@ -88,23 +128,3 @@ def getArchitecture(bytestring):
 def parse_characteristics(data):
     binstr = bin(int.from_bytes(data, 'little')).zfill(16)
     return [binstr[-i - 1] == '1' for i in range(16)]
-
-
-def parse_section_headers(data):
-    sections = {}
-    for i in range(len(data) // 40):
-        pos = i * 40
-        name = data[pos:pos+8].strip(b'\x00').decode('utf-8')
-        sections[name] = {
-            'virtualSize': data[pos+8:pos+12],
-            'virtualAddress': data[pos+12:pos+16],
-            'sizeOfRawData': data[pos+16:pos+20],
-            'pointerToRawData': data[pos+20:pos+24],
-            'pointerToRelocations': data[pos+24:pos+28],
-            'pointerToLineNumbers': data[pos+28:pos+32],
-            'numberOfRelocations': data[pos+32:pos+34],
-            'numberOfNumberLines': data[pos+34:pos+36],
-            'characteristics': data[pos+36:pos+40]
-        }
-
-    return sections

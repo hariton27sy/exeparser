@@ -3,6 +3,8 @@ def hex_from_bytes(byte_str):
 
 
 def bytes_line_to_symbols(line):
+    """Example of input: \"0A 5B 9F 4D\"
+                     or: \"5B0A 4D9F\""""
     if len(line) == 0:
         return ''
     temp = []

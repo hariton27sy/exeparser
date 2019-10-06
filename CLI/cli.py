@@ -122,7 +122,7 @@ class CommandLineInterface:
         return '\n'.join(result)  # TODO: make to return list of sections in right format
 
     def raw_section_data(self, section_number):
-        section = self.exeFile.section_headers[self.exeFile.section_name_by_number(section_number)]
+        section = self.exeFile.section_headers[section_number - 1]
         base_address = int.from_bytes(section['virtualAddress'], 'little')
         result = f'RAW SECTION #{section_number}\n'
         line = ''

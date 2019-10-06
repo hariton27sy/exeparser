@@ -222,12 +222,11 @@ class SectionHeadersTab(QWidget):
 
         # Filling data
         v_pos = 0
-        for name in self.parent_.exe_file.section_headers:
-            table.setItem(v_pos, 0, QTableWidgetItem(name))
-            h_pos = 1
-            for item in self.parent_.exe_file.section_headers[name].values():
-                table.setItem(v_pos, h_pos, QTableWidgetItem(hex_from_bytes(item)))
-                table.item(v_pos, h_pos).setToolTip(str(int.from_bytes(item, 'little')))
+        for section in self.parent_.exe_file.section_headers:
+            h_pos = 0
+            for item in section.values():
+                table.setItem(v_pos, h_pos, QTableWidgetItem(hex_from_bytes(item) if item[0] != '.' else item))
+                table.item(v_pos, h_pos).setToolTip(str(int.from_bytes(item, 'little')) if item[0] != '.' else item)
                 h_pos += 1
             v_pos += 1
 

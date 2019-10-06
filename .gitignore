@@ -7,7 +7,6 @@ __pycache__/
 venv/
 venvubuntu/
 test.py
-debug_defs.py
 *.swp
 pack.cmd
 toPack.txt

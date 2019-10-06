@@ -20,6 +20,7 @@ def open_external():
 
 class GUI(QMainWindow):
     def __init__(self, argv):
+        """Initialize Graphical user interface. It is a little bit abandoned till I finished parsing and CLI"""
         # Connection localisation
         self.curr_language = 'English'
         self.lang = langs[self.curr_language]
@@ -101,7 +102,7 @@ class GUI(QMainWindow):
 
 
 def main():
-    GUI()
+    GUI(sys.argv)
 
 
 if __name__ == '__main__':

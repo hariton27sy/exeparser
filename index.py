@@ -12,7 +12,7 @@ def main():
         else:
             import CLI.cli
             CLI.cli.CommandLineInterface(sys.argv[1:])
-    except Exception:
+    except Exception as e:
         raise  # TODO: make normal output information without strange words
 
 
