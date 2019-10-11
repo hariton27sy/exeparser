@@ -15,9 +15,6 @@ class ExeFile:
                 'Wrong format of file. Please give exe format of file')
 
         self._parsefile()
-        import_index = self.rva_to_raw(int.from_bytes(
-            self.optional_header['dataDirectory'][1][0], 'little'))[0]
-        self.import_table = parse_import_table(import_index)
 
     def _parsefile(self):
         with open(self.path, 'rb') as f:
@@ -62,17 +59,17 @@ class ExeFile:
         with open(self.path, 'rb') as f:
             yield f.read(1)
 
-    def rva_to_raw(self, rva: int):
+    def rva_to_raw(self, rva):
         """Convert RVA to RAW
 
-        rva - may be int or bytes object"""
+        rva - may be int or bytes object
+        If it's bytes object it must be a little endian numbers"""
         if isinstance(rva, bytes):
             rva = int.from_bytes(rva, 'little')
         if not isinstance(rva, int):
             raise TypeError('rva may be only int or bytes object')
 
         alignment = int(self.optional_header['sectionAlignment'][1])
-        print(alignment)
 
         def find_section(rva):
             for i in range(int(self.file_header['numberOfSections'][1])):
@@ -110,5 +107,5 @@ class ExeFile:
     def export_table(self):
         return parse_export_table(self)
 
-    def parse_import_table(self):
+    def import_table(self):
         return parse_import_table(self)
