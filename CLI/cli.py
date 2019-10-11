@@ -1,6 +1,7 @@
 from core.exefile import ExeFile
 from langs import langs
-from common_funcs import hex_from_bytes, bytes_line_to_symbols
+from common_funcs import hex_from_bytes, bytes_line_to_symbols, \
+    formatted_output
 
 
 class CommandLineInterface:
@@ -10,7 +11,8 @@ class CommandLineInterface:
             '-f': (1, lambda: print('-f')),
             '-fh': (0, lambda: print(self.file_header())),
             '-oh': (0, lambda: print(self.optional_header())),
-            '-sh': (0, lambda: print(self.section_headers(range(6))))
+            '-sh': (0, lambda: print(self.section_headers(range(6)))),
+            '-rsh': (0, lambda: print(self.raw_section_data(1)))
         }
 
         self.curr_lang = 'English'
@@ -111,11 +113,11 @@ class CommandLineInterface:
             temp = ''
             if section_number >= len(sections):
                 break
-            section_name = list(sections.keys())[section_number]
-            temp += f'SECTION HEADER #{section_number + 1}\n{section_name:>12} {localisation[0]}\n'
-            line_index = 1
-            for line in sections[section_name]:
-                temp += f'{hex_from_bytes(sections[section_name][line]):>12} {localisation[line_index]}\n'
+            temp += f'SECTION HEADER #{section_number + 1}\n'
+            line_index = 0
+            for line in sections[section_number]:
+                field = hex_from_bytes(sections[section_number][line]) if line != 'name' else sections[section_number][line]
+                temp += f'{field:>12} {localisation[line_index]}\n'
                 line_index += 1
             result.append(temp)
 
@@ -124,10 +126,17 @@ class CommandLineInterface:
     def raw_section_data(self, section_number):
         section = self.exeFile.section_headers[section_number - 1]
         base_address = int.from_bytes(section['virtualAddress'], 'little')
-        result = f'RAW SECTION #{section_number}\n'
-        line = ''
+        return formatted_output(base_address,
+                                self.exeFile.raw_section_data(section_number))
+
+        result = f'{self.section_headers([section_number])}\n\n'
+        line = f'{hex(base_address):>10}:'
         counter = 0
         for ch in self.exeFile.raw_section_data(section_number):
             if counter != 0 and counter % 16 == 0:
+                result += line + ' ' + bytes_line_to_symbols(line[11:])
                 line = f'\n{hex(base_address + counter):>10}:'
-            line += f' {hex(ch).upper()}'
+            line += f' {hex(ord(ch))[2:].upper():0^2s}'
+            counter += 1
+
+        return result

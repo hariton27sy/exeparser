@@ -128,3 +128,7 @@ def getArchitecture(bytestring):
 def parse_characteristics(data):
     binstr = bin(int.from_bytes(data, 'little')).zfill(16)
     return [binstr[-i - 1] == '1' for i in range(16)]
+
+
+def parse_import_table(data):
+    pass

@@ -16,7 +16,28 @@ def bytes_line_to_symbols(line):
 
     def parse_hex(s):
         n = int(s, 16)
-        return chr(n) if 62 < n < 127 or n > 160 else '.'
+        return chr(n) if 62 < n < 127 else '.'
 
     b = ''.join(map(parse_hex, temp))
     return b
+
+
+def formatted_output(base_address, data: bytes):
+    """data can be enumerator of byte"""
+    result = ''
+    counter = 0
+    line = ''
+    for i in data:
+        if isinstance(i, bytes):
+            i = i[0]
+        if counter != 0 and counter % 16 == 0:
+            result += f'0x{hex(base_address + counter - 16)[2:]:0>8}: ' \
+                      f'{line} {bytes_line_to_symbols(line)}\n'
+            line = ''
+        line += f'{hex(i)[2:].upper():0^2} '
+        counter += 1
+    if len(line) > 0:
+        result += f'0x{hex(base_address + counter - (counter % 16))[2:]:0>8}: ' \
+                  f'{line:48} {bytes_line_to_symbols(line)}\n'
+
+    return result

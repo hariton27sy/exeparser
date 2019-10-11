@@ -10,3 +10,7 @@ test.py
 *.swp
 pack.cmd
 toPack.txt
+*test.txt
+debug.py
+*IMPORT*.txt
+*EXPORT*.txt

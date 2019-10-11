@@ -60,7 +60,7 @@ class GUI(QMainWindow):
 
     def show_open_dialog(self):
         """Open file and preparing workspace"""
-        fname = QFileDialog.getOpenFileName(self, 'Open File', filter='executable files (*.exe)')[0]
+        fname = QFileDialog.getOpenFileName(self, 'Open File', filter='PE Files (*.exe , *.dll)')[0]
         # TODO: Check variable if it is empty or is not exe file
         if not fname:
             return
