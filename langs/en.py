@@ -10,15 +10,30 @@ Warning! You need to install requirements only
 if you want to use graphic version of program
 
 Using:
-python *filename.py* [parameters]
+python *filename.py* [parameters] filePath
+  * filePath                        Path to pe file. Requirement argument 
+                                    if you use console version.
   * -g [path_to_file]               Start graphical version of
                                     program. If you put path_to_file
                                     program automatically open it.
+                                    It's version ignores all flags,
+                                    but you can put filePath and programs will
+                                    open this file when it starts.
                                     Warning! you need installed PyQt5
   * <empty arguments>, --help, -h   Print this message
-  * -f path_to_file                 Change file to analysis
-  * -a, --all                       Print all information about
-                                    file (without tables)'''
+  * -a, --all                       <Not working now>
+                                    Print all information about
+                                    file (without tables)
+  * -fh                             Print file header table
+  * -oh                             Print optional header table
+  * -headers                        Print file header, optional 
+                                    header and all section headers tables
+  * -sh[:first[:last]]              Print section headers from first to last
+                                    If you give only first argument. it print
+                                    only this section header
+  * -rsh:section_number             Print Raw Data of a changed section
+  * -import                         Print imports of the file
+  * -export                         Print exports of the file if they exist'''
 
 main_page = 'In this app you can view information about ' \
             'executable files (.exe).\nTo start open file (Ctrl+O)'

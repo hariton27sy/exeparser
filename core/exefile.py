@@ -91,7 +91,7 @@ class ExeFile:
 
         return indexSection, rva
 
-    def raw_section_data(self, section_number, ):
+    def raw_section_data(self, section_number):
         """Return RAW data of section with
         section_number (Numerating from 1)"""
         with open(self.path, 'rb') as f:

@@ -55,7 +55,7 @@ def parse_export_table(parent, is_raw=False):
         data = f.read(40)
         export_table = {
             'characteristics': hex_from_bytes(data[:4]),
-            'timeDataStamp': hex_from_bytes(data[4:8]),
+            'timeDateStamp': hex_from_bytes(data[4:8]),
             'version': (str(int.from_bytes(data[8:10], 'little')) + '.' +
                         str(int.from_bytes(data[10:12], 'little'))),
             'name': parent.rva_to_raw(data[12:16])[1],
@@ -72,14 +72,14 @@ def parse_export_table(parent, is_raw=False):
         f.seek(export_table['addressesOfNames'], 0)
         array_data = f.read(export_table['numberOfNames'] * 4)
         parse_method = lambda x: get_line(f, parent.rva_to_raw(x)[1])
-        export_table['addressesOfNames'] = parse_data_to_array(array_data, 4,
+        export_table['names'] = parse_data_to_array(array_data, 4,
                                                                parse_method)
 
         # Parsing ordinals
         f.seek(export_table['addressesOfNameOrdinals'])
         array_data = f.read(export_table['numberOfNames'] * 2)
         parse_method = lambda x: int.from_bytes(x, 'little') + 1
-        export_table['addressesOfNameOrdinals'] = parse_data_to_array(
+        export_table['nameOrdinals'] = parse_data_to_array(
             array_data, 2,
             parse_method)
 
