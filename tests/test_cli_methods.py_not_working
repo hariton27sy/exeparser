@@ -1,0 +1,53 @@
+import os
+import subprocess
+import sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                             os.path.pardir))
+from tests.baseTestClass import BaseTestClass
+
+
+def get_pipe(args):
+    return subprocess.Popen(args, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, shell=True)
+
+
+class TestCLIMethods(BaseTestClass):
+    def test_without_arguments(self):
+        pipe = get_pipe('python index.py')
+        expected = (b'usage: index.py [-h] filename [-fh] [-oh] [-sh [SH '
+                    b'[SH ...]]] [-rsh RSH] [-headers]\r\n\t\t[-exports] '
+                    b'[-imports] [-dependents] [-resources] [-raw]\r\n\t\t'
+                    b'[-relocs] [-sum]\r\nindex.py: error: the following '
+                    b'arguments are required: filename\r\n')
+        actual = pipe.communicate()[1]
+        self.assertEqual(expected, actual)
+
+    def test_with_help_flag(self):
+        pipe = get_pipe('python index.py -h')
+        expected = (b'usage: index.py [-h] filename [-fh] [-oh] [-sh [SH [SH '
+                    b'...]]] [-rsh RSH] [-headers]\r\n\t\t[-exports] '
+                    b'[-imports] [-dependents] [-resources] [-raw]\r\n\t\t'
+                    b'[-relocs] [-sum]\r\n\r\nThis script allow you to check '
+                    b'executable windows files. You do not to install\r\n'
+                    b'requirements if you use only CLI version\r\n\r\n'
+                    b'positional arguments:\r\n  filename\r\n\r\noptional '
+                    b'arguments:\r\n  -h, --help         show this help '
+                    b'message and exit\r\n  -fh                Prints file '
+                    b'header of the file\r\n  -oh                Prints '
+                    b'optional header of the file\r\n  -sh [SH [SH ...]]  '
+                    b'Takes from 0 to 2 parameters andif 0 parameters print '
+                    b'all\r\n                     section info if 1 parameter '
+                    b'print section info with\r\n                     number, '
+                    b'if 2 params print from 1 number to 2\r\n  -rsh RSH     '
+                    b'      print raw section that has position of this number'
+                    b' in the\r\n                     file\r\n  -headers     '
+                    b'      Prints file, optional and sectionheaders\r\n  '
+                    b'-exports           Print info about export section of '
+                    b'thefile\r\n  -imports           Print info about imports'
+                    b' of the file\r\n  -dependents        Print info about '
+                    b'dependencies\r\n  -resources         Print resources of '
+                    b'the a file\r\n  -raw               Print hex dump of '
+                    b'the file\r\n  -relocs            Print relocations of '
+                    b'the file\r\n  -sum               Print Summary\r\n')
+
+        self.assertEqual(expected, pipe.communicate()[0])

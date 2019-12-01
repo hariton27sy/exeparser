@@ -1,7 +1,8 @@
-#! ./venvubuntu/bin/python3
+#! /usr/bin/python3
 
 from core.exefile import ExeFile
 import sys
+import subprocess
 
 
 def main():

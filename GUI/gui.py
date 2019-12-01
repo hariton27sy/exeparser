@@ -5,7 +5,8 @@ import sys
 from webbrowser import open as openweb  # for open external link in browser
 
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QMainWindow, QApplication, QAction, qApp, QFileDialog, QLabel, QWidget
+from PyQt5.QtWidgets import (QMainWindow, QApplication, QAction, qApp,
+                             QFileDialog, QLabel, QWidget)
 
 from GUI import headers_window
 from core.exefile import ExeFile
@@ -20,7 +21,8 @@ def open_external():
 
 class GUI(QMainWindow):
     def __init__(self, argv):
-        """Initialize Graphical user interface. It is a little bit abandoned till I finished parsing and CLI"""
+        """Initialize Graphical user interface. It is a little bit abandoned
+        till I finished parsing and CLI"""
         # Connection localisation
         self.curr_language = 'English'
         self.lang = langs[self.curr_language]
@@ -30,7 +32,8 @@ class GUI(QMainWindow):
         super().__init__()
         self.setWindowTitle('EXE Parser')
         size = self.app.primaryScreen().size()
-        self.setGeometry((size.width() - WIDTH) // 2, (size.height() - HEIGHT) // 2, WIDTH, HEIGHT)
+        self.setGeometry((size.width() - WIDTH) // 2, (size.height() - HEIGHT)
+                         // 2, WIDTH, HEIGHT)
         self.draw_menu()
         self.draw_toolbar()
         self.draw_main_win()
@@ -60,7 +63,9 @@ class GUI(QMainWindow):
 
     def show_open_dialog(self):
         """Open file and preparing workspace"""
-        fname = QFileDialog.getOpenFileName(self, 'Open File', filter='PE Files (*.exe , *.dll)')[0]
+        fname = QFileDialog.getOpenFileName(
+            self, 'Open File',
+            filter='PE Files (*.exe , *.dll)')[0]
         # TODO: Check variable if it is empty or is not exe file
         if not fname:
             return
@@ -74,15 +79,18 @@ class GUI(QMainWindow):
         self.toolbar.setDisabled(True)
 
         action = QAction('H', self)
-        action.triggered.connect(lambda _: self.setCentralWidget(headers_window.HeadersInfo(self)))
+        action.triggered.connect(lambda _: self.setCentralWidget(
+            headers_window.HeadersInfo(self)))
         self.toolbar.addAction(action)
 
         action = QAction('D', self)
-        action.triggered.connect(lambda _: self.setCentralWidget(headers_window.DataDirectoryTab(self)))
+        action.triggered.connect(lambda _: self.setCentralWidget(
+            headers_window.DataDirectoryTab(self)))
         self.toolbar.addAction(action)
 
         action = QAction('S', self)
-        action.triggered.connect(lambda _: self.setCentralWidget(headers_window.SectionHeadersTab(self)))
+        action.triggered.connect(lambda _: self.setCentralWidget(
+            headers_window.SectionHeadersTab(self)))
         self.toolbar.addAction(action)
         # TODO: Make toolbar
 

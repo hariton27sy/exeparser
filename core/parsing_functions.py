@@ -27,13 +27,15 @@ def parse_optional_header(data):
         tuple(raw_data, list )"""
     # Parsing of all variables without data_directory
     size_of_special_positions = 8 if data[:2] == b'\x0b\x02' else 4
+    special_size_2 = 0 if data[:2] == b'\x0b\x02' else 4
     special = ['linkerVersion', 'operatingSystemVersion', 'imageVersion',
                'subsystemVersion']
     optional_header = {'magic': 2, 'linkerVersion': 2, 'sizeOfCode': 4,
                        'sizeOfInitializedData': 4,
                        'sizeOfUninitializedCode': 4,
                        'addressOfEntryPoint': 4, 'baseOfCode': 4,
-                       'baseOfData': 4, 'imageBase': size_of_special_positions,
+                       'baseOfData': special_size_2,
+                       'imageBase': size_of_special_positions,
                        'sectionAlignment': 4, 'fileAlignment': 4,
                        'operatingSystemVersion': 4, 'imageVersion': 4,
                        'subsystemVersion': 4,
@@ -128,7 +130,3 @@ def getArchitecture(bytestring):
 def parse_characteristics(data):
     binstr = bin(int.from_bytes(data, 'little')).zfill(16)
     return [binstr[-i - 1] == '1' for i in range(16)]
-
-
-def parse_import_table(data):
-    pass

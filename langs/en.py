@@ -11,7 +11,7 @@ if you want to use graphic version of program
 
 Using:
 python *filename.py* [parameters] filePath
-  * filePath                        Path to pe file. Requirement argument 
+  * filePath                        Path to pe file. Requirement argument
                                     if you use console version.
   * -g [path_to_file]               Start graphical version of
                                     program. If you put path_to_file
@@ -26,14 +26,18 @@ python *filename.py* [parameters] filePath
                                     file (without tables)
   * -fh                             Print file header table
   * -oh                             Print optional header table
-  * -headers                        Print file header, optional 
+  * -headers                        Print file header, optional
                                     header and all section headers tables
   * -sh[:first[:last]]              Print section headers from first to last
                                     If you give only first argument. it print
                                     only this section header
   * -rsh:section_number             Print Raw Data of a changed section
   * -import                         Print imports of the file
-  * -export                         Print exports of the file if they exist'''
+  * -export                         Print exports of the file if they exist
+  * -resources                      Print resources of the file
+  * -dependencies                   Print dependencies of the file
+  * -raw                            Print raw hex of the file
+  * -relocs                         Print relocations Table of the file'''
 
 main_page = 'In this app you can view information about ' \
             'executable files (.exe).\nTo start open file (Ctrl+O)'
