@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem, QGridLayout, QLabel, QAbstractItemView,
+from PyQt5.QtWidgets import (QWidget, QTableWidget, QTableWidgetItem,
+                             QGridLayout, QLabel, QAbstractItemView,
                              QHeaderView, QPushButton)
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
@@ -17,7 +18,8 @@ def count_positions(dic: dict):
 
 
 def fill_table(table, data, descriptions):
-    """Function for HeaderInfoClass. It fills file_header and optional_header tables"""
+    """Function for HeaderInfoClass. It fills file_header
+    and optional_header tables"""
     headers = table.horizontalHeader()
     headers.setSectionResizeMode(0, QHeaderView.ResizeToContents)
     headers.setSectionResizeMode(1, QHeaderView.ResizeToContents)
@@ -41,7 +43,8 @@ def fill_table(table, data, descriptions):
         item.setToolTip(item.text())
         table.setItem(pos, 1, item)
 
-        # Filling interpreted values of fields if they are strings, special cases are processed in senders
+        # Filling interpreted values of fields
+        # if they are strings, special cases are processed in senders
         if isinstance(data[name][1], str):
             item = QTableWidgetItem(data[name][1])
             item.setToolTip(item.text())
@@ -51,7 +54,8 @@ def fill_table(table, data, descriptions):
 
 
 def draw_characteristics(description, data):
-    """Function for HeaderInfo class. It creates new Widget that didn't have parent"""
+    """Function for HeaderInfo class. It creates new Widget
+    that didn't have parent"""
     widget = QWidget()
     widget.setWindowTitle(description[0])
     grid = QGridLayout()
@@ -66,21 +70,23 @@ def draw_characteristics(description, data):
 
 
 class HeadersInfo(QWidget):
-    """Class that creates widget with main info about headers of executable file"""
+    """Class that creates widget with main
+    info about headers of executable file"""
 
     def __init__(self, parent):
         super().__init__()
         self.parent_ = parent
 
         # Separate windows
-        self.characteristics = draw_characteristics(self.parent_.lang.headers_info[1]
-                                                    ['file_header'][2]['characteristics'],
-                                                    self.parent_.exe_file.file_header['characteristics'][1])
+        self.characteristics = draw_characteristics(
+            self.parent_.lang.
+            headers_info[1]['file_header'][2]['characteristics'],
+            self.parent_.exe_file.file_header['characteristics'][1])
 
-        self.dll_characteristics = draw_characteristics(self.parent_.lang.headers_info[1]
-                                                        ['optional_header'][2]['dllCharacteristics'],
-                                                        self.parent_.exe_file.optional_header
-                                                        ['dllCharacteristics'][1])
+        self.dll_characteristics = draw_characteristics(
+            self.parent_.lang.headers_info[1]['optional_header'][2]
+            ['dllCharacteristics'],
+            self.parent_.exe_file.optional_header['dllCharacteristics'][1])
 
         grid = QGridLayout()
         self.setLayout(grid)
@@ -88,10 +94,12 @@ class HeadersInfo(QWidget):
         name.setFont(QFont('sansSerif', 14, QFont.Bold))
         name.setAlignment(Qt.AlignCenter)
         grid.addWidget(name, 0, 0, 1, 2)
-        grid.addWidget(self.draw_subwidget(self.parent_.lang.headers_info[1]['file_header'][0],
-                                           self.draw_file_header_table()), 1, 0)
-        grid.addWidget(self.draw_subwidget(self.parent_.lang.headers_info[1]['optional_header'][0],
-                                           self.draw_optional_header_table()), 1, 1)
+        grid.addWidget(self.draw_subwidget(
+            self.parent_.lang.headers_info[1]['file_header'][0],
+            self.draw_file_header_table()), 1, 0)
+        grid.addWidget(self.draw_subwidget(
+            self.parent_.lang.headers_info[1]['optional_header'][0],
+            self.draw_optional_header_table()), 1, 1)
 
     def draw_file_header_table(self):
         header_lang = self.parent_.lang.headers_info[1]['file_header']
@@ -107,7 +115,8 @@ class HeadersInfo(QWidget):
 
         date_index = (list(fields.keys()).index('creatingTime'))
         form = header_lang[2]['creatingTime'][1] if isinstance(
-            header_lang[2]['creatingTime'], tuple) else fields['creatingTime'][2]
+            header_lang[2]['creatingTime'],
+            tuple) else fields['creatingTime'][2]
         item = QTableWidgetItem(fields['creatingTime'][1](form))
         item.setToolTip(item.text())
         table.setItem(date_index, 2, item)
@@ -127,17 +136,23 @@ class HeadersInfo(QWidget):
         table.verticalHeader().setVisible(False)
         table.setHorizontalHeaderLabels(header_lang[1])
 
-        fill_table(table, self.parent_.exe_file.optional_header, header_lang[2])
+        fill_table(table,
+                   self.parent_.exe_file.optional_header, header_lang[2])
 
-        char_index = (list(self.parent_.exe_file.optional_header.keys()).index('dllCharacteristics'))
+        char_index = (list(
+            self.parent_.exe_file.optional_header.keys()).
+                      index('dllCharacteristics'))
         item = QPushButton('click me')
         item.clicked.connect(self.dll_characteristics.show)
         table.setIndexWidget(table.model().index(char_index, 2), item)
 
-        subsystem_index = (list(self.parent_.exe_file.optional_header.keys()).index('subsystem'))
-        subsystem = (header_lang[2]['subsystem'][1][int(self.parent_.exe_file.optional_header['subsystem'][1])]
-                     if int(self.parent_.exe_file.optional_header['subsystem'][1]) in header_lang[2]['subsystem'][1]
-                     else header_lang[2]['subsystem'][2])
+        subsystem_index = (list(self.parent_.exe_file.optional_header.keys()).
+                           index('subsystem'))
+        subsystem = (header_lang[2]['subsystem'][1][int(
+            self.parent_.exe_file.optional_header['subsystem'][1])]
+            if int(self.parent_.exe_file.optional_header['subsystem'][1]) in
+            header_lang[2]['subsystem'][1]
+            else header_lang[2]['subsystem'][2])
         item = QTableWidgetItem(subsystem)
         item.setToolTip(subsystem)
         table.setItem(subsystem_index, 2, item)
@@ -166,8 +181,10 @@ class DataDirectoryTab(QWidget):
         grid.addWidget(self.make_table(), 1, 0)
 
     def make_table(self):
-        table = QTableWidget(count_positions(self.parent_.lang.data_directory_tab[2]), 3)
-        table.setHorizontalHeaderLabels(self.parent_.lang.data_directory_tab[1])
+        table = QTableWidget(count_positions(
+            self.parent_.lang.data_directory_tab[2]), 3)
+        table.setHorizontalHeaderLabels(
+            self.parent_.lang.data_directory_tab[1])
         table.verticalHeader().setVisible(False)
         table.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
@@ -178,7 +195,10 @@ class DataDirectoryTab(QWidget):
 
         data = self.parent_.exe_file.optional_header['dataDirectory']
         description = self.parent_.lang.data_directory_tab[2]
-        for i in range(int(self.parent_.exe_file.optional_header['numberOfRvaAndSizes'][1])):
+        for i in range(int(self.
+                           parent_.
+                           exe_file.
+                           optional_header['numberOfRvaAndSizes'][1])):
             if description[i] is None:
                 continue
 
@@ -186,11 +206,13 @@ class DataDirectoryTab(QWidget):
             item.setToolTip(item.text())
             table.setItem(i, 0, item)
 
-            item = QTableWidgetItem(hex(int.from_bytes(data[i][0], 'little'))[2:])
+            item = QTableWidgetItem(hex(
+                int.from_bytes(data[i][0], 'little'))[2:])
             item.setToolTip(item.text())
             table.setItem(i, 1, item)
 
-            item = QTableWidgetItem(hex(int.from_bytes(data[i][1], 'little'))[2:])
+            item = QTableWidgetItem(
+                hex(int.from_bytes(data[i][1], 'little'))[2:])
             item.setToolTip(str(int(item.text(), 16)) + ' bytes')
             table.setItem(i, 2, item)
 
@@ -215,21 +237,27 @@ class SectionHeadersTab(QWidget):
 
         # Edit headers
         table.verticalHeader().setVisible(False)
-        table.setHorizontalHeaderLabels(self.parent_.lang.section_headers_tab[1])
+        table.setHorizontalHeaderLabels(
+            self.parent_.lang.section_headers_tab[1])
         table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         for i in range(horizontal):
-            table.horizontalHeaderItem(i).setToolTip(table.horizontalHeaderItem(i).text())
+            (table.
+             horizontalHeaderItem(i).
+             setToolTip(table.horizontalHeaderItem(i).text()))
 
         # Filling data
         v_pos = 0
         for section in self.parent_.exe_file.section_headers:
             h_pos = 0
             for item in section.values():
-                table.setItem(v_pos, h_pos, QTableWidgetItem(hex_from_bytes(item) if item[0] != '.' else item))
-                table.item(v_pos, h_pos).setToolTip(str(int.from_bytes(item, 'little')) if item[0] != '.' else item)
+                table.setItem(
+                    v_pos, h_pos,
+                    QTableWidgetItem(hex_from_bytes(item)
+                                     if item[0] != '.' else item))
+                table.item(v_pos, h_pos).setToolTip(
+                    str(int.from_bytes(item, 'little'))
+                    if item[0] != '.' else item)
                 h_pos += 1
             v_pos += 1
-
-
 
         return table

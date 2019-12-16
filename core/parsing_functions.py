@@ -1,22 +1,21 @@
 import datetime
+import struct
 
 
 def parse_file_header(data):
     """return dictionary of File Header in format
         tuple(raw_data, description of data[, standard print format]) or
         tuple(raw_data, list )"""
+    unpacked = struct.unpack("HHIIIHH", data)
     return {
         'machine': (data[:2], getMachine(data[:2])),
-        'numberOfSections': (data[2:4], str(int.from_bytes(data[2:4],
-                                                           'little'))),
-        'creatingTime': (data[4:8], dateFromBytes(data[4:8]).strftime,
+        'numberOfSections': (data[2:4], str(unpacked[1])),
+        'creatingTime': (data[4:8], datetime.datetime
+                         .fromtimestamp(unpacked[2]).strftime,
                          '%d.%m.%Y %H:%M:%S'),
-        'pointerToSymbolTable': (data[8:12], str(int.from_bytes(data[8:12],
-                                                                'little'))),
-        'numberOfSymbols': (data[12:16], str(int.from_bytes(data[12:16],
-                                                            'little'))),
-        'sizeOfOptionalHeader': (data[16:18], str(int.from_bytes(data[16:18],
-                                                                 'little'))),
+        'pointerToSymbolTable': (data[8:12], str(unpacked[3])),
+        'numberOfSymbols': (data[12:16], str(unpacked[4])),
+        'sizeOfOptionalHeader': (data[16:18], str(unpacked[5])),
         'characteristics': (data[18:20], parse_characteristics(data[18:20]))
     }
 
@@ -27,13 +26,15 @@ def parse_optional_header(data):
         tuple(raw_data, list )"""
     # Parsing of all variables without data_directory
     size_of_special_positions = 8 if data[:2] == b'\x0b\x02' else 4
+    special_size_2 = 0 if data[:2] == b'\x0b\x02' else 4
     special = ['linkerVersion', 'operatingSystemVersion', 'imageVersion',
                'subsystemVersion']
     optional_header = {'magic': 2, 'linkerVersion': 2, 'sizeOfCode': 4,
                        'sizeOfInitializedData': 4,
                        'sizeOfUninitializedCode': 4,
                        'addressOfEntryPoint': 4, 'baseOfCode': 4,
-                       'baseOfData': 4, 'imageBase': size_of_special_positions,
+                       'baseOfData': special_size_2,
+                       'imageBase': size_of_special_positions,
                        'sectionAlignment': 4, 'fileAlignment': 4,
                        'operatingSystemVersion': 4, 'imageVersion': 4,
                        'subsystemVersion': 4,

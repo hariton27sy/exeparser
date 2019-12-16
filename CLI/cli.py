@@ -1,133 +1,130 @@
+import os
+
+import CLI.file_header as fh
+import CLI.optional_header as oh
+from CLI.parser import get_parser
+from CLI.section_headers import SectionHeaders
+
+from common_funcs import hex_from_bytes, formatted_output, hex_from_number
 from core.exefile import ExeFile
 from langs import langs
-from common_funcs import hex_from_bytes, bytes_line_to_symbols
 
 
 class CommandLineInterface:
     def __init__(self, argv):
-        self.keys = {
-            '-r': (0, lambda: print('-r')),
-            '-f': (1, lambda: print('-f')),
-            '-fh': (0, lambda: print(self.file_header())),
-            '-oh': (0, lambda: print(self.optional_header())),
-            '-sh': (0, lambda: print(self.section_headers(range(6))))
-        }
-
         self.curr_lang = 'English'
         self.lang = langs[self.curr_lang]
+        self.parser = get_parser(self)
 
-        self.exeFile = ExeFile('examples/qoob.exe')
-        if len(argv) == 0 or argv[0] == '-h' or argv[0] == '--help':
-            self.print_help()
+        # Возможно невнимательно
+        # просмотрел документацию но
+        # по-другому много переписывать
+        args = self.parser.parse_args(argv).__dict__
+
+        args['filename'] = os.path.abspath(args['filename'])
+
+        self.exeFile = ExeFile(args['filename'])
+
+        if self.exeFile.exc:
+            print(self.exeFile.excInfo)
             return
 
-        self.parse_args(argv)
-
-    def print_help(self):
-        print(self.lang.cli_help)
+        self.parse_args(args)
 
     def parse_args(self, argv):
-        print(argv[0])
-        if len(argv) > 0 and argv[0] in self.keys:
-            self.keys[argv[0]][1]()
-        # self.file_header()
-        # self.optional_header()
-        # self.section_headers(range(6))
+        print('Dump of file:\n\t' + self.exeFile.path)
+        result = []
+        for arg in argv:
+            if arg == 'section_headers':
+                sh = self.section_headers(argv[arg])
+                if sh is not None and sh != '':
+                    result.append(sh)
+            elif arg == 'raw_section_header' and argv[arg]:
+                rsh = self.raw_section_data(argv[arg])
+                if rsh is not None and rsh != '':
+                    result.append(rsh)
+            elif arg == 'raw' and argv['raw']:
+                argv[arg]()
+            elif arg != 'filename' and argv[arg]:
+                line = argv[arg]()
+                if line is not None and line != '':
+                    result.append(line)
+
+        result.append(self.get_summary())
+
+        print('\n'.join(result))
 
     def file_header(self):
-        file_header_lang = self.lang.headers_info[1]['file_header']
-        result = f'{file_header_lang[0].upper()}:\n'
-        for key in self.exeFile.file_header:
-            val = self.exeFile.file_header[key]
-            interpreted_value = val[1]
-            if key == 'creatingTime':
-                date_form = file_header_lang[2]['creatingTime'][1] if isinstance(
-                    file_header_lang[2]['creatingTime'], tuple) else val[2]
-                interpreted_value = interpreted_value(date_form)
-            if key == 'characteristics':
-                flags = interpreted_value
-                interpreted_value = ''
-                names = file_header_lang[2]['characteristics'][1]
-                for id in range(len(flags)):
-                    if flags[id] and names[id] is not None:
-                        interpreted_value += '\n\t\t\t{}'.format(names[id])
-            else:
-                interpreted_value = '| ' + interpreted_value
-            field_name = (file_header_lang[2][key][0] if isinstance(file_header_lang[2][key], tuple) else
-                          file_header_lang[2][key])
-            result += '{0:>16} | {1:<30} {2}\n'.format(hex_from_bytes(val[0]), field_name, interpreted_value)
-
-        return result
+        return str(fh.FileHeader(self.exeFile, self.lang))
 
     def optional_header(self):
-        def data_directories(interface):
-            result = ''
-            localisation = interface.lang.data_directory_tab[2]
-            data_directory = interface.exeFile.optional_header['dataDirectory']
-            for i in range(int(interface.exeFile.optional_header['numberOfRvaAndSizes'][1])):
-                if localisation[i] is not None:
-                    result += '{0:>16} [{1:>10}] RVA [size] of {2}\n'.format(hex_from_bytes(data_directory[i][0]),
-                                                                             hex_from_bytes(data_directory[i][1]),
-                                                                             localisation[i])
-
-            return result
-
-        optional_header_lang = self.lang.headers_info[1]['optional_header']
-        result = f'{optional_header_lang[0].upper()}:\n'
-        optional_header_lang = optional_header_lang[2]
-        # print(self.exeFile.optional_header)
-        for key in self.exeFile.optional_header:
-            if key == 'dataDirectory' or optional_header_lang[key] is None:
-                continue
-            val = self.exeFile.optional_header[key]
-            interpreted_value = val[1]
-            if key == 'subsystem':
-                interpreted_value = '| ' + (optional_header_lang[key][1][int(interpreted_value)]
-                                            if int(interpreted_value) in
-                                               optional_header_lang[key][1] else optional_header_lang[key][2]) + '\n'
-                field_name = optional_header_lang[key][0]
-            elif key == 'dllCharacteristics':
-                flags = interpreted_value
-                interpreted_value = '\n'
-                names = optional_header_lang['dllCharacteristics'][1]
-                for _id in range(len(flags)):
-                    if flags[_id] and names[_id] is not None:
-                        interpreted_value += '\t\t\t{}\n'.format(names[_id])
-                field_name = optional_header_lang[key][0]
-            else:
-                interpreted_value = f'| {interpreted_value}\n'
-                field_name = optional_header_lang[key]
-            result += '{0:>16} | {1:<30} {2}'.format(hex_from_bytes(val[0]), field_name, interpreted_value)
-
-        result += data_directories(self)
-
-        return result
+        return str(oh.OptionalHeader(self.exeFile, self.lang))
 
     def section_headers(self, args):
-        localisation = self.lang.section_headers_tab[1]
-        sections = self.exeFile.section_headers
-        result = []
-        for section_number in args:
-            temp = ''
-            if section_number >= len(sections):
-                break
-            section_name = list(sections.keys())[section_number]
-            temp += f'SECTION HEADER #{section_number + 1}\n{section_name:>12} {localisation[0]}\n'
-            line_index = 1
-            for line in sections[section_name]:
-                temp += f'{hex_from_bytes(sections[section_name][line]):>12} {localisation[line_index]}\n'
-                line_index += 1
-            result.append(temp)
-
-        return '\n'.join(result)  # TODO: make to return list of sections in right format
+        return str(SectionHeaders(self.exeFile, self.lang, args))
 
     def raw_section_data(self, section_number):
+        if section_number > int(self.exeFile.file_header
+                                ['numberOfSections'][1]):
+            return ''
         section = self.exeFile.section_headers[section_number - 1]
         base_address = int.from_bytes(section['virtualAddress'], 'little')
-        result = f'RAW SECTION #{section_number}\n'
-        line = ''
-        counter = 0
-        for ch in self.exeFile.raw_section_data(section_number):
-            if counter != 0 and counter % 16 == 0:
-                line = f'\n{hex(base_address + counter):>10}:'
-            line += f' {hex(ch).upper()}'
+        title = f'RAW SECTION #{section_number}\n'
+        return title + "".join(formatted_output(base_address,
+                               self.exeFile.raw_section_data(
+                                            section_number)))
+
+    def headers(self):
+        return (self.file_header() + '\n' +
+                self.optional_header() + '\n' +
+                self.section_headers([]))
+
+    def format_import_table(self):
+        return str(self.exeFile.import_table())
+
+    def format_export_table(self):
+        return str(self.exeFile.export_table())
+
+    def format_dependencies(self):
+        import_table = self.exeFile.import_table()
+        if import_table is None:
+            return ''
+        dependencies = import_table.get_dependencies()
+        return ("  Image has the following dependencies:\n\t" + '\n\t'.
+                join(dependencies))
+
+    def get_format_resources(self):
+        resources = self.exeFile.resources()
+        if resources is not None:
+            return self.exeFile.resources().get_cli_string('  ')
+        return ""
+
+    def get_raw_file(self):
+        for line in formatted_output(0, self.exeFile.raw_data()):
+            print(line, end='')
+
+    def get_format_relocations(self):
+        relocs = self.exeFile.relocations()
+        if relocs is None:
+            return ''
+        return relocs.get_str()
+
+    def get_summary(self):
+        summary = self.exeFile.get_summary()
+        result = ['Summary:', '     SectionName Size']
+        for elem in summary:
+            result.append(f'\t{elem[0]:>8} {hex_from_number(elem[1])}')
+
+        return '\n'.join(result)
+
+    def graphic_resources(self):
+        try:
+            import GUI.resources
+            GUI.resources.ResourcesWidget(self.exeFile)
+        except ImportError as e:
+            print("I can't run graphic interface. Requirements are missing")
+
+
+if __name__ == "__main__":
+    f = ['-fh', 'examples/firefox2.exe', '-sh', '3']
+    CommandLineInterface(f)

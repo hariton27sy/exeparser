@@ -1,0 +1,2169 @@
+    Section contains the following exports for KERNEL32.dll
+	         0x0 Characteristics
+	  0xC5CD3DDC TimeDate Stamp
+	         0.0 Version
+	           1 Base
+	        1603 Number of Functions
+	        1603 Number of Names
+
+	ordinal hint        RVA name
+
+	      4    0    0x9B20A AcquireSRWLockExclusive
+	      5    1    0x9B240 AcquireSRWLockShared
+	      6    2    0x21580 ActivateActCtx
+	      7    3    0x20AC0 ActivateActCtxWorker
+	      8    4    0x19FF0 AddAtomA
+	      9    5    0x1BFE0 AddAtomW
+	     10    6    0x24680 AddConsoleAliasA
+	     11    7    0x24690 AddConsoleAliasW
+	     12    8    0x9B2C6 AddDllDirectory
+	     13    9    0x36240 AddIntegrityLabelToBoundaryDescriptor
+	     14    a    0x52770 AddLocalAlternateComputerNameA
+	     15    b    0x527D0 AddLocalAlternateComputerNameW
+	     16    c    0x33940 AddRefActCtx
+	     17    d    0x18B70 AddRefActCtxWorker
+	     18    e    0x33950 AddResourceAttributeAce
+	     19    f    0x1A2A0 AddSIDToBoundaryDescriptor
+	     20   10    0x33970 AddScopedPolicyIDAce
+	     21   11    0x321E0 AddSecureMemoryCacheCallback
+	     22   12    0x9B3FF AddVectoredContinueHandler
+	     23   13    0x9B43F AddVectoredExceptionHandler
+	     24   14    0x432D0 AdjustCalendarDate
+	     25   15    0x242D0 AllocConsole
+	     26   16    0x339B0 AllocateUserPhysicalPages
+	     27   17    0x33990 AllocateUserPhysicalPagesNuma
+	     28   18    0x9B4D2 AppPolicyGetClrCompat
+	     29   19    0x9B510 AppPolicyGetCreateFileAccess
+	     30   1a    0x9B558 AppPolicyGetLifecycleManagement
+	     31   1b    0x9B5AB AppPolicyGetMediaFoundationCodecLoading
+	     32   1c    0x9B603 AppPolicyGetProcessTerminationMethod
+	     33   1d    0x9B657 AppPolicyGetShowDeveloperDiagnostic
+	     34   1e    0x9B6AB AppPolicyGetThreadInitializationType
+	     35   1f    0x9B6F6 AppPolicyGetWindowingModel
+	     36   20    0x9B736 AppXGetOSMaxVersionTested
+	     37   21    0x3BAF0 ApplicationRecoveryFinished
+	     38   22    0x3BB10 ApplicationRecoveryInProgress
+	     39   23    0x22920 AreFileApisANSI
+	     40   24    0x53B40 AssignProcessToJobObject
+	     41   25    0x242E0 AttachConsole
+	     42   26    0x54AF0 BackupRead
+	     43   27    0x55950 BackupSeek
+	     44   28    0x55BC0 BackupWrite
+	     45   29    0x339F0 BaseCheckAppcompatCache
+	     46   2a    0x339D0 BaseCheckAppcompatCacheEx
+	     47   2b    0x41C40 BaseCheckAppcompatCacheExWorker
+	     48   2c    0x41C50 BaseCheckAppcompatCacheWorker
+	     49   2d    0x14000 BaseCheckElevation
+	     50   2e    0x33A10 BaseCleanupAppcompatCacheSupport
+	     51   2f    0x41C60 BaseCleanupAppcompatCacheSupportWorker
+	     52   30    0x38D00 BaseDestroyVDMEnvironment
+	     53   31    0x1CF40 BaseDllReadWriteIniFile
+	     54   32    0x33A30 BaseDumpAppcompatCache
+	     55   33    0x231D0 BaseDumpAppcompatCacheWorker
+	     56   34    0x196D0 BaseElevationPostProcessing
+	     57   35    0x33A40 BaseFlushAppcompatCache
+	     58   36    0x41C70 BaseFlushAppcompatCacheWorker
+	     59   37    0x238D0 BaseFormatObjectAttributes
+	     60   38    0x51EE0 BaseFormatTimeOut
+	     61   39    0x1A250 BaseFreeAppCompatDataForProcessWorker
+	     62   3a    0x169C0 BaseGenerateAppCompatData
+	     63   3b    0x33A50 BaseGetNamedObjectDirectory
+	     64   3c    0x33A70 BaseInitAppcompatCacheSupport
+	     65   3d    0x22C40 BaseInitAppcompatCacheSupportWorker
+	     66   3e    0x22BD0 BaseIsAppcompatInfrastructureDisabled
+	     67   3f    0x22BD0 BaseIsAppcompatInfrastructureDisabledWorker
+	     68   40    0x58060 BaseIsDosApplication
+	     69   41    0x42520 BaseQueryModuleData
+	     70   42    0x41CD0 BaseReadAppCompatDataForProcessWorker
+	     71   43    0x1CB40 BaseSetLastNTError
+	      1   44    0x20400 BaseThreadInitThunk
+	     72   45    0x33A80 BaseUpdateAppcompatCache
+	     73   46    0x41F80 BaseUpdateAppcompatCacheWorker
+	     74   47    0x38F60 BaseUpdateVDMEntry
+	     75   48    0x52130 BaseVerifyUnicodeString
+	     76   49    0x56B40 BaseWriteErrorElevationRequiredEvent
+	     77   4a    0x20BC0 Basep8BitStringToDynamicUnicodeString
+	     78   4b    0x52190 BasepAllocateActivationContextActivationBlock
+	     79   4c    0x520D0 BasepAnsiStringToDynamicUnicodeString
+	     80   4d    0x32BF0 BasepAppContainerEnvironmentExtension
+	     81   4e    0x32C10 BasepAppXExtension
+	     82   4f    0x13F70 BasepCheckAppCompat
+	     83   50    0x18EC0 BasepCheckWebBladeHashes
+	     84   51    0x179B0 BasepCheckWinSaferRestrictions
+	     85   52    0x175C0 BasepConstructSxsCreateProcessMessage
+	     86   53    0x31E40 BasepCopyEncryption
+	     87   54    0x52290 BasepFreeActivationContextActivationBlock
+	     88   55    0x18B20 BasepFreeAppCompatData
+	     89   56    0x16200 BasepGetAppCompatData
+	     90   57    0x18BC0 BasepGetComputerNameFromNtPath
+	     91   58    0x15D00 BasepGetExeArchType
+	     92   59    0x42320 BasepInitAppCompatData
+	     93   5a    0x18640 BasepIsProcessAllowed
+	     94   5b    0x522D0 BasepMapModuleHandle
+	     95   5c    0x216A0 BasepNotifyLoadStringResource
+	     96   5d    0x32C60 BasepPostSuccessAppXExtension
+	     97   5e    0x32C80 BasepProcessInvalidImage
+	     98   5f    0x14330 BasepQueryAppCompat
+	     99   60    0x42390 BasepQueryModuleChpeSettings
+	    100   61    0x33290 BasepReleaseAppXContext
+	    101   62    0x18A90 BasepReleaseSxsCreateProcessUtilityStruct
+	    102   63    0x3BE20 BasepReportFault
+	    103   64    0x18FE0 BasepSetFileEncryptionCompression
+	    104   65    0x315A0 Beep
+	    105   66    0x414C0 BeginUpdateResourceA
+	    106   67    0x41510 BeginUpdateResourceW
+	    107   68    0x58440 BindIoCompletionCallback
+	    108   69    0x3A440 BuildCommDCBA
+	    109   6a    0x3A480 BuildCommDCBAndTimeoutsA
+	    110   6b    0x3A4B0 BuildCommDCBAndTimeoutsW
+	    111   6c    0x3A520 BuildCommDCBW
+	    112   6d    0x58470 CallNamedPipeA
+	    113   6e    0x24070 CallNamedPipeW
+	    114   6f    0x33AA0 CallbackMayRunLong
+	    115   70    0x32B50 CancelDeviceWakeupRequest
+	    116   71    0x33AD0 CancelIo
+	    117   72    0x19780 CancelIoEx
+	    118   73    0x33AF0 CancelSynchronousIo
+	    119   74    0x9BF94 CancelThreadpoolIo
+	    120   75    0x3BD80 CancelTimerQueueTimer
+	    121   76    0x23990 CancelWaitableTimer
+	    122   77    0x9BFEB CeipIsOptedIn
+	    123   78    0x33B10 ChangeTimerQueueTimer
+	    124   79    0x33B30 CheckAllowDecryptedRemoteDestinationPolicy
+	    125   7a    0x13E80 CheckElevation
+	    126   7b    0x19690 CheckElevationEnabled
+	    127   7c    0x58760 CheckForReadOnlyResource
+	    128   7d    0x36270 CheckForReadOnlyResourceFilter
+	    129   7e    0x329D0 CheckNameLegalDOS8Dot3A
+	    130   7f    0x32A50 CheckNameLegalDOS8Dot3W
+	    131   80    0x33B40 CheckRemoteDebuggerPresent
+	    132   81    0x33B60 CheckTokenCapability
+	    133   82    0x33B80 CheckTokenMembershipEx
+	    134   83    0x24110 ClearCommBreak
+	    135   84    0x24120 ClearCommError
+	    136   85    0x605F0 CloseConsoleHandle
+	    137   86    0x23950 CloseHandle
+	    138   87    0x9C167 ClosePackageInfo
+	    139   88    0x1A490 ClosePrivateNamespace
+	    140   89    0x22C40 CloseProfileUserMapping
+	    141   8a    0x242F0 ClosePseudoConsole
+	    142   8b    0x9C1CF CloseState
+	    143   8c    0x9C1F5 CloseThreadpool
+	    144   8d    0x9C225 CloseThreadpoolCleanupGroup
+	    145   8e    0x9C264 CloseThreadpoolCleanupGroupMembers
+	    146   8f    0x9C299 CloseThreadpoolIo
+	    147   90    0x9C2CA CloseThreadpoolTimer
+	    148   91    0x9C2F3 CloseThreadpoolWait
+	    149   92    0x9C31B CloseThreadpoolWork
+	    150   93    0x326F0 CmdBatNotification
+	    151   94    0x36D00 CommConfigDialogA
+	    152   95    0x36D80 CommConfigDialogW
+	    153   96    0x435B0 CompareCalendarDates
+	    154   97    0x23B60 CompareFileTime
+	    155   98    0x182D0 CompareStringA
+	    156   99    0x1A030 CompareStringEx
+	    157   9a    0x213B0 CompareStringOrdinal
+	    158   9b    0x1EFE0 CompareStringW
+	    159   9c    0x22E10 ConnectNamedPipe
+	    160   9d    0x606D0 ConsoleMenuControl
+	    161   9e    0x33BA0 ContinueDebugEvent
+	    162   9f    0x43640 ConvertCalDateTimeToSystemTime
+	    163   a0    0x33BC0 ConvertDefaultLocale
+	    164   a1    0x24260 ConvertFiberToThread
+	    165   a2    0x43700 ConvertNLSDayOfWeekToWin32DayOfWeek
+	    166   a3    0x43730 ConvertSystemTimeToCalDateTime
+	    167   a4    0x24270 ConvertThreadToFiber
+	    168   a5    0x24280 ConvertThreadToFiberEx
+	    169   a6    0x33BE0 CopyContext
+	    170   a7    0x33C00 CopyFile2
+	    171   a8    0x19280 CopyFileA
+	    172   a9    0x58A00 CopyFileExA
+	    173   aa    0x1A1C0 CopyFileExW
+	    174   ab    0x58A70 CopyFileTransactedA
+	    175   ac    0x58B00 CopyFileTransactedW
+	    176   ad    0x24250 CopyFileW
+	    177   ae    0x316A0 CopyLZFile
+	    178   af    0x59140 CreateActCtxA
+	    179   b0    0x22A20 CreateActCtxW
+	    180   b1    0x1A4D0 CreateActCtxWWorker
+	    181   b2    0x588C0 CreateBoundaryDescriptorA
+	    182   b3    0x1A180 CreateBoundaryDescriptorW
+	    183   b4    0x24410 CreateConsoleScreenBuffer
+	    184   b5    0x23B70 CreateDirectoryA
+	    185   b6    0x594A0 CreateDirectoryExA
+	    186   b7    0x33C20 CreateDirectoryExW
+	    187   b8    0x31900 CreateDirectoryTransactedA
+	    188   b9    0x59500 CreateDirectoryTransactedW
+	    189   ba    0x23B80 CreateDirectoryW
+	    190   bb    0x9C63C CreateEnclave
+	    191   bc    0x239A0 CreateEventA
+	    192   bd    0x239B0 CreateEventExA
+	    193   be    0x239C0 CreateEventExW
+	    194   bf    0x239D0 CreateEventW
+	    195   c0    0x24290 CreateFiber
+	    196   c1    0x242A0 CreateFiberEx
+	    197   c2    0x23B90 CreateFile2
+	    198   c3    0x23BA0 CreateFileA
+	    199   c4    0x15EC0 CreateFileMappingA
+	    200   c5    0x9C6FF CreateFileMappingFromApp
+	    201   c6    0x59610 CreateFileMappingNumaA
+	    202   c7    0x33C40 CreateFileMappingNumaW
+	    203   c8    0x216F0 CreateFileMappingW
+	    204   c9    0x58B90 CreateFileTransactedA
+	    205   ca    0x58BF0 CreateFileTransactedW
+	    206   cb    0x23BB0 CreateFileW
+	    207   cc    0x33C60 CreateHardLinkA
+	    208   cd    0x3B410 CreateHardLinkTransactedA
+	    209   ce    0x59670 CreateHardLinkTransactedW
+	    210   cf    0x33C80 CreateHardLinkW
+	    211   d0    0x22DF0 CreateIoCompletionPort
+	    212   d1    0x53F00 CreateJobObjectA
+	    213   d2    0x53F50 CreateJobObjectW
+	    214   d3    0x53FD0 CreateJobSet
+	    215   d4    0x59700 CreateMailslotA
+	    216   d5    0x59750 CreateMailslotW
+	    217   d6    0x1A3E0 CreateMemoryResourceNotification
+	    218   d7    0x239E0 CreateMutexA
+	    219   d8    0x239F0 CreateMutexExA
+	    220   d9    0x23A00 CreateMutexExW
+	    221   da    0x23A10 CreateMutexW
+	    222   db    0x22CE0 CreateNamedPipeA
+	    223   dc    0x33CA0 CreateNamedPipeW
+	    224   dd    0x33CC0 CreatePipe
+	    225   de    0x58920 CreatePrivateNamespaceA
+	    226   df    0x1A010 CreatePrivateNamespaceW
+	    227   e0    0x33CE0 CreateProcessA
+	    228   e1    0x33D00 CreateProcessAsUserA
+	    229   e2    0x33D20 CreateProcessAsUserW
+	    230   e3    0x33D40 CreateProcessInternalA
+	    231   e4    0x33D60 CreateProcessInternalW
+	    232   e5    0x18BA0 CreateProcessW
+	    233   e6    0x24300 CreatePseudoConsole
+	    234   e7    0x33D80 CreateRemoteThread
+	    235   e8    0x9C9D1 CreateRemoteThreadEx
+	    236   e9    0x171F0 CreateSemaphoreA
+	    237   ea    0x17220 CreateSemaphoreExA
+	    238   eb    0x23A20 CreateSemaphoreExW
+	    239   ec    0x23A30 CreateSemaphoreW
+	    240   ed    0x3B490 CreateSocketHandle
+	    241   ee    0x59B90 CreateSymbolicLinkA
+	    242   ef    0x59C10 CreateSymbolicLinkTransactedA
+	    243   f0    0x59CA0 CreateSymbolicLinkTransactedW
+	    244   f1    0x33DC0 CreateSymbolicLinkW
+	    245   f2    0x3B1B0 CreateTapePartition
+	    246   f3    0x21A80 CreateThread
+	    247   f4    0x33E30 CreateThreadpool
+	    248   f5    0x33DE0 CreateThreadpoolCleanupGroup
+	    249   f6    0x33E10 CreateThreadpoolIo
+	    250   f7    0x19DB0 CreateThreadpoolTimer
+	    251   f8    0x22120 CreateThreadpoolWait
+	    252   f9    0x22590 CreateThreadpoolWork
+	    253   fa    0x33E60 CreateTimerQueue
+	    254   fb    0x33E70 CreateTimerQueueTimer
+	    255   fc    0x24F40 CreateToolhelp32Snapshot
+	    256   fd    0x182F0 CreateWaitableTimerA
+	    257   fe    0x18320 CreateWaitableTimerExA
+	    258   ff    0x23A40 CreateWaitableTimerExW
+	    259  100    0x59990 CreateWaitableTimerW
+	    260  101    0x9CC11 CtrlRoutine
+	    261  102    0x21560 DeactivateActCtx
+	    262  103    0x20A90 DeactivateActCtxWorker
+	    263  104    0x33EB0 DebugActiveProcess
+	    264  105    0x33E90 DebugActiveProcessStop
+	    265  106    0x33ED0 DebugBreak
+	    266  107    0x31850 DebugBreakProcess
+	    267  108    0x31880 DebugSetProcessKillOnExit
+	    268  109    0x9CCBF DecodePointer
+	    269  10a    0x9CCEA DecodeSystemPointer
+	    270  10b    0x5B020 DefineDosDeviceA
+	    271  10c    0x23BC0 DefineDosDeviceW
+	    272  10d    0x33EE0 DelayLoadFailureHook
+	    273  10e    0x13DB0 DeleteAtom
+	    274  10f    0x1A240 DeleteBoundaryDescriptor
+	    275  110    0x9CD78 DeleteCriticalSection
+	    276  111    0x242B0 DeleteFiber
+	    277  112    0x23BD0 DeleteFileA
+	    278  113    0x59D30 DeleteFileTransactedA
+	    279  114    0x59D70 DeleteFileTransactedW
+	    280  115    0x23BE0 DeleteFileW
+	    281  116    0x9CE05 DeleteProcThreadAttributeList
+	    282  117    0x33F00 DeleteSynchronizationBarrier
+	    283  118    0x3BDB0 DeleteTimerQueue
+	    284  119    0x33F20 DeleteTimerQueueEx
+	    285  11a    0x33F40 DeleteTimerQueueTimer
+	    286  11b    0x5B260 DeleteVolumeMountPointA
+	    287  11c    0x23BF0 DeleteVolumeMountPointW
+	    288  11d    0x1FF80 DeviceIoControl
+	    289  11e    0x22570 DisableThreadLibraryCalls
+	    290  11f    0x3BE50 DisableThreadProfiling
+	    291  120    0x9CF37 DisassociateCurrentThreadFromCallback
+	    292  121    0x9CF69 DiscardVirtualMemory
+	    293  122    0x33F60 DisconnectNamedPipe
+	    294  123    0x53310 DnsHostnameToComputerNameA
+	    295  124    0x33F80 DnsHostnameToComputerNameExW
+	    296  125    0x533E0 DnsHostnameToComputerNameW
+	    297  126    0x1C390 DosDateTimeToFileTime
+	    298  127    0x5C9D0 DosPathToSessionPathA
+	    299  128    0x5CB40 DosPathToSessionPathW
+	    300  129    0x60610 DuplicateConsoleHandle
+	    301  12a    0x320A0 DuplicateEncryptionInfoFileExt
+	    302  12b    0x23960 DuplicateHandle
+	    303  12c    0x3BE80 EnableThreadProfiling
+	    304  12d    0x9D0AF EncodePointer
+	    305  12e    0x9D0DA EncodeSystemPointer
+	    306  12f    0x416C0 EndUpdateResourceA
+	    307  130    0x416D0 EndUpdateResourceW
+	    308  131    0x9D132 EnterCriticalSection
+	    309  132    0x33FA0 EnterSynchronizationBarrier
+	    310  133    0x19D00 EnumCalendarInfoA
+	    311  134    0x44580 EnumCalendarInfoExA
+	    312  135    0x33FC0 EnumCalendarInfoExEx
+	    313  136    0x1A420 EnumCalendarInfoExW
+	    314  137    0x33FE0 EnumCalendarInfoW
+	    315  138    0x445E0 EnumDateFormatsA
+	    316  139    0x44610 EnumDateFormatsExA
+	    317  13a    0x34000 EnumDateFormatsExEx
+	    318  13b    0x34020 EnumDateFormatsExW
+	    319  13c    0x19F20 EnumDateFormatsW
+	    320  13d    0x44640 EnumLanguageGroupLocalesA
+	    321  13e    0x34040 EnumLanguageGroupLocalesW
+	    322  13f    0x32420 EnumResourceLanguagesA
+	    323  140    0x34060 EnumResourceLanguagesExA
+	    324  141    0x34080 EnumResourceLanguagesExW
+	    325  142    0x32450 EnumResourceLanguagesW
+	    326  143    0x32480 EnumResourceNamesA
+	    327  144    0x340A0 EnumResourceNamesExA
+	    328  145    0x340C0 EnumResourceNamesExW
+	    329  146    0x24050 EnumResourceNamesW
+	    330  147    0x324B0 EnumResourceTypesA
+	    331  148    0x340E0 EnumResourceTypesExA
+	    332  149    0x34100 EnumResourceTypesExW
+	    333  14a    0x324E0 EnumResourceTypesW
+	    334  14b    0x44670 EnumSystemCodePagesA
+	    335  14c    0x34120 EnumSystemCodePagesW
+	    336  14d    0x32210 EnumSystemFirmwareTables
+	    337  14e    0x4C380 EnumSystemGeoID
+	    338  14f    0x4C430 EnumSystemGeoNames
+	    339  150    0x44690 EnumSystemLanguageGroupsA
+	    340  151    0x34140 EnumSystemLanguageGroupsW
+	    341  152    0x34160 EnumSystemLocalesA
+	    342  153    0x19F90 EnumSystemLocalesEx
+	    343  154    0x1A0F0 EnumSystemLocalesW
+	    344  155    0x446B0 EnumTimeFormatsA
+	    345  156    0x34180 EnumTimeFormatsEx
+	    346  157    0x1A110 EnumTimeFormatsW
+	    347  158    0x44700 EnumUILanguagesA
+	    348  159    0x1A050 EnumUILanguagesW
+	    349  15a    0x534A0 EnumerateLocalComputerNamesA
+	    350  15b    0x53550 EnumerateLocalComputerNamesW
+	    351  15c    0x3B200 EraseTape
+	    352  15d    0x24130 EscapeCommFunction
+	    353  15e    0x24F20 ExitProcess
+	    354  15f    0x9D4F5 ExitThread
+	    355  160    0x39160 ExitVDM
+	    356  161    0x22DD0 ExpandEnvironmentStringsA
+	    357  162    0x17E50 ExpandEnvironmentStringsW
+	    358  163    0x246A0 ExpungeConsoleCommandHistoryA
+	    359  164    0x246B0 ExpungeConsoleCommandHistoryW
+	    360  165    0x341A0 FatalAppExitA
+	    361  166    0x341B0 FatalAppExitW
+	    362  167    0x333E0 FatalExit
+	    363  168    0x1C9A0 FileTimeToDosDateTime
+	    364  169    0x23C00 FileTimeToLocalFileTime
+	    365  16a    0x24090 FileTimeToSystemTime
+	    366  16b    0x24420 FillConsoleOutputAttribute
+	    367  16c    0x24430 FillConsoleOutputCharacterA
+	    368  16d    0x24440 FillConsoleOutputCharacterW
+	    369  16e    0x1FFE0 FindActCtxSectionGuid
+	    370  16f    0x1CA70 FindActCtxSectionGuidWorker
+	    371  170    0x5CC90 FindActCtxSectionStringA
+	    372  171    0x18DD0 FindActCtxSectionStringW
+	    373  172    0x17290 FindActCtxSectionStringWWorker
+	    374  173    0x18A50 FindAtomA
+	    375  174    0x1C810 FindAtomW
+	    376  175    0x23C10 FindClose
+	    377  176    0x23C20 FindCloseChangeNotification
+	    378  177    0x23C30 FindFirstChangeNotificationA
+	    379  178    0x23C40 FindFirstChangeNotificationW
+	    380  179    0x23C50 FindFirstFileA
+	    381  17a    0x23C60 FindFirstFileExA
+	    382  17b    0x23C70 FindFirstFileExW
+	    383  17c    0x319C0 FindFirstFileNameTransactedW
+	    384  17d    0x23C80 FindFirstFileNameW
+	    385  17e    0x31A50 FindFirstFileTransactedA
+	    386  17f    0x5CCF0 FindFirstFileTransactedW
+	    387  180    0x23C90 FindFirstFileW
+	    388  181    0x31AE0 FindFirstStreamTransactedW
+	    389  182    0x9D806 FindFirstStreamW
+	    390  183    0x5B2A0 FindFirstVolumeA
+	    391  184    0x5B3B0 FindFirstVolumeMountPointA
+	    392  185    0x5B4F0 FindFirstVolumeMountPointW
+	    393  186    0x23CA0 FindFirstVolumeW
+	    394  187    0x341C0 FindNLSString
+	    395  188    0x19AA0 FindNLSStringEx
+	    396  189    0x23CB0 FindNextChangeNotification
+	    397  18a    0x23CC0 FindNextFileA
+	    398  18b    0x23CD0 FindNextFileNameW
+	    399  18c    0x23CE0 FindNextFileW
+	    400  18d    0x9D902 FindNextStreamW
+	    401  18e    0x5B6B0 FindNextVolumeA
+	    402  18f    0x5B7C0 FindNextVolumeMountPointA
+	    403  190    0x5BD20 FindNextVolumeMountPointW
+	    404  191    0x23CF0 FindNextVolumeW
+	    405  192    0x9D99E FindPackagesByPackageFamily
+	    406  193    0x13D90 FindResourceA
+	    407  194    0x1C180 FindResourceExA
+	    408  195    0x20620 FindResourceExW
+	    409  196    0x13CF0 FindResourceW
+	    410  197    0x341E0 FindStringOrdinal
+	    411  198    0x23D00 FindVolumeClose
+	    412  199    0x5BD40 FindVolumeMountPointClose
+	    413  19a    0x228E0 FlsAlloc
+	    414  19b    0x22A40 FlsFree
+	    415  19c    0x1F320 FlsGetValue
+	    416  19d    0x21EE0 FlsSetValue
+	    417  19e    0x24450 FlushConsoleInputBuffer
+	    418  19f    0x23D10 FlushFileBuffers
+	    419  1a0    0x21710 FlushInstructionCache
+	    420  1a1    0x9DABE FlushProcessWriteBuffers
+	    421  1a2    0x1A4B0 FlushViewOfFile
+	    422  1a3    0x44720 FoldStringA
+	    423  1a4    0x19570 FoldStringW
+	    424  1a5    0x9DB24 FormatApplicationUserModelId
+	    425  1a6    0x19590 FormatMessageA
+	    426  1a7    0x22640 FormatMessageW
+	    427  1a8    0x24310 FreeConsole
+	    428  1a9    0x34200 FreeEnvironmentStringsA
+	    429  1aa    0x226D0 FreeEnvironmentStringsW
+	    430  1ab    0x21930 FreeLibrary
+	    431  1ac    0x226B0 FreeLibraryAndExitThread
+	    432  1ad    0x9DBEA FreeLibraryWhenCallbackReturns
+	    433  1ae    0x54000 FreeMemoryJobObject
+	    434  1af    0x22010 FreeResource
+	    435  1b0    0x34220 FreeUserPhysicalPages
+	    436  1b1    0x24460 GenerateConsoleCtrlEvent
+	    437  1b2    0x20A80 GetACP
+	    438  1b3    0x227B0 GetActiveProcessorCount
+	    439  1b4    0x5CDE0 GetActiveProcessorGroupCount
+	    440  1b5    0x34240 GetAppContainerAce
+	    441  1b6    0x34260 GetAppContainerNamedObjectPath
+	    442  1b7    0x34280 GetApplicationRecoveryCallback
+	    443  1b8    0x3BB30 GetApplicationRecoveryCallbackWorker
+	    444  1b9    0x342A0 GetApplicationRestartSettings
+	    445  1ba    0x3BBB0 GetApplicationRestartSettingsWorker
+	    446  1bb    0x9DD6E GetApplicationUserModelId
+	    447  1bc    0x526A0 GetAtomNameA
+	    448  1bd    0x17EC0 GetAtomNameW
+	    449  1be    0x58120 GetBinaryType
+	    450  1bf    0x58120 GetBinaryTypeA
+	    451  1c0    0x58160 GetBinaryTypeW
+	    452  1c1    0x22210 GetCPInfo
+	    453  1c2    0x44900 GetCPInfoExA
+	    454  1c3    0x342C0 GetCPInfoExW
+	    455  1c4    0x342E0 GetCachedSigningLevel
+	    456  1c5    0x43800 GetCalendarDateFormat
+	    457  1c6    0x43870 GetCalendarDateFormatEx
+	    458  1c7    0x43BF0 GetCalendarDaysInMonth
+	    459  1c8    0x43D80 GetCalendarDifferenceInDays
+	    460  1c9    0x449A0 GetCalendarInfoA
+	    461  1ca    0x240A0 GetCalendarInfoEx
+	    462  1cb    0x240B0 GetCalendarInfoW
+	    463  1cc    0x43E70 GetCalendarMonthsInYear
+	    464  1cd    0x43F30 GetCalendarSupportedDateRange
+	    465  1ce    0x43FE0 GetCalendarWeekNumber
+	    466  1cf    0x3BA50 GetComPlusPackageInstallStatus
+	    467  1d0    0x24140 GetCommConfig
+	    468  1d1    0x24150 GetCommMask
+	    469  1d2    0x24160 GetCommModemStatus
+	    470  1d3    0x24170 GetCommProperties
+	    471  1d4    0x24180 GetCommState
+	    472  1d5    0x24190 GetCommTimeouts
+	    473  1d6    0x22970 GetCommandLineA
+	    474  1d7    0x22930 GetCommandLineW
+	    475  1d8    0x34300 GetCompressedFileSizeA
+	    476  1d9    0x59DF0 GetCompressedFileSizeTransactedA
+	    477  1da    0x59E40 GetCompressedFileSizeTransactedW
+	    478  1db    0x34320 GetCompressedFileSizeW
+	    479  1dc    0x19AC0 GetComputerNameA
+	    480  1dd    0x34340 GetComputerNameExA
+	    481  1de    0x22B90 GetComputerNameExW
+	    482  1df    0x21B00 GetComputerNameW
+	    483  1e0    0x246C0 GetConsoleAliasA
+	    484  1e1    0x246D0 GetConsoleAliasExesA
+	    485  1e2    0x246E0 GetConsoleAliasExesLengthA
+	    486  1e3    0x246F0 GetConsoleAliasExesLengthW
+	    487  1e4    0x24700 GetConsoleAliasExesW
+	    488  1e5    0x24710 GetConsoleAliasW
+	    489  1e6    0x24720 GetConsoleAliasesA
+	    490  1e7    0x24730 GetConsoleAliasesLengthA
+	    491  1e8    0x24740 GetConsoleAliasesLengthW
+	    492  1e9    0x24750 GetConsoleAliasesW
+	    493  1ea    0x24320 GetConsoleCP
+	    494  1eb    0x60B20 GetConsoleCharType
+	    495  1ec    0x24760 GetConsoleCommandHistoryA
+	    496  1ed    0x24770 GetConsoleCommandHistoryLengthA
+	    497  1ee    0x24780 GetConsoleCommandHistoryLengthW
+	    498  1ef    0x24790 GetConsoleCommandHistoryW
+	    499  1f0    0x24470 GetConsoleCursorInfo
+	    500  1f1    0x60B80 GetConsoleCursorMode
+	    501  1f2    0x247A0 GetConsoleDisplayMode
+	    502  1f3    0x60E20 GetConsoleFontInfo
+	    503  1f4    0x247B0 GetConsoleFontSize
+	    504  1f5    0x60720 GetConsoleHardwareState
+	    505  1f6    0x247C0 GetConsoleHistoryInfo
+	    506  1f7    0x9E261 GetConsoleInputExeNameA
+	    507  1f8    0x9E29C GetConsoleInputExeNameW
+	    508  1f9    0x60660 GetConsoleInputWaitHandle
+	    509  1fa    0x60EB0 GetConsoleKeyboardLayoutNameA
+	    510  1fb    0x60ED0 GetConsoleKeyboardLayoutNameW
+	    511  1fc    0x24330 GetConsoleMode
+	    512  1fd    0x60BE0 GetConsoleNlsMode
+	    513  1fe    0x24480 GetConsoleOriginalTitleA
+	    514  1ff    0x24490 GetConsoleOriginalTitleW
+	    515  200    0x24340 GetConsoleOutputCP
+	    516  201    0x247D0 GetConsoleProcessList
+	    517  202    0x244A0 GetConsoleScreenBufferInfo
+	    518  203    0x244B0 GetConsoleScreenBufferInfoEx
+	    519  204    0x247E0 GetConsoleSelectionInfo
+	    520  205    0x244C0 GetConsoleTitleA
+	    521  206    0x244D0 GetConsoleTitleW
+	    522  207    0x247F0 GetConsoleWindow
+	    523  208    0x44B70 GetCurrencyFormatA
+	    524  209    0x34360 GetCurrencyFormatEx
+	    525  20a    0x34380 GetCurrencyFormatW
+	    526  20b    0x343B0 GetCurrentActCtx
+	    527  20c    0x220E0 GetCurrentActCtxWorker
+	    528  20d    0x9E497 GetCurrentApplicationUserModelId
+	    529  20e    0x24800 GetCurrentConsoleFont
+	    530  20f    0x24810 GetCurrentConsoleFontEx
+	    531  210    0x343D0 GetCurrentDirectoryA
+	    532  211    0x19200 GetCurrentDirectoryW
+	    533  212    0x9E537 GetCurrentPackageFamilyName
+	    534  213    0x9E578 GetCurrentPackageFullName
+	    535  214    0x9E5B1 GetCurrentPackageId
+	    536  215    0x9E5E6 GetCurrentPackageInfo
+	    537  216    0x9E61D GetCurrentPackagePath
+	    538  217    0x238F0 GetCurrentProcess
+	    539  218    0x23900 GetCurrentProcessId
+	    540  219    0x9E67E GetCurrentProcessorNumber
+	    541  21a    0x9E6BD GetCurrentProcessorNumberEx
+	    542  21b    0x1FF50 GetCurrentThread
+	    543  21c    0x1EF60 GetCurrentThreadId
+	    544  21d    0x9E722 GetCurrentThreadStackLimits
+	    545  21e    0x343F0 GetDateFormatA
+	    546  21f    0x44EA0 GetDateFormatAWorker
+	    547  220    0x34410 GetDateFormatEx
+	    548  221    0x192F0 GetDateFormatW
+	    549  222    0x12C00 GetDateFormatWWorker
+	    550  223    0x36EE0 GetDefaultCommConfigA
+	    551  224    0x36F60 GetDefaultCommConfigW
+	    552  225    0x5D390 GetDevicePowerState
+	    553  226    0x23D20 GetDiskFreeSpaceA
+	    554  227    0x23D30 GetDiskFreeSpaceExA
+	    555  228    0x23D40 GetDiskFreeSpaceExW
+	    556  229    0x23D50 GetDiskFreeSpaceW
+	    557  22a    0x9E861 GetDiskSpaceInformationA
+	    558  22b    0x9E8AF GetDiskSpaceInformationW
+	    559  22c    0x32510 GetDllDirectoryA
+	    560  22d    0x5CD80 GetDllDirectoryW
+	    561  22e    0x23D60 GetDriveTypeA
+	    562  22f    0x23D70 GetDriveTypeW
+	    563  230    0x45CC0 GetDurationFormat
+	    564  231    0x34430 GetDurationFormatEx
+	    565  232    0x34460 GetDynamicTimeZoneInformation
+	    566  233    0x1A460 GetEnabledXStateFeatures
+	    567  234    0x32130 GetEncryptedFileVersionExt
+	    568  235    0x34480 GetEnvironmentStrings
+	    569  236    0x24100 GetEnvironmentStringsA
+	    570  237    0x22980 GetEnvironmentStringsW
+	    571  238    0x18F00 GetEnvironmentVariableA
+	    572  239    0x21390 GetEnvironmentVariableW
+	    573  23a    0x34490 GetEraNameCountedString
+	    574  23b    0x344B0 GetErrorMode
+	    575  23c    0x19F40 GetExitCodeProcess
+	    576  23d    0x22B10 GetExitCodeThread
+	    577  23e    0x363E0 GetExpandedNameA
+	    578  23f    0x364C0 GetExpandedNameW
+	    579  240    0x23D80 GetFileAttributesA
+	    580  241    0x23D90 GetFileAttributesExA
+	    581  242    0x23DA0 GetFileAttributesExW
+	    582  243    0x59EC0 GetFileAttributesTransactedA
+	    583  244    0x59F10 GetFileAttributesTransactedW
+	    584  245    0x23DB0 GetFileAttributesW
+	    585  246    0x31B70 GetFileBandwidthReservation
+	    586  247    0x23DC0 GetFileInformationByHandle
+	    587  248    0x22DB0 GetFileInformationByHandleEx
+	    588  249    0x344C0 GetFileMUIInfo
+	    589  24a    0x344E0 GetFileMUIPath
+	    590  24b    0x23DD0 GetFileSize
+	    591  24c    0x23DE0 GetFileSizeEx
+	    592  24d    0x23DF0 GetFileTime
+	    593  24e    0x23E00 GetFileType
+	    594  24f    0x23E10 GetFinalPathNameByHandleA
+	    595  250    0x23E20 GetFinalPathNameByHandleW
+	    596  251    0x5D550 GetFirmwareEnvironmentVariableA
+	    597  252    0x5D580 GetFirmwareEnvironmentVariableExA
+	    598  253    0x5D640 GetFirmwareEnvironmentVariableExW
+	    599  254    0x5D6E0 GetFirmwareEnvironmentVariableW
+	    600  255    0x5D8D0 GetFirmwareType
+	    601  256    0x23E30 GetFullPathNameA
+	    602  257    0x31780 GetFullPathNameTransactedA
+	    603  258    0x5D930 GetFullPathNameTransactedW
+	    604  259    0x23E40 GetFullPathNameW
+	    605  25a    0x45050 GetGeoInfoA
+	    606  25b    0x4C4E0 GetGeoInfoEx
+	    607  25c    0x4C610 GetGeoInfoW
+	    608  25d    0x3B4A0 GetHandleContext
+	    609  25e    0x23970 GetHandleInformation
+	    610  25f    0x34500 GetLargePageMinimum
+	    611  260    0x244E0 GetLargestConsoleWindowSize
+	    612  261    0x1F020 GetLastError
+	    613  262    0x21690 GetLocalTime
+	    614  263    0x18740 GetLocaleInfoA
+	    615  264    0x219B0 GetLocaleInfoEx
+	    616  265    0x20D30 GetLocaleInfoW
+	    617  266    0x5D9C0 GetLogicalDriveStringsA
+	    618  267    0x23E50 GetLogicalDriveStringsW
+	    619  268    0x19140 GetLogicalDrives
+	    620  269    0x19C10 GetLogicalProcessorInformation
+	    621  26a    0x9EE0C GetLogicalProcessorInformationEx
+	    622  26b    0x52300 GetLongPathNameA
+	    623  26c    0x39220 GetLongPathNameTransactedA
+	    624  26d    0x583C0 GetLongPathNameTransactedW
+	    625  26e    0x11BE0 GetLongPathNameW
+	    626  26f    0x59860 GetMailslotInfo
+	    627  270    0x5CE20 GetMaximumProcessorCount
+	    628  271    0x5CEB0 GetMaximumProcessorGroupCount
+	    629  272    0x34510 GetMemoryErrorHandlingCapabilities
+	    630  273    0x21950 GetModuleFileNameA
+	    631  274    0x21D80 GetModuleFileNameW
+	    632  275    0x216D0 GetModuleHandleA
+	    633  276    0x18F20 GetModuleHandleExA
+	    634  277    0x222C0 GetModuleHandleExW
+	    635  278    0x21990 GetModuleHandleW
+	    636  279    0x1A2E0 GetNLSVersion
+	    637  27a    0x34530 GetNLSVersionEx
+	    638  27b    0x34550 GetNamedPipeAttribute
+	    639  27c    0x584C0 GetNamedPipeClientComputerNameA
+	    640  27d    0x34570 GetNamedPipeClientComputerNameW
+	    641  27e    0x585C0 GetNamedPipeClientProcessId
+	    642  27f    0x32700 GetNamedPipeClientSessionId
+	    643  280    0x585F0 GetNamedPipeHandleStateA
+	    644  281    0x34590 GetNamedPipeHandleStateW
+	    645  282    0x9F06B GetNamedPipeInfo
+	    646  283    0x586F0 GetNamedPipeServerProcessId
+	    647  284    0x32740 GetNamedPipeServerSessionId
+	    648  285    0x22940 GetNativeSystemInfo
+	    649  286    0x392A0 GetNextVDMCommand
+	    650  287    0x328E0 GetNumaAvailableMemoryNode
+	    651  288    0x5DDF0 GetNumaAvailableMemoryNodeEx
+	    652  289    0x1A360 GetNumaHighestNodeNumber
+	    653  28a    0x32900 GetNumaNodeNumberFromHandle
+	    654  28b    0x5DE60 GetNumaNodeProcessorMask
+	    655  28c    0x345B0 GetNumaNodeProcessorMaskEx
+	    656  28d    0x32950 GetNumaProcessorNode
+	    657  28e    0x5DED0 GetNumaProcessorNodeEx
+	    658  28f    0x329A0 GetNumaProximityNode
+	    659  290    0x345D0 GetNumaProximityNodeEx
+	    660  291    0x450E0 GetNumberFormatA
+	    661  292    0x345F0 GetNumberFormatEx
+	    662  293    0x18D70 GetNumberFormatW
+	    663  294    0x60F60 GetNumberOfConsoleFonts
+	    664  295    0x24350 GetNumberOfConsoleInputEvents
+	    665  296    0x24820 GetNumberOfConsoleMouseButtons
+	    666  297    0x22BE0 GetOEMCP
+	    667  298    0x122E0 GetOverlappedResult
+	    668  299    0x9F2B0 GetOverlappedResultEx
+	    669  29a    0x9F2F9 GetPackageApplicationIds
+	    670  29b    0x9F332 GetPackageFamilyName
+	    671  29c    0x9F365 GetPackageFullName
+	    672  29d    0x9F390 GetPackageId
+	    673  29e    0x9F3B7 GetPackageInfo
+	    674  29f    0x9F3E0 GetPackagePath
+	    675  2a0    0x9F413 GetPackagePathByFullName
+	    676  2a1    0x9F452 GetPackagesByPackageFamily
+	    677  2a2    0x34610 GetPhysicallyInstalledSystemMemory
+	    678  2a3    0x34630 GetPriorityClass
+	    679  2a4    0x1C460 GetPrivateProfileIntA
+	    680  2a5    0x11110 GetPrivateProfileIntW
+	    681  2a6    0x578A0 GetPrivateProfileSectionA
+	    682  2a7    0x57930 GetPrivateProfileSectionNamesA
+	    683  2a8    0x111E0 GetPrivateProfileSectionNamesW
+	    684  2a9    0x184B0 GetPrivateProfileSectionW
+	    685  2aa    0x1C4C0 GetPrivateProfileStringA
+	    686  2ab    0x11210 GetPrivateProfileStringW
+	    687  2ac    0x57960 GetPrivateProfileStructA
+	    688  2ad    0x57AB0 GetPrivateProfileStructW
+	    689  2ae    0x205A0 GetProcAddress
+	    690  2af    0x19A40 GetProcessAffinityMask
+	    691  2b0    0x33400 GetProcessDEPPolicy
+	    692  2b1    0x9F601 GetProcessDefaultCpuSets
+	    693  2b2    0x34650 GetProcessGroupAffinity
+	    694  2b3    0x34670 GetProcessHandleCount
+	    695  2b4    0x20590 GetProcessHeap
+	    696  2b5    0x34690 GetProcessHeaps
+	    697  2b6    0x219D0 GetProcessId
+	    698  2b7    0x22AF0 GetProcessIdOfThread
+	    699  2b8    0x23910 GetProcessInformation
+	    700  2b9    0x22320 GetProcessIoCounters
+	    701  2ba    0x9F6F5 GetProcessMitigationPolicy
+	    702  2bb    0x346B0 GetProcessPreferredUILanguages
+	    703  2bc    0x346D0 GetProcessPriorityBoost
+	    704  2bd    0x346F0 GetProcessShutdownParameters
+	    705  2be    0x1FF60 GetProcessTimes
+	    706  2bf    0x19220 GetProcessVersion
+	    707  2c0    0x3BD20 GetProcessWorkingSetSize
+	    708  2c1    0x34710 GetProcessWorkingSetSizeEx
+	    709  2c2    0x9F7FC GetProcessorSystemCycleTime
+	    710  2c3    0x22B60 GetProductInfo
+	    711  2c4    0x1C440 GetProfileIntA
+	    712  2c5    0x57C30 GetProfileIntW
+	    713  2c6    0x57C50 GetProfileSectionA
+	    714  2c7    0x57C70 GetProfileSectionW
+	    715  2c8    0x19BC0 GetProfileStringA
+	    716  2c9    0x102F0 GetProfileStringW
+	    717  2ca    0x22D90 GetQueuedCompletionStatus
+	    718  2cb    0x34730 GetQueuedCompletionStatusEx
+	    719  2cc    0x115F0 GetShortPathNameA
+	    720  2cd    0x11760 GetShortPathNameW
+	    721  2ce    0x9F927 GetStagedPackagePathByFullName
+	    722  2cf    0x21770 GetStartupInfoA
+	    723  2d0    0x22250 GetStartupInfoW
+	    724  2d1    0x9F980 GetStateFolder
+	    725  2d2    0x22390 GetStdHandle
+	    726  2d3    0x34750 GetStringScripts
+	    727  2d4    0x1A340 GetStringTypeA
+	    728  2d5    0x1A340 GetStringTypeExA
+	    729  2d6    0x122C0 GetStringTypeExW
+	    730  2d7    0x21750 GetStringTypeW
+	    731  2d8    0x9FA0C GetSystemAppDataKey
+	    732  2d9    0x9FA46 GetSystemCpuSetInformation
+	    733  2da    0x33440 GetSystemDEPPolicy
+	    734  2db    0x18590 GetSystemDefaultLCID
+	    735  2dc    0x16180 GetSystemDefaultLangID
+	    736  2dd    0x34770 GetSystemDefaultLocaleName
+	    737  2de    0x225C0 GetSystemDefaultUILanguage
+	    738  2df    0x18760 GetSystemDirectoryA
+	    739  2e0    0x21F40 GetSystemDirectoryW
+	    740  2e1    0x34790 GetSystemFileCacheSize
+	    741  2e2    0x32230 GetSystemFirmwareTable
+	    742  2e3    0x22560 GetSystemInfo
+	    743  2e4    0x22030 GetSystemPowerStatus
+	    744  2e5    0x347B0 GetSystemPreferredUILanguages
+	    745  2e6    0x33480 GetSystemRegistryQuota
+	    746  2e7    0x22300 GetSystemTime
+	    747  2e8    0x228C0 GetSystemTimeAdjustment
+	    748  2e9    0x1FF20 GetSystemTimeAsFileTime
+	    749  2ea    0x24080 GetSystemTimePreciseAsFileTime
+	    750  2eb    0x347D0 GetSystemTimes
+	    751  2ec    0x347F0 GetSystemWindowsDirectoryA
+	    752  2ed    0x19F70 GetSystemWindowsDirectoryW
+	    753  2ee    0x24230 GetSystemWow64DirectoryA
+	    754  2ef    0x24240 GetSystemWow64DirectoryW
+	    755  2f0    0x5E010 GetTapeParameters
+	    756  2f1    0x3B240 GetTapePosition
+	    757  2f2    0x3B2B0 GetTapeStatus
+	    758  2f3    0x23E60 GetTempFileNameA
+	    759  2f4    0x23E70 GetTempFileNameW
+	    760  2f5    0x23E80 GetTempPathA
+	    761  2f6    0x23E90 GetTempPathW
+	    762  2f7    0x34810 GetThreadContext
+	    763  2f8    0x9FD10 GetThreadDescription
+	    764  2f9    0x34830 GetThreadErrorMode
+	    765  2fa    0x34840 GetThreadGroupAffinity
+	    766  2fb    0x34860 GetThreadIOPendingFlag
+	    767  2fc    0x34880 GetThreadId
+	    768  2fd    0x348A0 GetThreadIdealProcessorEx
+	    769  2fe    0x23920 GetThreadInformation
+	    770  2ff    0x190F0 GetThreadLocale
+	    771  300    0x21350 GetThreadPreferredUILanguages
+	    772  301    0x21730 GetThreadPriority
+	    773  302    0x348C0 GetThreadPriorityBoost
+	    774  303    0x9FE37 GetThreadSelectedCpuSets
+	    775  304    0x5E070 GetThreadSelectorEntry
+	    776  305    0x1A0D0 GetThreadTimes
+	    777  306    0x17D70 GetThreadUILanguage
+	    779  307    0x22E20 GetTickCount
+	    778  308    0x20CB0 GetTickCount64
+	    780  309    0x348E0 GetTimeFormatA
+	    781  30a    0x453B0 GetTimeFormatAWorker
+	    782  30b    0x34900 GetTimeFormatEx
+	    783  30c    0x17990 GetTimeFormatW
+	    784  30d    0x135B0 GetTimeFormatWWorker
+	    785  30e    0x228A0 GetTimeZoneInformation
+	    786  30f    0x34920 GetTimeZoneInformationForYear
+	    787  310    0x34940 GetUILanguageInfo
+	    788  311    0x4CA40 GetUserDefaultGeoName
+	    789  312    0x1F0E0 GetUserDefaultLCID
+	    790  313    0x19F10 GetUserDefaultLangID
+	    791  314    0x22BB0 GetUserDefaultLocaleName
+	    792  315    0x22A80 GetUserDefaultUILanguage
+	    793  316    0x12B00 GetUserGeoID
+	    794  317    0x19E60 GetUserPreferredUILanguages
+	    795  318    0x39B20 GetVDMCurrentDirectories
+	    796  319    0x22610 GetVersion
+	    797  31a    0x22410 GetVersionExA
+	    798  31b    0x22520 GetVersionExW
+	    799  31c    0x23EA0 GetVolumeInformationA
+	    800  31d    0x23EB0 GetVolumeInformationByHandleW
+	    801  31e    0x23EC0 GetVolumeInformationW
+	    802  31f    0x5BD90 GetVolumeNameForVolumeMountPointA
+	    803  320    0x238E0 GetVolumeNameForVolumeMountPointW
+	    804  321    0x5BEC0 GetVolumePathNameA
+	    805  322    0x23ED0 GetVolumePathNameW
+	    806  323    0x5BFF0 GetVolumePathNamesForVolumeNameA
+	    807  324    0x23EE0 GetVolumePathNamesForVolumeNameW
+	    808  325    0x22900 GetWindowsDirectoryA
+	    809  326    0x1A3C0 GetWindowsDirectoryW
+	    810  327    0x20C50 GetWriteWatch
+	    811  328    0x34960 GetXStateFeaturesMask
+	    812  329    0x1BF80 GlobalAddAtomA
+	    813  32a    0x526C0 GlobalAddAtomExA
+	    814  32b    0x1BFA0 GlobalAddAtomExW
+	    815  32c    0x1BFC0 GlobalAddAtomW
+	    816  32d    0x21540 GlobalAlloc
+	    817  32e    0x32250 GlobalCompact
+	    818  32f    0x21A30 GlobalDeleteAtom
+	    819  330    0x171D0 GlobalFindAtomA
+	    820  331    0x1C7F0 GlobalFindAtomW
+	    821  332    0x32270 GlobalFix
+	    822  333    0x187F0 GlobalFlags
+	    823  334    0x211D0 GlobalFree
+	    824  335    0x526E0 GlobalGetAtomNameA
+	    825  336    0x1C5A0 GlobalGetAtomNameW
+	    826  337    0x185A0 GlobalHandle
+	    827  338    0x1F1D0 GlobalLock
+	    828  339    0x16000 GlobalMemoryStatus
+	    829  33a    0x22950 GlobalMemoryStatusEx
+	    830  33b    0x1FCD0 GlobalReAlloc
+	    831  33c    0x20D50 GlobalSize
+	    832  33d    0x32290 GlobalUnWire
+	    833  33e    0x322A0 GlobalUnfix
+	    834  33f    0x1F0F0 GlobalUnlock
+	    835  340    0x322C0 GlobalWire
+	    836  341    0x5A560 Heap32First
+	    837  342    0x5A7B0 Heap32ListFirst
+	    838  343    0x5A860 Heap32ListNext
+	    839  344    0x5A900 Heap32Next
+	    840  345    0xA0324 HeapAlloc
+	    841  346    0x34980 HeapCompact
+	    842  347    0x21FD0 HeapCreate
+	    843  348    0x222A0 HeapDestroy
+	    844  349    0x1EF70 HeapFree
+	    845  34a    0x349A0 HeapLock
+	    846  34b    0x349C0 HeapQueryInformation
+	    847  34c    0xA0390 HeapReAlloc
+	    848  34d    0x22430 HeapSetInformation
+	    849  34e    0xA03C4 HeapSize
+	    850  34f    0x349E0 HeapSummary
+	    851  350    0x34A00 HeapUnlock
+	    852  351    0x16190 HeapValidate
+	    853  352    0x34A20 HeapWalk
+	    854  353    0x34A40 IdnToAscii
+	    855  354    0x34A60 IdnToNameprepUnicode
+	    856  355    0x34A80 IdnToUnicode
+	    857  356    0x52700 InitAtomTable
+	    858  357    0xA0456 InitOnceBeginInitialize
+	    859  358    0xA049C InitOnceComplete
+	    860  359    0xA04DE InitOnceExecuteOnce
+	    861  35a    0xA0522 InitOnceInitialize
+	    862  35b    0xA0559 InitializeConditionVariable
+	    864  35c    0x34AD0 InitializeContext
+	    863  35d    0x34AA0 InitializeContext2
+	    865  35e    0xA05BD InitializeCriticalSection
+	    866  35f    0x23A50 InitializeCriticalSectionAndSpinCount
+	    867  360    0x23A60 InitializeCriticalSectionEx
+	    868  361    0xA0634 InitializeEnclave
+	    869  362    0xA0687 InitializeProcThreadAttributeList
+	    870  363    0xA06E3 InitializeSListHead
+	    871  364    0xA0712 InitializeSRWLock
+	    872  365    0x34AF0 InitializeSynchronizationBarrier
+	    873  366    0xA0769 InstallELAMCertificateInfo
+	    875  367    0x15E40 InterlockedCompareExchange
+	    874  368    0xA07C0 InterlockedCompareExchange64
+	    876  369    0x1FBE0 InterlockedDecrement
+	    877  36a    0x13D10 InterlockedExchange
+	    878  36b    0x16CC0 InterlockedExchangeAdd
+	    879  36c    0xA0857 InterlockedFlushSList
+	    880  36d    0x1F300 InterlockedIncrement
+	    881  36e    0xA08A4 InterlockedPopEntrySList
+	    882  36f    0xA08E0 InterlockedPushEntrySList
+	      2  370    0x9B1C0 InterlockedPushListSList
+	    883  371    0xA091E InterlockedPushListSListEx
+	    884  372    0x61050 InvalidateConsoleDIBits
+	    885  373    0x11520 IsBadCodePtr
+	    886  374    0x334F0 IsBadHugeReadPtr
+	    887  375    0x33500 IsBadHugeWritePtr
+	    888  376    0x11540 IsBadReadPtr
+	    889  377    0x13D30 IsBadStringPtrA
+	    890  378    0x13E00 IsBadStringPtrW
+	    891  379    0x11450 IsBadWritePtr
+	    892  37a    0x44200 IsCalendarLeapDay
+	    893  37b    0x442D0 IsCalendarLeapMonth
+	    894  37c    0x44390 IsCalendarLeapYear
+	    895  37d    0x13E60 IsDBCSLeadByte
+	    896  37e    0x34B10 IsDBCSLeadByteEx
+	    897  37f    0x22B80 IsDebuggerPresent
+	    898  380    0xA0A47 IsEnclaveTypeSupported
+	    899  381    0x34B30 IsNLSDefinedString
+	    900  382    0x315E0 IsNativeVhdBoot
+	    901  383    0x34B50 IsNormalizedString
+	    902  384    0xA0AC5 IsProcessCritical
+	    903  385    0x1A220 IsProcessInJob
+	    904  386    0x21670 IsProcessorFeaturePresent
+	    905  387    0x32B70 IsSystemResumeAutomatic
+	    906  388    0x34B70 IsThreadAFiber
+	    907  389    0xA0B62 IsThreadpoolTimerSet
+	    908  38a    0x44430 IsValidCalDateTime
+	    909  38b    0x22370 IsValidCodePage
+	    910  38c    0x34B90 IsValidLanguageGroup
+	    911  38d    0x22540 IsValidLocale
+	    912  38e    0x34BB0 IsValidLocaleName
+	    913  38f    0x34BD0 IsValidNLSVersion
+	    914  390    0xA0BFC IsWow64GuestMachineSupported
+	    916  391    0x21AE0 IsWow64Process
+	    915  392    0xA0C46 IsWow64Process2
+	    917  393    0x34BF0 K32EmptyWorkingSet
+	    918  394    0x34C10 K32EnumDeviceDrivers
+	    919  395    0x34C30 K32EnumPageFilesA
+	    920  396    0x34C50 K32EnumPageFilesW
+	    921  397    0x34C90 K32EnumProcessModules
+	    922  398    0x34C70 K32EnumProcessModulesEx
+	    923  399    0x34CB0 K32EnumProcesses
+	    924  39a    0x34CD0 K32GetDeviceDriverBaseNameA
+	    925  39b    0x34CF0 K32GetDeviceDriverBaseNameW
+	    926  39c    0x34D10 K32GetDeviceDriverFileNameA
+	    927  39d    0x34D30 K32GetDeviceDriverFileNameW
+	    928  39e    0x34D50 K32GetMappedFileNameA
+	    929  39f    0x34D70 K32GetMappedFileNameW
+	    930  3a0    0x34D90 K32GetModuleBaseNameA
+	    931  3a1    0x34DB0 K32GetModuleBaseNameW
+	    932  3a2    0x34DD0 K32GetModuleFileNameExA
+	    933  3a3    0x34DF0 K32GetModuleFileNameExW
+	    934  3a4    0x1A160 K32GetModuleInformation
+	    935  3a5    0x34E10 K32GetPerformanceInfo
+	    936  3a6    0x34E30 K32GetProcessImageFileNameA
+	    937  3a7    0x34E50 K32GetProcessImageFileNameW
+	    938  3a8    0x34E70 K32GetProcessMemoryInfo
+	    939  3a9    0x34EB0 K32GetWsChanges
+	    940  3aa    0x34E90 K32GetWsChangesEx
+	    941  3ab    0x34ED0 K32InitializeProcessForWsWatch
+	    942  3ac    0x34F10 K32QueryWorkingSet
+	    943  3ad    0x34EF0 K32QueryWorkingSetEx
+	    944  3ae    0x22A60 LCIDToLocaleName
+	    945  3af    0x1A320 LCMapStringA
+	    946  3b0    0x18720 LCMapStringEx
+	    947  3b1    0x21A10 LCMapStringW
+	    948  3b2    0x365B0 LZClose
+	    949  3b3    0x365B0 LZCloseFile
+	    950  3b4    0x316B0 LZCopy
+	    951  3b5    0x36640 LZCreateFileW
+	    952  3b6    0x231D0 LZDone
+	    953  3b7    0x36710 LZInit
+	    954  3b8    0x36860 LZOpenFileA
+	    955  3b9    0x36930 LZOpenFileW
+	    956  3ba    0x369C0 LZRead
+	    957  3bb    0x36BF0 LZSeek
+	    958  3bc    0x22C40 LZStart
+	    959  3bd    0xA0F9F LeaveCriticalSection
+	    960  3be    0xA0FE5 LeaveCriticalSectionWhenCallbackReturns
+	    961  3bf    0x20660 LoadAppInitDlls
+	    962  3c0    0xA1036 LoadEnclaveData
+	    963  3c1    0x22280 LoadLibraryA
+	    964  3c2    0x222E0 LoadLibraryExA
+	    965  3c3    0x1FEA0 LoadLibraryExW
+	    966  3c4    0x22350 LoadLibraryW
+	    967  3c5    0x5CEF0 LoadModule
+	    968  3c6    0x24060 LoadPackagedLibrary
+	    969  3c7    0x1F360 LoadResource
+	    970  3c8    0x34F30 LoadStringBaseExW
+	    971  3c9    0x323F0 LoadStringBaseW
+	    972  3ca    0x20C90 LocalAlloc
+	    973  3cb    0x32250 LocalCompact
+	    974  3cc    0x23EF0 LocalFileTimeToFileTime
+	    975  3cd    0xA113A LocalFileTimeToLocalSystemTime
+	    976  3ce    0x5E0E0 LocalFlags
+	    977  3cf    0x20960 LocalFree
+	    978  3d0    0x32310 LocalHandle
+	    979  3d1    0x21270 LocalLock
+	    980  3d2    0x19260 LocalReAlloc
+	    981  3d3    0x323D0 LocalShrink
+	    982  3d4    0x20980 LocalSize
+	    983  3d5    0xA11E6 LocalSystemTimeToLocalFileTime
+	    984  3d6    0x21290 LocalUnlock
+	    985  3d7    0x229C0 LocaleNameToLCID
+	    986  3d8    0x34F50 LocateXStateFeature
+	    987  3d9    0x23F00 LockFile
+	    988  3da    0x23F10 LockFileEx
+	    989  3db    0x1FE80 LockResource
+	    990  3dc    0x34F70 MapUserPhysicalPages
+	    991  3dd    0x3BD50 MapUserPhysicalPagesScatter
+	    992  3de    0x215A0 MapViewOfFile
+	    993  3df    0x21FF0 MapViewOfFileEx
+	    994  3e0    0x34F90 MapViewOfFileExNuma
+	    995  3e1    0xA12EF MapViewOfFileFromApp
+	    996  3e2    0x5AB50 Module32First
+	    997  3e3    0x5AC40 Module32FirstW
+	    998  3e4    0x5AD00 Module32Next
+	    999  3e5    0x5ADF0 Module32NextW
+	   1000  3e6    0x20B20 MoveFileA
+	   1001  3e7    0x59FA0 MoveFileExA
+	   1002  3e8    0x1A440 MoveFileExW
+	   1003  3e9    0x59FD0 MoveFileTransactedA
+	   1004  3ea    0x5A060 MoveFileTransactedW
+	   1005  3eb    0x22B30 MoveFileW
+	   1006  3ec    0x5A0F0 MoveFileWithProgressA
+	   1007  3ed    0x34FB0 MoveFileWithProgressW
+	   1008  3ee    0x237A0 MulDiv
+	   1009  3ef    0x1EFB0 MultiByteToWideChar
+	   1010  3f0    0x34FD0 NeedCurrentDirectoryForExePathA
+	   1011  3f1    0x34FF0 NeedCurrentDirectoryForExePathW
+	   1012  3f2    0x240C0 NlsCheckPolicy
+	   1013  3f3    0x35010 NlsEventDataDescCreate
+	   1014  3f4    0x240D0 NlsGetCacheUpdateCount
+	   1015  3f5    0x240E0 NlsUpdateLocale
+	   1016  3f6    0x240F0 NlsUpdateSystemLocale
+	   1017  3f7    0x35030 NlsWriteEtwEvent
+	   1018  3f8    0x35060 NormalizeString
+	   1019  3f9    0x35080 NotifyMountMgr
+	   1020  3fa    0x47460 NotifyUILanguageChange
+	   1021  3fb    0x33510 NtVdm64CreateProcessInternalW
+	   1022  3fc    0x5E380 OOBEComplete
+	   1023  3fd    0xA151D OfferVirtualMemory
+	   1024  3fe    0x60670 OpenConsoleW
+	   1025  3ff    0x35090 OpenConsoleWStub
+	   1026  400    0x23A70 OpenEventA
+	   1027  401    0x23A80 OpenEventW
+	   1028  402    0x58CD0 OpenFile
+	   1029  403    0x350A0 OpenFileById
+	   1030  404    0x189F0 OpenFileMappingA
+	   1031  405    0x229A0 OpenFileMappingW
+	   1032  406    0x54020 OpenJobObjectA
+	   1033  407    0x54080 OpenJobObjectW
+	   1034  408    0x161B0 OpenMutexA
+	   1035  409    0x23A90 OpenMutexW
+	   1036  40a    0xA1608 OpenPackageInfoByFullName
+	   1037  40b    0x58980 OpenPrivateNamespaceA
+	   1038  40c    0x1A470 OpenPrivateNamespaceW
+	   1039  40d    0x21370 OpenProcess
+	   1040  40e    0xA1676 OpenProcessToken
+	   1041  40f    0x22C40 OpenProfileUserMapping
+	   1042  410    0x22D40 OpenSemaphoreA
+	   1043  411    0x23AA0 OpenSemaphoreW
+	   1044  412    0xA16EC OpenState
+	   1045  413    0xA1713 OpenStateExplicit
+	   1046  414    0x20B00 OpenThread
+	   1047  415    0xA174B OpenThreadToken
+	   1048  416    0x599C0 OpenWaitableTimerA
+	   1049  417    0x23AB0 OpenWaitableTimerW
+	   1050  418    0x19DA0 OutputDebugStringA
+	   1051  419    0x350C0 OutputDebugStringW
+	   1052  41a    0xA17EB PackageFamilyNameFromFullName
+	   1053  41b    0xA182C PackageFamilyNameFromId
+	   1054  41c    0xA1865 PackageFullNameFromId
+	   1055  41d    0xA189C PackageIdFromFullName
+	   1056  41e    0xA18E5 PackageNameAndPublisherIdFromFamilyName
+	   1057  41f    0xA1934 ParseApplicationUserModelId
+	   1058  420    0x24360 PeekConsoleInputA
+	   1059  421    0x24370 PeekConsoleInputW
+	   1060  422    0x350D0 PeekNamedPipe
+	   1061  423    0x350F0 PostQueuedCompletionStatus
+	   1062  424    0x5D3E0 PowerClearRequest
+	   1063  425    0x5D460 PowerCreateRequest
+	   1064  426    0x5D4D0 PowerSetRequest
+	   1065  427    0xA19F3 PrefetchVirtualMemory
+	   1066  428    0x3B2E0 PrepareTape
+	   1067  429    0x35110 PrivCopyFileExW
+	   1068  42a    0x5A120 PrivMoveFileIdentityW
+	   1069  42b    0x19C30 Process32First
+	   1070  42c    0x22710 Process32FirstW
+	   1071  42d    0x17D80 Process32Next
+	   1072  42e    0x212B0 Process32NextW
+	   1073  42f    0x21970 ProcessIdToSessionId
+	   1074  430    0x35130 PssCaptureSnapshot
+	   1075  431    0x35150 PssDuplicateSnapshot
+	   1076  432    0x35170 PssFreeSnapshot
+	   1077  433    0x35190 PssQuerySnapshot
+	   1078  434    0x351B0 PssWalkMarkerCreate
+	   1079  435    0x351D0 PssWalkMarkerFree
+	   1080  436    0x351F0 PssWalkMarkerGetPosition
+	   1081  437    0x35210 PssWalkMarkerRewind
+	   1082  438    0x35230 PssWalkMarkerSeek
+	   1083  439    0x35210 PssWalkMarkerSeekToBeginning
+	   1084  43a    0x35230 PssWalkMarkerSetPosition
+	   1085  43b    0x351F0 PssWalkMarkerTell
+	   1086  43c    0x35250 PssWalkSnapshot
+	   1087  43d    0x35270 PulseEvent
+	   1088  43e    0x241A0 PurgeComm
+	   1089  43f    0x35290 QueryActCtxSettingsW
+	   1090  440    0x1C6E0 QueryActCtxSettingsWWorker
+	   1091  441    0x18A70 QueryActCtxW
+	   1092  442    0x18060 QueryActCtxWWorker
+	   1093  443    0xA1C25 QueryDepthSList
+	   1094  444    0x5B0A0 QueryDosDeviceA
+	   1095  445    0x23F20 QueryDosDeviceW
+	   1096  446    0x352B0 QueryFullProcessImageNameA
+	   1097  447    0x352D0 QueryFullProcessImageNameW
+	   1098  448    0x35310 QueryIdleProcessorCycleTime
+	   1099  449    0x352F0 QueryIdleProcessorCycleTimeEx
+	   1100  44a    0x195B0 QueryInformationJobObject
+	   1101  44b    0x54110 QueryIoRateControlInformationJobObject
+	   1102  44c    0x35330 QueryMemoryResourceNotification
+	   1103  44d    0x20000 QueryPerformanceCounter
+	   1104  44e    0x223F0 QueryPerformanceFrequency
+	   1105  44f    0x35350 QueryProcessAffinityUpdateMode
+	   1106  450    0x35370 QueryProcessCycleTime
+	   1107  451    0xA1DAB QueryProtectedPolicy
+	   1108  452    0x226F0 QueryThreadCycleTime
+	   1109  453    0x3BEC0 QueryThreadProfiling
+	   1110  454    0x35390 QueryThreadpoolStackInformation
+	   1111  455    0x353C0 QueryUnbiasedInterruptTime
+	   1112  456    0x1A200 QueueUserAPC
+	   1113  457    0x191E0 QueueUserWorkItem
+	   1114  458    0x42B80 QuirkGetData2Worker
+	   1115  459    0x42C30 QuirkGetDataWorker
+	   1116  45a    0x42CD0 QuirkIsEnabled2Worker
+	   1117  45b    0x17E70 QuirkIsEnabled3Worker
+	   1118  45c    0x42E00 QuirkIsEnabledForPackage2Worker
+	   1119  45d    0x42E30 QuirkIsEnabledForPackage3Worker
+	   1120  45e    0x42E70 QuirkIsEnabledForPackage4Worker
+	   1121  45f    0x42EE0 QuirkIsEnabledForPackageWorker
+	   1122  460    0x42F60 QuirkIsEnabledForProcessWorker
+	   1123  461    0x20DF0 QuirkIsEnabledWorker
+	   1124  462    0x20C30 RaiseException
+	   1125  463    0xA1F96 RaiseFailFastException
+	   1126  464    0x336B0 RaiseInvalid16BitExeError
+	   1127  465    0x353E0 ReOpenFile
+	   1128  466    0x24380 ReadConsoleA
+	   1129  467    0x24390 ReadConsoleInputA
+	   1130  468    0xA2010 ReadConsoleInputExA
+	   1131  469    0xA2043 ReadConsoleInputExW
+	   1132  46a    0x243A0 ReadConsoleInputW
+	   1133  46b    0x244F0 ReadConsoleOutputA
+	   1134  46c    0x24500 ReadConsoleOutputAttribute
+	   1135  46d    0x24510 ReadConsoleOutputCharacterA
+	   1136  46e    0x24520 ReadConsoleOutputCharacterW
+	   1137  46f    0x24530 ReadConsoleOutputW
+	   1138  470    0x243B0 ReadConsoleW
+	   1139  471    0x35400 ReadDirectoryChangesExW
+	   1140  472    0x35420 ReadDirectoryChangesW
+	   1141  473    0x23F30 ReadFile
+	   1142  474    0x23F40 ReadFileEx
+	   1143  475    0x23F50 ReadFileScatter
+	   1144  476    0x35440 ReadProcessMemory
+	   1145  477    0x3BEF0 ReadThreadProfilingData
+	   1146  478    0xA218B ReclaimVirtualMemory
+	   1147  479    0x35460 RegCloseKey
+	   1148  47a    0x35480 RegCopyTreeW
+	   1149  47b    0x354A0 RegCreateKeyExA
+	   1150  47c    0x354C0 RegCreateKeyExW
+	   1151  47d    0x354E0 RegDeleteKeyExA
+	   1152  47e    0x35500 RegDeleteKeyExW
+	   1153  47f    0x35520 RegDeleteTreeA
+	   1154  480    0x35540 RegDeleteTreeW
+	   1155  481    0x35560 RegDeleteValueA
+	   1156  482    0x35580 RegDeleteValueW
+	   1157  483    0x355A0 RegDisablePredefinedCacheEx
+	   1158  484    0x355B0 RegEnumKeyExA
+	   1159  485    0x355D0 RegEnumKeyExW
+	   1160  486    0x355F0 RegEnumValueA
+	   1161  487    0x35610 RegEnumValueW
+	   1162  488    0x35630 RegFlushKey
+	   1163  489    0x35650 RegGetKeySecurity
+	   1164  48a    0x35670 RegGetValueA
+	   1165  48b    0x35690 RegGetValueW
+	   1166  48c    0x356B0 RegLoadKeyA
+	   1167  48d    0x356D0 RegLoadKeyW
+	   1168  48e    0x356F0 RegLoadMUIStringA
+	   1169  48f    0x35710 RegLoadMUIStringW
+	   1170  490    0x35730 RegNotifyChangeKeyValue
+	   1171  491    0x35750 RegOpenCurrentUser
+	   1172  492    0x35770 RegOpenKeyExA
+	   1173  493    0x1A3A0 RegOpenKeyExW
+	   1174  494    0x35790 RegOpenUserClassesRoot
+	   1175  495    0x357B0 RegQueryInfoKeyA
+	   1176  496    0x357D0 RegQueryInfoKeyW
+	   1177  497    0x357F0 RegQueryValueExA
+	   1178  498    0x35810 RegQueryValueExW
+	   1179  499    0x35830 RegRestoreKeyA
+	   1180  49a    0x35850 RegRestoreKeyW
+	   1181  49b    0x35870 RegSaveKeyExA
+	   1182  49c    0x35890 RegSaveKeyExW
+	   1183  49d    0x358B0 RegSetKeySecurity
+	   1184  49e    0x358D0 RegSetValueExA
+	   1185  49f    0x358F0 RegSetValueExW
+	   1186  4a0    0x35910 RegUnLoadKeyA
+	   1187  4a1    0x35930 RegUnLoadKeyW
+	   1188  4a2    0x19330 RegisterApplicationRecoveryCallback
+	   1189  4a3    0x1D7E0 RegisterApplicationRestart
+	   1190  4a4    0x35950 RegisterBadMemoryNotification
+	   1191  4a5    0x3B4C0 RegisterConsoleIME
+	   1192  4a6    0x60C30 RegisterConsoleOS2
+	   1193  4a7    0x60780 RegisterConsoleVDM
+	   1194  4a8    0x223D0 RegisterWaitForInputIdle
+	   1195  4a9    0x17F00 RegisterWaitForSingleObject
+	   1196  4aa    0x35970 RegisterWaitForSingleObjectEx
+	   1197  4ab    0x5E500 RegisterWaitUntilOOBECompleted
+	   1198  4ac    0x322D0 RegisterWowBaseHandlers
+	   1199  4ad    0x3A010 RegisterWowExec
+	   1200  4ae    0x22B50 ReleaseActCtx
+	   1201  4af    0x22310 ReleaseActCtxWorker
+	   1202  4b0    0x23AC0 ReleaseMutex
+	   1203  4b1    0xA25C4 ReleaseMutexWhenCallbackReturns
+	   1204  4b2    0xA2605 ReleaseSRWLockExclusive
+	   1205  4b3    0xA263B ReleaseSRWLockShared
+	   1206  4b4    0x23AD0 ReleaseSemaphore
+	   1207  4b5    0xA268E ReleaseSemaphoreWhenCallbackReturns
+	   1208  4b6    0x23F60 RemoveDirectoryA
+	   1209  4b7    0x31980 RemoveDirectoryTransactedA
+	   1210  4b8    0x59590 RemoveDirectoryTransactedW
+	   1211  4b9    0x23F70 RemoveDirectoryW
+	   1212  4ba    0xA2726 RemoveDllDirectory
+	   1213  4bb    0x536F0 RemoveLocalAlternateComputerNameA
+	   1214  4bc    0x53750 RemoveLocalAlternateComputerNameW
+	   1215  4bd    0x322F0 RemoveSecureMemoryCacheCallback
+	   1216  4be    0xA27E0 RemoveVectoredContinueHandler
+	   1217  4bf    0xA2826 RemoveVectoredExceptionHandler
+	   1218  4c0    0x1A1A0 ReplaceFile
+	   1219  4c1    0x59070 ReplaceFileA
+	   1220  4c2    0x1A1A0 ReplaceFileW
+	   1221  4c3    0x338F0 ReplacePartitionUnit
+	   1222  4c4    0x32B50 RequestDeviceWakeup
+	   1223  4c5    0x32B50 RequestWakeupLatency
+	   1224  4c6    0x23AE0 ResetEvent
+	   1225  4c7    0x21250 ResetWriteWatch
+	   1226  4c8    0x243C0 ResizePseudoConsole
+	   1227  4c9    0xA28F7 ResolveDelayLoadedAPI
+	   1228  4ca    0xA292F ResolveDelayLoadsFromDll
+	   1229  4cb    0x35990 ResolveLocaleName
+	   1230  4cc    0xA2974 RestoreLastError
+	   1231  4cd    0x225D0 ResumeThread
+	   1232  4ce    0x231E0 RtlCaptureContext
+	   1233  4cf    0x16160 RtlCaptureStackBackTrace
+	   1234  4d0    0x359B0 RtlFillMemory
+	   1235  4d1    0xA29E7 RtlMoveMemory
+	   1236  4d2    0x359D0 RtlPcToFileHeader
+	   1237  4d3    0x20C40 RtlUnwind
+	   1238  4d4    0xA2A25 RtlZeroMemory
+	   1239  4d5    0x24540 ScrollConsoleScreenBufferA
+	   1240  4d6    0x24550 ScrollConsoleScreenBufferW
+	   1241  4d7    0x1A300 SearchPathA
+	   1242  4d8    0x19310 SearchPathW
+	   1243  4d9    0x359F0 SetCachedSigningLevel
+	   1244  4da    0x456A0 SetCalendarInfoA
+	   1245  4db    0x35A10 SetCalendarInfoW
+	   1246  4dc    0x3BA90 SetComPlusPackageInstallStatus
+	   1247  4dd    0x241B0 SetCommBreak
+	   1248  4de    0x241C0 SetCommConfig
+	   1249  4df    0x241D0 SetCommMask
+	   1250  4e0    0x241E0 SetCommState
+	   1251  4e1    0x241F0 SetCommTimeouts
+	   1252  4e2    0x35A30 SetComputerNameA
+	   1253  4e3    0x35A50 SetComputerNameEx2W
+	   1254  4e4    0x35A70 SetComputerNameExA
+	   1255  4e5    0x35A90 SetComputerNameExW
+	   1256  4e6    0x35AB0 SetComputerNameW
+	   1257  4e7    0x24560 SetConsoleActiveScreenBuffer
+	   1258  4e8    0x24570 SetConsoleCP
+	   1259  4e9    0x243D0 SetConsoleCtrlHandler
+	   1260  4ea    0x60820 SetConsoleCursor
+	   1261  4eb    0x24580 SetConsoleCursorInfo
+	   1262  4ec    0x60C80 SetConsoleCursorMode
+	   1263  4ed    0x24590 SetConsoleCursorPosition
+	   1264  4ee    0x24830 SetConsoleDisplayMode
+	   1265  4ef    0x60FA0 SetConsoleFont
+	   1266  4f0    0x60870 SetConsoleHardwareState
+	   1267  4f1    0x24840 SetConsoleHistoryInfo
+	   1268  4f2    0x60FF0 SetConsoleIcon
+	   1269  4f3    0xA2C8C SetConsoleInputExeNameA
+	   1270  4f4    0xA2CC7 SetConsoleInputExeNameW
+	   1271  4f5    0x608C0 SetConsoleKeyShortcuts
+	   1272  4f6    0x60CE0 SetConsoleLocalEUDC
+	   1273  4f7    0x61040 SetConsoleMaximumWindowSize
+	   1274  4f8    0x60940 SetConsoleMenuClose
+	   1275  4f9    0x243E0 SetConsoleMode
+	   1276  4fa    0x60D80 SetConsoleNlsMode
+	   1277  4fb    0x24850 SetConsoleNumberOfCommandsA
+	   1278  4fc    0x24860 SetConsoleNumberOfCommandsW
+	   1279  4fd    0x60DD0 SetConsoleOS2OemFormat
+	   1280  4fe    0x245A0 SetConsoleOutputCP
+	   1281  4ff    0x60990 SetConsolePalette
+	   1282  500    0x245B0 SetConsoleScreenBufferInfoEx
+	   1283  501    0x245C0 SetConsoleScreenBufferSize
+	   1284  502    0x245D0 SetConsoleTextAttribute
+	   1285  503    0x245E0 SetConsoleTitleA
+	   1286  504    0x245F0 SetConsoleTitleW
+	   1287  505    0x24600 SetConsoleWindowInfo
+	   1288  506    0xA2E7D SetCriticalSectionSpinCount
+	   1289  507    0x24870 SetCurrentConsoleFontEx
+	   1290  508    0x35AD0 SetCurrentDirectoryA
+	   1291  509    0x199D0 SetCurrentDirectoryW
+	   1292  50a    0x373A0 SetDefaultCommConfigA
+	   1293  50b    0x37420 SetDefaultCommConfigW
+	   1294  50c    0xA2F29 SetDefaultDllDirectories
+	   1295  50d    0x19DE0 SetDllDirectoryA
+	   1296  50e    0x22A90 SetDllDirectoryW
+	   1297  50f    0x35AF0 SetDynamicTimeZoneInformation
+	   1298  510    0x23F80 SetEndOfFile
+	   1299  511    0x5E670 SetEnvironmentStringsA
+	   1300  512    0x35B10 SetEnvironmentStringsW
+	   1301  513    0x35B30 SetEnvironmentVariableA
+	   1302  514    0x188B0 SetEnvironmentVariableW
+	   1303  515    0x20C70 SetErrorMode
+	   1304  516    0x23AF0 SetEvent
+	   1305  517    0xA3044 SetEventWhenCallbackReturns
+	   1306  518    0x35B50 SetFileApisToANSI
+	   1307  519    0x35B60 SetFileApisToOEM
+	   1308  51a    0x23F90 SetFileAttributesA
+	   1309  51b    0x5A4A0 SetFileAttributesTransactedA
+	   1310  51c    0x5A4E0 SetFileAttributesTransactedW
+	   1311  51d    0x23FA0 SetFileAttributesW
+	   1312  51e    0x31C00 SetFileBandwidthReservation
+	   1313  51f    0x22660 SetFileCompletionNotificationModes
+	   1314  520    0x23FB0 SetFileInformationByHandle
+	   1315  521    0x35B70 SetFileIoOverlappedRange
+	   1316  522    0x23FC0 SetFilePointer
+	   1317  523    0x23FD0 SetFilePointerEx
+	   1318  524    0x31D00 SetFileShortNameA
+	   1319  525    0x31D40 SetFileShortNameW
+	   1320  526    0x23FE0 SetFileTime
+	   1321  527    0x23FF0 SetFileValidData
+	   1322  528    0x5D710 SetFirmwareEnvironmentVariableA
+	   1323  529    0x5D740 SetFirmwareEnvironmentVariableExA
+	   1324  52a    0x5D800 SetFirmwareEnvironmentVariableExW
+	   1325  52b    0x5D8A0 SetFirmwareEnvironmentVariableW
+	   1326  52c    0x3B4C0 SetHandleContext
+	   1327  52d    0x22AD0 SetHandleCount
+	   1328  52e    0x23980 SetHandleInformation
+	   1329  52f    0x54400 SetInformationJobObject
+	   1330  530    0x54560 SetIoRateControlInformationJobObject
+	   1331  531    0xA32D0 SetLastConsoleEventActive
+	   1332  532    0x1EFD0 SetLastError
+	   1333  533    0x53850 SetLocalPrimaryComputerNameA
+	   1334  534    0x538B0 SetLocalPrimaryComputerNameW
+	   1335  535    0x35B90 SetLocalTime
+	   1336  536    0x45750 SetLocaleInfoA
+	   1337  537    0x35BB0 SetLocaleInfoW
+	   1338  538    0x59920 SetMailslotInfo
+	   1339  539    0x32B80 SetMessageWaitingIndicator
+	   1340  53a    0x32770 SetNamedPipeAttribute
+	   1341  53b    0x35BD0 SetNamedPipeHandleState
+	   1342  53c    0x17EE0 SetPriorityClass
+	   1343  53d    0x5D1F0 SetProcessAffinityMask
+	   1344  53e    0x35BF0 SetProcessAffinityUpdateMode
+	   1345  53f    0x18D40 SetProcessDEPPolicy
+	   1346  540    0xA3432 SetProcessDefaultCpuSets
+	   1347  541    0x23930 SetProcessInformation
+	   1348  542    0xA34A2 SetProcessMitigationPolicy
+	   1349  543    0x35C10 SetProcessPreferredUILanguages
+	   1350  544    0x35C30 SetProcessPriorityBoost
+	   1351  545    0x19FB0 SetProcessShutdownParameters
+	   1352  546    0x1A400 SetProcessWorkingSetSize
+	   1353  547    0x35C50 SetProcessWorkingSetSizeEx
+	   1354  548    0xA357E SetProtectedPolicy
+	   1355  549    0x32660 SetSearchPathMode
+	   1356  54a    0x35C90 SetStdHandle
+	   1357  54b    0x35C70 SetStdHandleEx
+	   1358  54c    0x35CB0 SetSystemFileCacheSize
+	   1359  54d    0x32BA0 SetSystemPowerState
+	   1360  54e    0x35CD0 SetSystemTime
+	   1361  54f    0x31810 SetSystemTimeAdjustment
+	   1362  550    0x3B320 SetTapeParameters
+	   1363  551    0x3B360 SetTapePosition
+	   1364  552    0x5EA90 SetTermsrvAppInstallMode
+	   1365  553    0x5F8B0 SetThreadAffinityMask
+	   1366  554    0x35CF0 SetThreadContext
+	   1367  555    0xA36AD SetThreadDescription
+	   1368  556    0x1A0B0 SetThreadErrorMode
+	   1369  557    0x1A130 SetThreadExecutionState
+	   1370  558    0x35D10 SetThreadGroupAffinity
+	   1371  559    0x19FD0 SetThreadIdealProcessor
+	   1372  55a    0x35D30 SetThreadIdealProcessorEx
+	   1373  55b    0x23940 SetThreadInformation
+	   1374  55c    0x18B80 SetThreadLocale
+	   1375  55d    0x216B0 SetThreadPreferredUILanguages
+	   1376  55e    0x21630 SetThreadPriority
+	   1377  55f    0x35D50 SetThreadPriorityBoost
+	   1378  560    0xA37E1 SetThreadSelectedCpuSets
+	   1379  561    0x22A00 SetThreadStackGuarantee
+	   1380  562    0xA3847 SetThreadToken
+	   1381  563    0x35D70 SetThreadUILanguage
+	   1382  564    0x35D90 SetThreadpoolStackInformation
+	   1383  565    0xA38C9 SetThreadpoolThreadMaximum
+	   1384  566    0x35DC0 SetThreadpoolThreadMinimum
+	   1385  567    0xA3911 SetThreadpoolTimer
+	   1386  568    0xA3937 SetThreadpoolTimerEx
+	   1387  569    0xA395C SetThreadpoolWait
+	   1388  56a    0xA3980 SetThreadpoolWaitEx
+	   1389  56b    0x35DF0 SetTimeZoneInformation
+	   1390  56c    0x3BDE0 SetTimerQueueTimer
+	   1391  56d    0x223B0 SetUnhandledExceptionFilter
+	   1392  56e    0x4CBC0 SetUserGeoID
+	   1393  56f    0x4CBE0 SetUserGeoName
+	   1394  570    0x3A070 SetVDMCurrentDirectories
+	   1395  571    0x5DA60 SetVolumeLabelA
+	   1396  572    0x5DAE0 SetVolumeLabelW
+	   1397  573    0x5C2B0 SetVolumeMountPointA
+	   1398  574    0x5C310 SetVolumeMountPointW
+	   1399  575    0x35E10 SetVolumeMountPointWStub
+	   1400  576    0x23B00 SetWaitableTimer
+	   1401  577    0xA3A94 SetWaitableTimerEx
+	   1402  578    0x35E20 SetXStateFeaturesMask
+	   1403  579    0x24200 SetupComm
+	   1404  57a    0x60A00 ShowConsoleCursor
+	   1405  57b    0x35E40 SignalObjectAndWait
+	   1406  57c    0x20A60 SizeofResource
+	   1407  57d    0x21AB0 Sleep
+	   1408  57e    0xA3B38 SleepConditionVariableCS
+	   1409  57f    0xA3B88 SleepConditionVariableSRW
+	   1410  580    0x23B10 SleepEx
+	   1411  581    0x1A250 SortCloseHandle
+	   1412  582    0x1F380 SortGetHandle
+	   1413  583    0xA3BF7 StartThreadpoolIo
+	   1414  584    0xA3C2A SubmitThreadpoolWork
+	   1415  585    0x35E60 SuspendThread
+	   1416  586    0x242C0 SwitchToFiber
+	   1417  587    0x18160 SwitchToThread
+	   1418  588    0x21F00 SystemTimeToFileTime
+	   1419  589    0x19720 SystemTimeToTzSpecificLocalTime
+	   1420  58a    0xA3CBD SystemTimeToTzSpecificLocalTimeEx
+	   1421  58b    0x54770 TerminateJobObject
+	   1422  58c    0x1A380 TerminateProcess
+	   1423  58d    0x35E80 TerminateThread
+	   1424  58e    0x10A20 TermsrvAppInstallMode
+	   1425  58f    0x10830 TermsrvConvertSysRootToUserDir
+	   1426  590    0x22150 TermsrvCreateRegEntry
+	   1427  591    0x22260 TermsrvDeleteKey
+	   1428  592    0x21FB0 TermsrvDeleteValue
+	   1429  593    0x21200 TermsrvGetPreSetValue
+	   1430  594    0x22620 TermsrvGetWindowsDirectoryA
+	   1431  595    0x21F20 TermsrvGetWindowsDirectoryW
+	   1432  596    0x1F340 TermsrvOpenRegEntry
+	   1433  597    0x225F0 TermsrvOpenUserClasses
+	   1434  598    0x5F830 TermsrvRestoreKey
+	   1435  599    0x5F870 TermsrvSetKeySecurity
+	   1436  59a    0x21230 TermsrvSetValueKey
+	   1437  59b    0x10970 TermsrvSyncUserIniFileExt
+	   1438  59c    0x5AED0 Thread32First
+	   1439  59d    0x5AF80 Thread32Next
+	   1440  59e    0x21DC0 TlsAlloc
+	   1441  59f    0x21AC0 TlsFree
+	   1442  5a0    0x1EF40 TlsGetValue
+	   1443  5a1    0x1EF90 TlsSetValue
+	   1444  5a2    0x36340 Toolhelp32ReadProcessMemory
+	   1445  5a3    0x35EA0 TransactNamedPipe
+	   1446  5a4    0x24210 TransmitCommChar
+	   1447  5a5    0xA3F0E TryAcquireSRWLockExclusive
+	   1448  5a6    0xA3F4A TryAcquireSRWLockShared
+	   1449  5a7    0xA3F83 TryEnterCriticalSection
+	   1450  5a8    0x35EC0 TrySubmitThreadpoolCallback
+	   1451  5a9    0x19700 TzSpecificLocalTimeToSystemTime
+	   1452  5aa    0xA4002 TzSpecificLocalTimeToSystemTimeEx
+	   1453  5ab    0x32690 UTRegister
+	   1454  5ac    0x326F0 UTUnRegister
+	   1455  5ad    0x35EF0 UnhandledExceptionFilter
+	   1456  5ae    0x24000 UnlockFile
+	   1457  5af    0x24010 UnlockFileEx
+	   1458  5b0    0x219F0 UnmapViewOfFile
+	   1459  5b1    0xA40AF UnmapViewOfFileEx
+	   1460  5b2    0x3BBD0 UnregisterApplicationRecoveryCallback
+	   1461  5b3    0x3BBF0 UnregisterApplicationRestart
+	   1462  5b4    0x35F10 UnregisterBadMemoryNotification
+	   1463  5b5    0x3B490 UnregisterConsoleIME
+	   1464  5b6    0x19100 UnregisterWait
+	   1465  5b7    0x19240 UnregisterWaitEx
+	   1466  5b8    0x5E620 UnregisterWaitUntilOOBECompleted
+	   1467  5b9    0x444F0 UpdateCalendarDayOfWeek
+	   1468  5ba    0xA41CA UpdateProcThreadAttribute
+	   1469  5bb    0x41990 UpdateResourceA
+	   1470  5bc    0x41AA0 UpdateResourceW
+	   1471  5bd    0x610B0 VDMConsoleOperation
+	   1472  5be    0x3A310 VDMOperationStarted
+	   1473  5bf    0x35F30 VerLanguageNameA
+	   1474  5c0    0x35F50 VerLanguageNameW
+	   1475  5c1    0xA4288 VerSetConditionMask
+	   1476  5c2    0x606C0 VerifyConsoleIoHandle
+	   1477  5c3    0x35F70 VerifyScripts
+	   1478  5c4    0x15F30 VerifyVersionInfoA
+	   1479  5c5    0x213D0 VerifyVersionInfoW
+	   1480  5c6    0x1FF00 VirtualAlloc
+	   1481  5c7    0x35FB0 VirtualAllocEx
+	   1482  5c8    0x35F90 VirtualAllocExNuma
+	   1483  5c9    0x1FF30 VirtualFree
+	   1484  5ca    0x35FD0 VirtualFreeEx
+	   1485  5cb    0x19D70 VirtualLock
+	   1486  5cc    0x20C10 VirtualProtect
+	   1487  5cd    0x35FF0 VirtualProtectEx
+	   1488  5ce    0x20640 VirtualQuery
+	   1489  5cf    0x36010 VirtualQueryEx
+	   1490  5d0    0x1A1E0 VirtualUnlock
+	   1491  5d1    0x22990 WTSGetActiveConsoleSessionId
+	   1492  5d2    0x24220 WaitCommEvent
+	   1493  5d3    0x36030 WaitForDebugEvent
+	   1494  5d4    0xA43DC WaitForDebugEventEx
+	   1495  5d5    0x23B20 WaitForMultipleObjects
+	   1496  5d6    0x23B30 WaitForMultipleObjectsEx
+	   1497  5d7    0x23B40 WaitForSingleObject
+	   1498  5d8    0x23B50 WaitForSingleObjectEx
+	   1499  5d9    0xA4484 WaitForThreadpoolIoCallbacks
+	   1500  5da    0xA44C0 WaitForThreadpoolTimerCallbacks
+	   1501  5db    0xA44F4 WaitForThreadpoolWaitCallbacks
+	   1502  5dc    0xA4527 WaitForThreadpoolWorkCallbacks
+	   1503  5dd    0x58720 WaitNamedPipeA
+	   1504  5de    0x36050 WaitNamedPipeW
+	   1505  5df    0xA4572 WakeAllConditionVariable
+	   1506  5e0    0xA45AA WakeConditionVariable
+	   1507  5e1    0x3BC00 WerGetFlags
+	   1508  5e2    0x3BC00 WerGetFlagsWorker
+	   1509  5e3    0x36070 WerRegisterAdditionalProcess
+	   1510  5e4    0x36090 WerRegisterAppLocalDump
+	   1511  5e5    0x360B0 WerRegisterCustomMetadata
+	   1512  5e6    0x360D0 WerRegisterExcludedMemoryBlock
+	   1513  5e7    0x229E0 WerRegisterFile
+	   1514  5e8    0x3BC20 WerRegisterFileWorker
+	   1515  5e9    0x19BF0 WerRegisterMemoryBlock
+	   1516  5ea    0x3BC40 WerRegisterMemoryBlockWorker
+	   1517  5eb    0x1A280 WerRegisterRuntimeExceptionModule
+	   1518  5ec    0x3BC60 WerRegisterRuntimeExceptionModuleWorker
+	   1519  5ed    0x18F40 WerSetFlags
+	   1520  5ee    0x3BC80 WerSetFlagsWorker
+	   1521  5ef    0x360F0 WerUnregisterAdditionalProcess
+	   1522  5f0    0x36110 WerUnregisterAppLocalDump
+	   1523  5f1    0x36120 WerUnregisterCustomMetadata
+	   1524  5f2    0x36140 WerUnregisterExcludedMemoryBlock
+	   1525  5f3    0x36160 WerUnregisterFile
+	   1526  5f4    0x3BCA0 WerUnregisterFileWorker
+	   1527  5f5    0x36180 WerUnregisterMemoryBlock
+	   1528  5f6    0x3BCC0 WerUnregisterMemoryBlockWorker
+	   1529  5f7    0x361A0 WerUnregisterRuntimeExceptionModule
+	   1530  5f8    0x3BCE0 WerUnregisterRuntimeExceptionModuleWorker
+	   1531  5f9    0x62D70 WerpGetDebugger
+	   1532  5fa    0x3BD00 WerpInitiateRemoteRecovery
+	   1533  5fb    0x63500 WerpLaunchAeDebug
+	   1534  5fc    0x216A0 WerpNotifyLoadStringResourceWorker
+	   1535  5fd    0x3BD10 WerpNotifyUseStringResourceWorker
+	   1536  5fe    0x1F000 WideCharToMultiByte
+	   1537  5ff    0x5D220 WinExec
+	   1538  600    0x18B00 Wow64DisableWow64FsRedirection
+	   1539  601    0x5F920 Wow64EnableWow64FsRedirection
+	   1540  602    0x362B0 Wow64GetThreadContext
+	   1541  603    0x318E0 Wow64GetThreadSelectorEntry
+	   1542  604    0x18AE0 Wow64RevertWow64FsRedirection
+	   1543  605    0x362E0 Wow64SetThreadContext
+	   1544  606    0x36310 Wow64SuspendThread
+	      3  607    0x81F8C Wow64Transition
+	   1545  608    0x243F0 WriteConsoleA
+	   1546  609    0x24610 WriteConsoleInputA
+	   1547  60a    0x60A40 WriteConsoleInputVDMA
+	   1548  60b    0x60AB0 WriteConsoleInputVDMW
+	   1549  60c    0x24620 WriteConsoleInputW
+	   1550  60d    0x24630 WriteConsoleOutputA
+	   1551  60e    0x24640 WriteConsoleOutputAttribute
+	   1552  60f    0x24650 WriteConsoleOutputCharacterA
+	   1553  610    0x24660 WriteConsoleOutputCharacterW
+	   1554  611    0x24670 WriteConsoleOutputW
+	   1555  612    0x24400 WriteConsoleW
+	   1556  613    0x24020 WriteFile
+	   1557  614    0x24030 WriteFileEx
+	   1558  615    0x24040 WriteFileGather
+	   1559  616    0x57C90 WritePrivateProfileSectionA
+	   1560  617    0x57CE0 WritePrivateProfileSectionW
+	   1561  618    0x19740 WritePrivateProfileStringA
+	   1562  619    0x1A070 WritePrivateProfileStringW
+	   1563  61a    0x57D30 WritePrivateProfileStructA
+	   1564  61b    0x57E80 WritePrivateProfileStructW
+	   1565  61c    0x361C0 WriteProcessMemory
+	   1566  61d    0x57FE0 WriteProfileSectionA
+	   1567  61e    0x58000 WriteProfileSectionW
+	   1568  61f    0x58020 WriteProfileStringA
+	   1569  620    0x58040 WriteProfileStringW
+	   1570  621    0x3B3C0 WriteTapemark
+	   1571  622    0x361E0 ZombifyActCtx
+	   1572  623    0x3BA20 ZombifyActCtxWorker
+	   1573  624    0x1F080 _hread
+	   1574  625    0x5F9E0 _hwrite
+	   1575  626    0x15FE0 _lclose
+	   1576  627    0x5F950 _lcreat
+	   1577  628    0x1F030 _llseek
+	   1578  629    0x5F990 _lopen
+	   1579  62a    0x1F080 _lread
+	   1580  62b    0x5F9E0 _lwrite
+	   1581  62c    0x19180 lstrcat
+	   1582  62d    0x19180 lstrcatA
+	   1583  62e    0x5FA30 lstrcatW
+	   1584  62f    0x36200 lstrcmp
+	   1585  630    0x205E0 lstrcmpA
+	   1586  631    0x21650 lstrcmpW
+	   1587  632    0x36220 lstrcmpi
+	   1588  633    0x1FEC0 lstrcmpiA
+	   1589  634    0x205C0 lstrcmpiW
+	   1590  635    0x186E0 lstrcpy
+	   1591  636    0x186E0 lstrcpyA
+	   1592  637    0x5FB90 lstrcpyW
+	   1593  638    0x19D50 lstrcpyn
+	   1594  639    0x19D50 lstrcpynA
+	   1595  63a    0x1A2C0 lstrcpynW
+	   1596  63b    0x20D10 lstrlen
+	   1597  63c    0x20D10 lstrlenA
+	   1598  63d    0x1F0C0 lstrlenW
+	   1599  63e    0x198E0 timeBeginPeriod
+	   1600  63f    0x197A0 timeEndPeriod
+	   1601  640    0x5FBF0 timeGetDevCaps
+	   1602  641    0x5FC40 timeGetSystemTime
+	   1603  642    0x15E60 timeGetTime
+	
+Section contains the following imports:
+
+	api-ms-win-core-rtlsupport-l1-1-0.dll
+	     0x8b04c Import Address Table
+	     0x666d0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-rtlsupport-l1-2-0.dll
+	     0x8b05c Import Address Table
+	     0x666e0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	ntdll.dll
+	     0x8b338 Import Address Table
+	     0x669bc Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	KERNELBASE.dll
+	     0x8a44c Import Address Table
+	     0x65ad0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processthreads-l1-1-0.dll
+	     0x8adec Import Address Table
+	     0x66470 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processthreads-l1-1-3.dll
+	     0x8aedc Import Address Table
+	     0x66560 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processthreads-l1-1-2.dll
+	     0x8aec0 Import Address Table
+	     0x66544 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processthreads-l1-1-1.dll
+	     0x8ae90 Import Address Table
+	     0x66514 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-registry-l1-1-0.dll
+	     0x8afa0 Import Address Table
+	     0x66624 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-heap-l1-1-0.dll
+	     0x8aa2c Import Address Table
+	     0x660b0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-heap-l2-1-0.dll
+	     0x8aa68 Import Address Table
+	     0x660ec Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-memory-l1-1-1.dll
+	     0x8ac94 Import Address Table
+	     0x66318 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-memory-l1-1-0.dll
+	     0x8ac50 Import Address Table
+	     0x662d4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-memory-l1-1-2.dll
+	     0x8acc8 Import Address Table
+	     0x6634c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-handle-l1-1-0.dll
+	     0x8aa18 Import Address Table
+	     0x6609c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-synch-l1-1-0.dll
+	     0x8b0b8 Import Address Table
+	     0x6673c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-synch-l1-2-1.dll
+	     0x8b150 Import Address Table
+	     0x667d4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-synch-l1-2-0.dll
+	     0x8b138 Import Address Table
+	     0x667bc Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l1-1-0.dll
+	     0x8a870 Import Address Table
+	     0x65ef4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l1-2-0.dll
+	     0x8a990 Import Address Table
+	     0x66014 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l1-2-2.dll
+	     0x8a9b0 Import Address Table
+	     0x66034 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l1-2-1.dll
+	     0x8a9a0 Import Address Table
+	     0x66024 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-delayload-l1-1-0.dll
+	     0x8a804 Import Address Table
+	     0x65e88 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-io-l1-1-0.dll
+	     0x8aa70 Import Address Table
+	     0x660f4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-io-l1-1-1.dll
+	     0x8aa90 Import Address Table
+	     0x66114 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-job-l1-1-0.dll
+	     0x8aa9c Import Address Table
+	     0x66120 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-threadpool-legacy-l1-1-0.dll
+	     0x8b1f8 Import Address Table
+	     0x6687c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-threadpool-private-l1-1-0.dll
+	     0x8b218 Import Address Table
+	     0x6689c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-libraryloader-l1-2-2.dll
+	     0x8ab18 Import Address Table
+	     0x6619c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-libraryloader-l1-2-0.dll
+	     0x8aaa4 Import Address Table
+	     0x66128 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-libraryloader-l1-2-1.dll
+	     0x8ab08 Import Address Table
+	     0x6618c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-libraryloader-l2-1-0.dll
+	     0x8ab20 Import Address Table
+	     0x661a4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-namedpipe-l1-2-2.dll
+	     0x8ad1c Import Address Table
+	     0x663a0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-namedpipe-l1-1-0.dll
+	     0x8acec Import Address Table
+	     0x66370 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-namedpipe-l1-2-1.dll
+	     0x8ad14 Import Address Table
+	     0x66398 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-datetime-l1-1-0.dll
+	     0x8a7b0 Import Address Table
+	     0x65e34 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-datetime-l1-1-1.dll
+	     0x8a7c4 Import Address Table
+	     0x65e48 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-datetime-l1-1-2.dll
+	     0x8a7d0 Import Address Table
+	     0x65e54 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-sysinfo-l1-2-0.dll
+	     0x8b1a4 Import Address Table
+	     0x66828 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-sysinfo-l1-1-0.dll
+	     0x8b15c Import Address Table
+	     0x667e0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-sysinfo-l1-2-3.dll
+	     0x8b1d4 Import Address Table
+	     0x66858 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-sysinfo-l1-2-1.dll
+	     0x8b1c4 Import Address Table
+	     0x66848 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-timezone-l1-1-0.dll
+	     0x8b220 Import Address Table
+	     0x668a4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-localization-l1-2-0.dll
+	     0x8ab28 Import Address Table
+	     0x661ac Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-localization-private-l1-1-0.dll
+	     0x8ac34 Import Address Table
+	     0x662b8 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processsnapshot-l1-1-0.dll
+	     0x8adc0 Import Address Table
+	     0x66444 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processenvironment-l1-1-0.dll
+	     0x8ad58 Import Address Table
+	     0x663dc Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processenvironment-l1-2-0.dll
+	     0x8adb0 Import Address Table
+	     0x66434 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-string-l1-1-0.dll
+	     0x8b094 Import Address Table
+	     0x66718 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-debug-l1-1-1.dll
+	     0x8a7ec Import Address Table
+	     0x65e70 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-debug-l1-1-0.dll
+	     0x8a7d8 Import Address Table
+	     0x65e5c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-errorhandling-l1-1-0.dll
+	     0x8a80c Import Address Table
+	     0x65e90 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-errorhandling-l1-1-3.dll
+	     0x8a82c Import Address Table
+	     0x65eb0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-fibers-l1-1-0.dll
+	     0x8a838 Import Address Table
+	     0x65ebc Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-util-l1-1-0.dll
+	     0x8b248 Import Address Table
+	     0x668cc Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-profile-l1-1-0.dll
+	     0x8af00 Import Address Table
+	     0x66584 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-security-base-l1-1-0.dll
+	     0x8b300 Import Address Table
+	     0x66984 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-security-base-l1-2-0.dll
+	     0x8b318 Import Address Table
+	     0x6699c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-comm-l1-1-0.dll
+	     0x8a5e0 Import Address Table
+	     0x65c64 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-wow64-l1-1-1.dll
+	     0x8b2ac Import Address Table
+	     0x66930 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-wow64-l1-1-0.dll
+	     0x8b29c Import Address Table
+	     0x66920 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-realtime-l1-1-0.dll
+	     0x8af88 Import Address Table
+	     0x6660c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-systemtopology-l1-1-1.dll
+	     0x8b1f0 Import Address Table
+	     0x66874 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-systemtopology-l1-1-0.dll
+	     0x8b1e4 Import Address Table
+	     0x66868 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-processtopology-l1-1-0.dll
+	     0x8aef0 Import Address Table
+	     0x66574 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-namespace-l1-1-0.dll
+	     0x8ad24 Import Address Table
+	     0x663a8 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l2-1-2.dll
+	     0x8aa04 Import Address Table
+	     0x66088 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l2-1-0.dll
+	     0x8a9cc Import Address Table
+	     0x66050 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l2-1-3.dll
+	     0x8aa10 Import Address Table
+	     0x66094 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-file-l2-1-1.dll
+	     0x8a9fc Import Address Table
+	     0x66080 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-xstate-l2-1-0.dll
+	     0x8b2c0 Import Address Table
+	     0x66944 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-xstate-l2-1-1.dll
+	     0x8b2dc Import Address Table
+	     0x66960 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-localization-l2-1-0.dll
+	     0x8ac04 Import Address Table
+	     0x66288 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-normalization-l1-1-0.dll
+	     0x8ad40 Import Address Table
+	     0x663c4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-fibers-l2-1-0.dll
+	     0x8a84c Import Address Table
+	     0x65ed0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-fibers-l2-1-1.dll
+	     0x8a864 Import Address Table
+	     0x65ee8 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-sidebyside-l1-1-0.dll
+	     0x8b064 Import Address Table
+	     0x666e8 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-appcompat-l1-1-0.dll
+	     0x8a5b4 Import Address Table
+	     0x65c38 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-appcompat-l1-1-1.dll
+	     0x8a5d4 Import Address Table
+	     0x65c58 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-windowserrorreporting-l1-1-0.dll
+	     0x8b250 Import Address Table
+	     0x668d4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-windowserrorreporting-l1-1-1.dll
+	     0x8b274 Import Address Table
+	     0x668f8 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-windowserrorreporting-l1-1-2.dll
+	     0x8b290 Import Address Table
+	     0x66914 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-console-l1-1-0.dll
+	     0x8a62c Import Address Table
+	     0x65cb0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-console-l1-2-0.dll
+	     0x8a664 Import Address Table
+	     0x65ce8 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-console-l1-2-1.dll
+	     0x8a678 Import Address Table
+	     0x65cfc Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-console-l2-1-0.dll
+	     0x8a688 Import Address Table
+	     0x65d0c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-console-l2-2-0.dll
+	     0x8a710 Import Address Table
+	     0x65d94 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-console-l3-2-0.dll
+	     0x8a72c Import Address Table
+	     0x65db0 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-psapi-l1-1-0.dll
+	     0x8af30 Import Address Table
+	     0x665b4 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-core-psapi-ansi-l1-1-0.dll
+	     0x8af0c Import Address Table
+	     0x66590 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-security-appcontainer-l1-1-0.dll
+	     0x8b2f8 Import Address Table
+	     0x6697c Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+	api-ms-win-eventing-provider-l1-1-0.dll
+	     0x8b2e4 Import Address Table
+	     0x66968 Import Name Table
+	         0x0 TimeDate Stamp
+	         0x0 Index of first forwarder reference
+
+

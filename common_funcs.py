@@ -1,10 +1,28 @@
-def hex_from_bytes(byte_str):
-    return '0x' + hex(int.from_bytes(byte_str, 'little'))[2:].upper()
+def hex_from_bytes(byte_str, symbols_len=0):
+    if not isinstance(byte_str, (str, bytes, bytearray)):
+        raise TypeError
+
+    if isinstance(byte_str, str):
+        byte_str = bytes(byte_str)
+    if not byte_str:
+        return ''
+
+    result = hex(int.from_bytes(byte_str, 'little'))[2:]\
+        .upper().zfill(symbols_len)
+    if len(result) % 2 == 1 and symbols_len == 0:
+        result = '0' + result
+    return '0x' + result
+
+
+def hex_from_number(number, symbols_len=4):
+    return '0x' + hex(number)[2:].upper().zfill(symbols_len)
 
 
 def bytes_line_to_symbols(line):
     """Example of input: \"0A 5B 9F 4D\"
                      or: \"5B0A 4D9F\""""
+    if line is None:
+        return ''
     if len(line) == 0:
         return ''
     temp = []
@@ -16,7 +34,52 @@ def bytes_line_to_symbols(line):
 
     def parse_hex(s):
         n = int(s, 16)
-        return chr(n) if 62 < n < 127 or n > 160 else '.'
+        return chr(n) if 62 < n < 127 else '.'
 
-    b = ''.join(map(parse_hex, temp))
-    return b
+    return ''.join(map(parse_hex, temp))
+
+
+def formatted_output(base_address, data):
+    """data can be enumerator of byte"""
+    result = ''
+    line = ''
+    data = list(data)
+    for counter, e in enumerate(data):
+        if isinstance(e, bytes):
+            e = e[0]
+        if counter != 0 and counter % 16 == 0:
+            yield f'0x{hex(base_address + counter - 16)[2:]:0>8}: ' \
+                      f'{line} {bytes_line_to_symbols(line)}\n'
+            line = ''
+        line += f'{hex(e)[2:].upper():0^2} '
+    if len(line) > 0:
+        yield (f'0x{hex(base_address + len(data) - (len(data) % 16))[2:]:0>8}:'
+               f' {line:48} {bytes_line_to_symbols(line)}\n')
+
+    return result
+
+
+def get_line(f, address):
+    """find and return line that starts with address and ends by zero-byte
+    Parameters:
+        f - file stream,
+        address - raw address of string"""
+    temp_address = f.tell()
+    f.seek(address, 0)
+    letters = []
+    let = f.read(1)
+    while let != b'' and let != b'\x00':
+        letters.append(let)
+        let = f.read(1)
+    f.seek(temp_address, 0)
+    try:
+        return b''.join(letters).decode('utf-8')
+    except Exception as e:
+        return ""
+
+
+def get_resource_type(data):
+    if list(data[0:7]) == [137, 80, 78, 71, 13, 10, 26, 10]:
+        return "image"
+
+    return "unknown"
