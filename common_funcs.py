@@ -4,12 +4,11 @@ def hex_from_bytes(byte_str, symbols_len=0):
 
     if isinstance(byte_str, str):
         byte_str = bytes(byte_str)
-    if len(byte_str) == 0:
+    if not byte_str:
         return ''
 
-    result = hex(int.from_bytes(byte_str, 'little'))[2:].upper()
-    if len(result) < symbols_len:
-        result = result.zfill(symbols_len)
+    result = hex(int.from_bytes(byte_str, 'little'))[2:]\
+        .upper().zfill(symbols_len)
     if len(result) % 2 == 1 and symbols_len == 0:
         result = '0' + result
     return '0x' + result
@@ -37,26 +36,24 @@ def bytes_line_to_symbols(line):
         n = int(s, 16)
         return chr(n) if 62 < n < 127 else '.'
 
-    b = ''.join(map(parse_hex, temp))
-    return b
+    return ''.join(map(parse_hex, temp))
 
 
 def formatted_output(base_address, data):
     """data can be enumerator of byte"""
     result = ''
-    counter = 0
     line = ''
-    for i in data:
-        if isinstance(i, bytes):
-            i = i[0]
+    data = list(data)
+    for counter, e in enumerate(data):
+        if isinstance(e, bytes):
+            e = e[0]
         if counter != 0 and counter % 16 == 0:
             yield f'0x{hex(base_address + counter - 16)[2:]:0>8}: ' \
                       f'{line} {bytes_line_to_symbols(line)}\n'
             line = ''
-        line += f'{hex(i)[2:].upper():0^2} '
-        counter += 1
+        line += f'{hex(e)[2:].upper():0^2} '
     if len(line) > 0:
-        yield (f'0x{hex(base_address + counter - (counter % 16))[2:]:0>8}:'
+        yield (f'0x{hex(base_address + len(data) - (len(data) % 16))[2:]:0>8}:'
                f' {line:48} {bytes_line_to_symbols(line)}\n')
 
     return result
@@ -79,3 +76,10 @@ def get_line(f, address):
         return b''.join(letters).decode('utf-8')
     except Exception as e:
         return ""
+
+
+def get_resource_type(data):
+    if list(data[0:7]) == [137, 80, 78, 71, 13, 10, 26, 10]:
+        return "image"
+
+    return "unknown"

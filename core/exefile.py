@@ -2,7 +2,8 @@ import os
 import core.parsing_functions
 from core.relocations import RelocationsParser
 
-from core.resources import ResourcesParser
+from core.resources import (ResourcesParser, ResourceInfo,
+                            ResourceTable, GroupIcon)
 from core.ImportTable import ImportTable
 from core.exportTable import ExportTable
 
@@ -146,3 +147,24 @@ class ExeFile:
             result.append((section['name'], size))
 
         return result
+
+    def get_resource(self, resources: ResourceTable,
+                     resourceInfo: ResourceInfo):
+        header = b""
+        if resourceInfo.resourceType == "ICON":
+            table = resources.get_element_by_name("GROUP_ICON")
+            for e in table.elements:
+                groupIcon = GroupIcon(self.get_resource(
+                    resources, e.elements[0]))
+
+                if resourceInfo.name in groupIcon.icons:
+                    header = groupIcon.get_icon_header(resourceInfo.name)
+                    break
+
+        with open(self.path, 'rb') as f:
+            raw = self.rva_to_raw(resourceInfo.rva)
+            f.seek(raw[1])
+            data = f.read(resourceInfo.size)
+            if data[:4] == b"%PNG":
+                header = b""
+            return header + data

@@ -2,7 +2,7 @@ import os
 
 import CLI.file_header as fh
 import CLI.optional_header as oh
-from CLI.parser import Parser
+from CLI.parser import get_parser
 from CLI.section_headers import SectionHeaders
 
 from common_funcs import hex_from_bytes, formatted_output, hex_from_number
@@ -14,38 +14,32 @@ class CommandLineInterface:
     def __init__(self, argv):
         self.curr_lang = 'English'
         self.lang = langs[self.curr_lang]
-        self.parser = Parser(self)
+        self.parser = get_parser(self)
 
         # Возможно невнимательно
         # просмотрел документацию но
         # по-другому много переписывать
-        args = self.parser.parse(argv).__dict__
+        args = self.parser.parse_args(argv).__dict__
 
         args['filename'] = os.path.abspath(args['filename'])
-        try:
-            self.exeFile = ExeFile(args['filename'])
-        except Exception as e:
-            print(str(e))
-            return
+
+        self.exeFile = ExeFile(args['filename'])
+
         if self.exeFile.exc:
             print(self.exeFile.excInfo)
             return
 
-        try:
-            self.parse_args(args)
-        except KeyboardInterrupt:
-            print('Stopped by user')
-            return
+        self.parse_args(args)
 
     def parse_args(self, argv):
         print('Dump of file:\n\t' + self.exeFile.path)
         result = []
         for arg in argv:
-            if arg == 'sh':
+            if arg == 'section_headers':
                 sh = self.section_headers(argv[arg])
                 if sh is not None and sh != '':
                     result.append(sh)
-            elif arg == 'rsh' and argv[arg]:
+            elif arg == 'raw_section_header' and argv[arg]:
                 rsh = self.raw_section_data(argv[arg])
                 if rsh is not None and rsh != '':
                     result.append(rsh)
@@ -122,6 +116,13 @@ class CommandLineInterface:
             result.append(f'\t{elem[0]:>8} {hex_from_number(elem[1])}')
 
         return '\n'.join(result)
+
+    def graphic_resources(self):
+        try:
+            import GUI.resources
+            GUI.resources.ResourcesWidget(self.exeFile)
+        except ImportError as e:
+            print("I can't run graphic interface. Requirements are missing")
 
 
 if __name__ == "__main__":
