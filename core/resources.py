@@ -72,9 +72,10 @@ class ResourcesParser:
                               f'{info[2]}.{info[3]}', resourceType)
         for i in range(info[4]):
             name, elementOffset = struct.unpack('II', self.f.read(8))
-            name = self.get_directory_string(name)
+            name = self.get_directory_string(name - HALF_MAX_INT - 1)
             table.elements.append(self.add_element(level, name,
-                                                   table.name, elementOffset))
+                                                   table.name, elementOffset,
+                                                   resourceType))
         for i in range(info[5]):
             name, elementOffset = struct.unpack('II', self.f.read(8))
             if level == 0 and name in RESOURCE_TYPES:
@@ -90,7 +91,7 @@ class ResourcesParser:
         temp_position = self.f.tell()
         self.f.seek(position + self.start_position)
         length = int.from_bytes(self.f.read(2), 'little')
-        result = self.f.read(length).decode('utf-8')
+        result = self.f.read(length * 2).decode('utf-16')
         self.f.seek(temp_position)
         return result
 

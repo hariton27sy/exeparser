@@ -2,9 +2,13 @@ import unittest
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                             os.path.pardir))
+CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(CUR_DIR, os.path.pardir))
 import common_funcs
+
+
+def full_path(path):
+    return os.path.join(CUR_DIR, path)
 
 
 class TestBytesLineToSymbols(unittest.TestCase):
@@ -43,6 +47,10 @@ class TestHexFromBytes(unittest.TestCase):
         actual = common_funcs.hex_from_bytes(b'\xBB\x0A')
         self.assertEqual(expected, actual)
 
+    def test_byte_from_number(self):
+        temp = common_funcs.hex_from_number(15)
+        self.assertEqual('0x000F', temp)
+
 
 class TestFormattedOutput(unittest.TestCase):
     def test_CommonData(self):
@@ -61,6 +69,45 @@ class TestFormattedOutput(unittest.TestCase):
         expected = ''
 
         self.assertEqual(expected, actual)
+
+
+class TestFormatByDataAndStartsWith(unittest.TestCase):
+    data1 = [13, 15, 17, 20, 22, 14, 13, 15]
+
+    def test_starts_with_when_same_with(self):
+        data2 = [13, 15, 17, 20, 22, 14, 13, 15]
+        actual = common_funcs.list_starts_with_second_list(self.data1, data2)
+        self.assertEqual(True, actual)
+
+    def test_starts_with_on_different_lengthes(self):
+        data2 = [13, 15, 17, 20]
+        self.assertEqual(
+            True, common_funcs.list_starts_with_second_list(self.data1, data2))
+
+        self.assertEqual(
+            True, common_funcs.list_starts_with_second_list(data2, self.data1))
+
+    def test_starts_with_on_empty_second_data(self):
+        self.assertEqual(
+            True, common_funcs.list_starts_with_second_list(self.data1, []))
+
+    def test_starts_with_on_different_data(self):
+        data2 = [13, 15, 22]
+        self.assertEqual(
+            False, common_funcs.list_starts_with_second_list(
+                self.data1, data2))
+
+    def test_get_format_on_png_image(self):
+        with open(full_path('test_png.png'), 'rb') as f:
+            data = f.read()
+
+        self.assertEqual('image', common_funcs.get_resource_type(data))
+
+    def test_get_full_bmp(self):
+        with open(full_path('test_bmp_without_header'), 'rb') as f:
+            data = f.read()
+        actual = common_funcs.get_bmp_with_header(data)
+        self.assertEqual(b"BM", actual[:2])
 
 
 if __name__ == "__main__":

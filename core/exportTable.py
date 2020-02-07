@@ -82,7 +82,7 @@ class ExportTable:
     def __str__(self):
         if self.table is None:
             return ''
-        result = ('    Section contains the following exports for '
+        result = ['    Section contains the following exports for '
                   f'{self.table["name"]}\n\t'
                   f'{self.table["characteristics"]:>12} Characteristics\n\t'
                   f'{self.table["timeDateStamp"]:>12} TimeDate Stamp\n\t'
@@ -90,12 +90,13 @@ class ExportTable:
                   f'{self.table["base"]:>12} Base\n\t'
                   f'{self.table["numberOfFunctions"]:>12} '
                   'Number of Functions\n\t'
-                  f'{self.table["numberOfNames"]:>12} Number of Names\n\n\t')
+                  f'{self.table["numberOfNames"]:>12} Number of Names\n\n\t',
+                  f'ordinal hint {"RVA":>10} name\n\n\t']
 
-        result += f'ordinal hint {"RVA":>10} name\n\n\t'
         for i in range(self.table['numberOfNames']):
             rva = (self.table["addressesOfFunctions"]
                    [self.table["nameOrdinals"][i] - 1])
-            result += (f'{self.table["nameOrdinals"][i]:>7} {hex(i)[2:]:>4} '
-                       f'{rva:>10} {self.table["names"][i]}\n\t')
-        return result
+            result.append(f'{self.table["nameOrdinals"][i]:>7} '
+                          f'{hex(i)[2:]:>4} {rva:>10} '
+                          f'{self.table["names"][i]}\n\t')
+        return "".join(result)
