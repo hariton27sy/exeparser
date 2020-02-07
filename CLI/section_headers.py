@@ -23,17 +23,15 @@ class SectionHeaders:
                                      ['numberOfSections'][1])
                     or section_number < 0):
                 continue
-            temp = ''
             if section_number >= len(sections):
                 break
-            temp += f'SECTION HEADER #{section_number + 1}\n'
-            line_index = 0
-            for line in sections[section_number]:
-                field = hex_from_bytes(
-                    sections[section_number][line]) if line != 'name' else \
-                    sections[section_number][line]
-                temp += f'{field:>12} {localisation[line_index]}\n'
-                line_index += 1
-            result.append(temp)
+            temp = [f'SECTION HEADER #{section_number + 1}']
+            for line_index, line in enumerate(sections[section_number]):
+                field = sections[section_number][line]
+                if line != 'name':
+                    field = hex_from_bytes(field)
+                temp.append(f'{field:>12} {localisation[line_index]}')
+            result.extend(temp)
+            result.append('')
 
         return '\n'.join(result)

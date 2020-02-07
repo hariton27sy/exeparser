@@ -3,18 +3,23 @@ import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 from common_funcs import formatted_output
-from core.exefile import ExeFile
+from common_funcs import get_resource_type, get_strings_from_data
 from core.resources import ResourceTable
 
-WIDTH, HEIGHT = 600, 400
+
+def get_resource_widget_as_main(exeFile):
+    app = QtWidgets.QApplication([])
+    widget = ResourcesWidget(exeFile)
+    sys.exit(app.exec_())
 
 
 class ResourcesWidget(QtWidgets.QWidget):
+    WIDTH, HEIGHT = 600, 400
+
     def __init__(self, exeFile):
-        app = QtWidgets.QApplication([])
         super().__init__()
         self.exeFile = exeFile
-        self.resize(WIDTH, HEIGHT)
+        self.resize(self.WIDTH, self.HEIGHT)
 
         self.lt = QtWidgets.QHBoxLayout(self)
 
@@ -24,8 +29,6 @@ class ResourcesWidget(QtWidgets.QWidget):
 
         self.show()
 
-        sys.exit(app.exec_())
-
 
 def pix_map_from_data(data):
     qp = QtGui.QPixmap()
@@ -34,6 +37,8 @@ def pix_map_from_data(data):
 
 
 class ResourcesList(QtWidgets.QTreeWidget):
+    image_types = {"ICON", "BITMAP", "CURSOR"}
+
     def __init__(self, parent: ResourcesWidget):
         self.parent = parent
         super().__init__(parent)
@@ -46,15 +51,16 @@ class ResourcesList(QtWidgets.QTreeWidget):
             self.addTopLevelItem(self.make_tree(e))
 
     def onClick(self, item):
-        if item.element.elements[0].type == 1:
-            data = self.parent.exeFile.get_resource(
-                self.table, item.element.elements[0])
+        if item.element.name == 'STRING':
+            widget = StringsWidget(self.parent.exeFile, self.parent.viewer)
+            self.parent.viewer.setWidget(widget)
+            self.parent.show()
+        elif item.element.elements[0].type == 1:
+            data = self.parent.exeFile.get_resource(item.element.elements[0])
 
-            with open("test.png", 'wb') as f:
-                f.write(data)
-
-            widget = HexDumpWidget(data, self.parent.viewer)
-            if item.element.resourceType == "ICON":
+            widget = None
+            if (item.element.resourceType in self.image_types or
+                    get_resource_type(data) == "image"):
                 scrollArea = QtWidgets.QScrollArea(self.parent.viewer)
 
                 widget = QtWidgets.QLabel(self.parent)
@@ -64,17 +70,28 @@ class ResourcesList(QtWidgets.QTreeWidget):
                 scrollArea.setWidget(widget)
                 widget = scrollArea
 
+            if item.element.resourceType == "STRING":
+                widget = StringsWidget(data, self.parent.viewer)
+
+            if item.element.resourceType == "MANIFEST":
+                try:
+                    data = data.decode('utf-8')
+                    widget = QtWidgets.QLabel(data, self.parent.viewer)
+                except Exception:
+                    pass
+
+            if not widget:
+                widget = HexDumpWidget(data, self.parent.viewer)
+
             self.parent.viewer.setWidget(widget)
             self.parent.show()
 
-        else:
-            print("No")
-
     def make_tree(self, item):
         result = TreeListItem(item)
-        for e in item.elements:
-            if e.type == 0:
-                result.addChild(self.make_tree(e))
+        if item.name != "STRING":
+            for e in item.elements:
+                if e.type == 0:
+                    result.addChild(self.make_tree(e))
 
         return result
 
@@ -107,7 +124,14 @@ class HexDumpWidget(QtWidgets.QWidget):
         lt.addWidget(label, 1, 1)
 
 
-if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
-    a = ResourcesWidget(ExeFile("../examples/firefox2.exe"))
-    sys.exit(app.exec_())
+class StringsWidget(QtWidgets.QWidget):
+    def __init__(self, exeFile, parent=None):
+        """Need full sub-table with strings"""
+        super().__init__(parent)
+
+        label = QtWidgets.QLabel("\n".join(exeFile.string_resources()), self)
+        label.setFont(QtGui.QFont("Courier"))
+        lt = QtWidgets.QGridLayout(self)
+        self.setLayout(lt)
+
+        lt.addWidget(label)

@@ -2,19 +2,17 @@ from common_funcs import get_line, hex_from_bytes
 
 
 def string_functions(element):
-    result = []
-    for func in element['functions']:
-        result.append(f"\t{hex_from_bytes(func[0], -1)[2:]:>12} {func[1]}")
-
-    return "\n".join(result)
+    return "\n".join(
+        map(lambda func: f"\t{hex_from_bytes(func[0], -1)[2:]:>12} {func[1]}",
+            element['functions']))
 
 
 class ImportTable:
     def __init__(self, parent):
         self.parent = parent
-        self.table = self.parse_import_table()
+        self.table = self._parse_import_table()
 
-    def parse_import_table(self):
+    def _parse_import_table(self):
         """Parses import table. Parameters:
 
             parent - exeFile object that executes this function"""
@@ -26,7 +24,7 @@ class ImportTable:
         result = []
         with open(self.parent.path, 'rb') as f:
             f.seek(self.parent.rva_to_raw(address)[1])
-            zero_struct = bytes(0 for _ in range(20))
+            zero_struct = b"\x00" * 20
             data = f.read(20)
             while data != zero_struct:
                 result.append({
@@ -39,7 +37,7 @@ class ImportTable:
                 })
                 result[-1]['functions'] = self._get_functions(
                     f, self.parent.rva_to_raw(
-                        result[-1]['originalFirstThunk'])[1])
+                        result[-1]['firstThunk'])[1])
                 result[-1]['type'] = result[-1]['name'].split('.')[-1]
                 data = f.read(20)
             result.sort(key=lambda e: e['type'], reverse=True)
@@ -48,28 +46,26 @@ class ImportTable:
     def __str__(self):
         if self.table is None:
             return ''
-        result = 'Section contains the following imports:\n\n'
-        for element in self.table:
-            result += f'\t{element["name"]}\n\t' \
-                      f'{hex(element["firstThunk"]):>12} ' \
-                      'Import Address Table\n\t' \
-                      f'{hex(element["originalFirstThunk"]):>12} ' \
-                      'Import Name Table\n\t' \
-                      f'{hex(element["timeDateStamp"]):>12} ' \
-                      'TimeDate Stamp\n\t' \
-                      f'{hex(element["forwarderChain"]):>12} ' \
-                      'Index of first forwarder reference\n\n' + \
-                      string_functions(element) + "\n\n"
-        return result
+        result = ['Section contains the following imports:\n\n']
+        for element in sorted(self.table, key=lambda x: x['name']):
+            result.append(f'\t{element["name"]}\n\t'
+                          f'{hex(element["firstThunk"]):>12} '
+                          'Import Address Table\n\t'
+                          f'{hex(element["originalFirstThunk"]):>12} '
+                          'Import Name Table\n\t'
+                          f'{hex(element["timeDateStamp"]):>12} '
+                          'TimeDate Stamp\n\t'
+                          f'{hex(element["forwarderChain"]):>12} '
+                          'Index of first forwarder reference\n\n'
+                          f'{string_functions(element)}\n\n')
+        return "".join(result)
 
     def get_dependencies(self):
         result = set()
         for elem in self.table:
             result.add(elem['name'])
         result = list(result)
-        result.sort()
-        result.sort(key=lambda e: e.split('.')[-1], reverse=True)
-        return result
+        return sorted(result, key=lambda e: e.split('.')[-1], reverse=True)
 
     def _get_functions(self, file, address):
         result = []
